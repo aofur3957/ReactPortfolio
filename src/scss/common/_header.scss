@@ -34,6 +34,14 @@ header {
                 }
             }
         }
+
+        .fa-bars {
+            font-size: 20px; 
+            color: #fff; 
+            position: absolute; 
+            bottom: 20px; right: 5vw; 
+            display: none;
+        }
     }
 }
 
@@ -48,6 +56,10 @@ header {
 
             #gnb {
                 display: none;
+            }
+
+            .fa-bars {
+                display: block;
             }
         }
     }

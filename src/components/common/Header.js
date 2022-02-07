@@ -1,4 +1,6 @@
 import {NavLink} from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 // 객체 import active prop 지원
 export default function Header(){
   const active = {color: 'aqua'}
@@ -16,6 +18,8 @@ export default function Header(){
           <li><NavLink activeStyle={active} to='/location'>Location</NavLink></li>
           <li><NavLink activeStyle={active} to='/join'>Join</NavLink></li>
         </ul>
+
+        <FontAwesomeIcon icon={faBars} />
       </div>
     </header>
   )
