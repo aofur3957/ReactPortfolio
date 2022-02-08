@@ -1,0 +1,63 @@
+.youtube {
+    background: #efefef;
+    .inner {
+        >section {
+            padding-bottom: 100px;
+
+            &::after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+
+            article {
+                width: 20%;
+                height: 500px;
+                float: left;
+                padding: 10px;
+                overflow: hidden;
+
+                .inner {
+                    width: 100%;
+                    height: 100%;
+                    background: #fff;
+                    box-shadow: 3px 3px 10px rgba(0,0,0, .1);
+                    padding: 10px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+
+                    .txt {
+                        h2 {
+                            font: bold 16px/1.2 'arial';
+                            color: #555;
+                            margin-bottom: 20px;
+                            word-break: breack-all;
+                        }
+
+                        p {
+                            font: 12px/1.2 'arial';
+                            color: #888;
+                            word-break: breack-all;
+                        }
+                    }
+
+                    .pic {
+                        width: 100%;
+                        height: 150px;
+                        overflow: hidden;
+                        cursor: pointer;
+
+                        img {
+                            width: 100%; height: 100%;
+                            object-fit: cover;
+                            transform: scale(1.4);
+                        }
+                    }
+                }
+            }
+        } 
+    }
+}
+

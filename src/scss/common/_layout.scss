@@ -4,13 +4,16 @@
         width: 100%;
         height: 300px;
         background: #ddd;
-        transition: 0.5s;
+        transition: 1s;
     }
 
     >.inner {
         width: 1180px;
         padding-top: 100px;
         margin: 0 auto;
+        transform: translateY(200px);
+        opacity: 0;
+        transition: 1s;
 
         h1 {
             font: 30px/1 'arial';
@@ -20,6 +23,13 @@
 
         >section {
             min-height: 500px;
+        }
+    }
+    
+    &.on {
+        >.inner{
+            transform: translateY(0px);
+            opacity: 1;
         }
     }
 }
