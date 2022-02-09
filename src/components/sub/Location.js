@@ -6,37 +6,48 @@ export default function Community(){
   const {kakao} = window;
   const container = useRef(null);
   const [map, setMap] = useState(null);
+  const [index, setIndex] = useState(0);
   const path = process.env.PUBLIC_URL;
   //마커 이미지 정보 및 위치정보 값
-  var markerOptions =[
+  var Info =[
     {
         title:"본점", 
         latlng : new kakao.maps.LatLng(35.1659875, 129.1355099),
-        imgSrc : path + 'img/marker1.png', 
+        imgSrc : path+'/img/marker1.png', 
         imgSize : new kakao.maps.Size(232,99), 
         imgPos : {offset: new kakao.maps.Point(116, 99)},
     },
     {
         title:"지점1", 
         latlng : new kakao.maps.LatLng(33.450701, 126.570667),
-        imgSrc : 'img/marker2.png', 
+        imgSrc :  path+'/img/marker2.png', 
         imgSize : new kakao.maps.Size(232,99), 
         imgPos : {offset: new kakao.maps.Point(116, 99)},
     },
     {
         title:"지점2", 
         latlng : new kakao.maps.LatLng(37.557527,126.9222836),
-        imgSrc : 'img/marker3.png', 
+        imgSrc :  path+'/img/marker3.png', 
         imgSize : new kakao.maps.Size(232,99), 
         imgPos : {offset: new kakao.maps.Point(116, 99)}, 
     }
-]; 
+  ];
+  
+  const [mapInfo] = useState(Info);
+
   
   
   //hook은 컴포넌트 안쪽에서 호출
+
+  //처음 로딩시 한번만 실행
+  useEffect(()=>{
+    main.current.classList.add('on');
+  },[])
+
+  //index state값이 변경될때마다 해당 useEffect를 재실행
   useEffect(()=>{
     const options = {
-      center: new kakao.maps.LatLng(35.1659875,129.1355099),
+      center: mapInfo[0].latlng,
       level: 3
     }
 
@@ -44,9 +55,21 @@ export default function Community(){
     const map = new kakao.maps.Map(container.current, options);
     setMap(map);
 
-    main.current.classList.add('on');
+    //마커출력 인스턴스 생성
+    new kakao.maps.Marker({
+      map: map,
+      position: mapInfo[index].latlng,
+      title: mapInfo[index].title,
+      image: new kakao.maps.MarkerImage(mapInfo[index].imgSrc, mapInfo[index].imgSize, mapInfo[index].imgPos)
+    })
 
-  },[]);
+    map.setCenter(mapInfo[index].latlng);
+
+  },[index]);
+
+  //index state값이 변경될때마다 
+  
+  
   return (
     <main className="content location" ref={main}>
       <figure></figure>
@@ -56,12 +79,28 @@ export default function Community(){
           <div id="map" ref={container}>
 
           </div>
-          <button onClick={()=>{
-            map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
-          }}>교통정보 보기</button>
-          <button onClick={()=>{
-            map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC); 
-          }}>교통정보 끄기</button>
+          
+          <nav className="traffic">
+            <button onClick={()=>{
+              map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
+            }}>교통정보 보기</button>
+            <button onClick={()=>{
+              map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC); 
+            }}>교통정보 끄기</button>
+          </nav>
+
+          <nav className="branch">
+            <button onClick={()=>{
+              setIndex(0);
+            }}>본점</button>
+            <button onClick={()=>{
+              setIndex(1);
+            }}>지점1</button>
+            <button onClick={()=>{
+              setIndex(2);
+            }}>지점2</button>
+          </nav>
+        
         </section>
       </div>
     </main>
