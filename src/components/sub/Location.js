@@ -46,6 +46,9 @@ export default function Community(){
 
   //index state값이 변경될때마다 해당 useEffect를 재실행
   useEffect(()=>{
+
+    container.current.innerHTML = '';
+
     const options = {
       center: mapInfo[0].latlng,
       level: 3
@@ -62,9 +65,23 @@ export default function Community(){
       title: mapInfo[index].title,
       image: new kakao.maps.MarkerImage(mapInfo[index].imgSrc, mapInfo[index].imgSize, mapInfo[index].imgPos)
     })
+    
+    //순서 state값이 변경될때마다 맵의 중앙 위치를 다시 렌더링
+    map.setCenter(mapInfo[index].latlng); 
+    const mapSet = ()=> map.setCenter(mapInfo[index].latlng);
 
-    map.setCenter(mapInfo[index].latlng);
+    //브라우저 리사이즈시 마커 위치를 중앙배치
+    window.addEventListener('resize', mapSet);
+    // 해당 컴포넌트가 재 랜더링 될때마다 기존 window객체에 등록된 함수를 다시 제거
 
+    const mapType = new kakao.maps.MapTypeControl();
+    map.addControl(mapType, kakao.maps.ControlPosition.TOPRIGHT);
+
+    map.setZoomable(false);
+    
+    return ()=> window.removeEventListener('resize', mapSet);
+
+  
   },[index]);
 
   //index state값이 변경될때마다 
@@ -90,15 +107,9 @@ export default function Community(){
           </nav>
 
           <nav className="branch">
-            <button onClick={()=>{
-              setIndex(0);
-            }}>본점</button>
-            <button onClick={()=>{
-              setIndex(1);
-            }}>지점1</button>
-            <button onClick={()=>{
-              setIndex(2);
-            }}>지점2</button>
+            {mapInfo.map((data, idx)=>{
+              return <button key={idx} onClick={()=>setIndex(idx)}>{data.title}</button>
+            })}
           </nav>
         
         </section>

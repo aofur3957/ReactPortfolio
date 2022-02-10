@@ -8,4 +8,19 @@ ul,ol,li {
 }
 a {
   text-decoration: none;
+  color: #333;
+}
+fieldset {
+  border: none;
+}
+table {
+  border-collapse: collapse;
+}
+label, input {
+  vertical-align: middle;
+}
+.h {
+  position: absolute;
+  top: -9999px;
+  opacity: 0;
 }
