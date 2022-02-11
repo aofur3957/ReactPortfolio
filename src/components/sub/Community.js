@@ -4,7 +4,9 @@ export default function Community(){
   const main = useRef(null);
   const input = useRef(null);
   const textarea = useRef(null);
-  const showbox = useRef(null);
+  const showBox = useRef(null);
+  const updateInput = useRef(null);
+  const updateTextarea = useRef(null);
   
   const [posts, setPosts] = useState([
     {title: 'hello', content: 'Here comes description in detail.'},
@@ -12,6 +14,12 @@ export default function Community(){
   ]);
 
   const createPost = ()=>{
+    const inputVal = input.current.value.trim();
+    const textareaVal = textarea.current.value.trim();
+    if( !inputVal || !textareaVal || inputVal == ' ' || textareaVal == ' '){
+      alert('제목과 본문을 입력하세요');
+      return;
+    }
     setPosts([ 
       {
         title : input.current.value,
@@ -41,6 +49,35 @@ export default function Community(){
       })
     )
     console.log(posts);
+  }
+
+  const disableUpdate = index=>{
+    setPosts(
+      posts.map((post, idx)=>{
+        if(idx === index) post.enableUpdate=false;
+        return post;
+      })
+    )
+    console.log(posts);
+  }
+
+  const updatePost = index=>{
+    const inputVal2 = updateInput.current.value.trim();
+    const textareaVal2 = updateTextarea.current.value.trim();
+    if( !inputVal2 || !textareaVal2 || inputVal2 == ' ' || textareaVal2 == ' '){
+      alert('제목과 본문을 입력하세요');
+      return;
+    }
+    setPosts(
+      posts.map((post, idx)=>{
+        if(index === idx){
+          post.title = updateInput.current.value;
+          post.content = updateTextarea.current.value;
+          post.enableUpdate = false;
+        }
+        return post;
+      })
+    )
   }
   
   useEffect(()=>{
@@ -76,7 +113,7 @@ export default function Community(){
             <button onClick = {createPost}>create</button>
           </div>
 
-          <div className="showList" ref={showbox}>
+          <div className="showList" ref={showBox}>
             {posts.map((post, idx)=>{
               return (
                 <article key={idx}>
@@ -86,13 +123,13 @@ export default function Community(){
                     //수정화면
                     <>
                       <div class="post">
-                        <input type="text" defaultValue={post.title} /><br />
-                        <textarea defaultValue={post.content}></textarea><br />
+                        <input type="text" defaultValue={post.title} ref={updateInput} /><br />
+                        <textarea defaultValue={post.content} ref={updateTextarea}></textarea><br />
                       </div>
                       
                       <div className="btns">
-                        <button onClick={()=>enableUpdate(idx)}>modify</button>
-                          <button onClick={()=>deletePost(idx)}>delete</button>
+                        <button onClick={()=>updatePost(idx)}>update</button>
+                          <button onClick={()=>disableUpdate(idx)}>cancel</button>
                       </div>
                     </>
                     :
