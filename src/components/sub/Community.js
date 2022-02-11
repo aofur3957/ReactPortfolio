@@ -7,11 +7,19 @@ export default function Community(){
   const showBox = useRef(null);
   const updateInput = useRef(null);
   const updateTextarea = useRef(null);
-  
-  const [posts, setPosts] = useState([
-    {title: 'hello', content: 'Here comes description in detail.'},
-    {title: 'hello2', content: 'Here comes description in detail2.'},
-  ]);
+  const getLocalItems = ()=>{
+    let data =  localStorage.getItem('posts');
+
+    if(data){
+      return JSON.parse(data);
+    }else {
+    
+    // 로컬 저장소에 데이터가 없을 때
+      return [];
+    }
+  }
+
+  const [posts, setPosts] = useState(getLocalItems)
 
   const createPost = ()=>{
     const inputVal = input.current.value.trim();
@@ -27,7 +35,6 @@ export default function Community(){
       },
       ...posts
     ])
-    console.log(posts);
     input.current.value = ' ';
     textarea.current.value = ' ';
   }
@@ -83,6 +90,11 @@ export default function Community(){
   useEffect(()=>{
     main.current.classList.add('on');
   },[]);
+
+  
+  useEffect(()=>{
+    localStorage.setItem('posts', JSON.stringify(posts));
+  },[posts])
 
   return (
     <main className="content community" ref={main}>

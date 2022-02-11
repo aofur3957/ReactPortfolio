@@ -4,7 +4,7 @@ import Footer from './components/common/Footer';
 
 import Visual from './components/main/Visual';
 import Intro from './components/main/Intro';
-import Info from './components/main/Info';
+import News from './components/main/News';
 
 import Department from './components/sub/Department';
 import Community from './components/sub/Community';
