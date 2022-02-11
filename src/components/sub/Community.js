@@ -1,31 +1,118 @@
 import {useEffect, useRef, useState} from 'react';
 
-//가상돔 생성함수
 export default function Community(){
-  let main = useRef(null);
-  let [index, setIndex] = useState(0);
+  const main = useRef(null);
+  const input = useRef(null);
+  const textarea = useRef(null);
+  const showbox = useRef(null);
   
-  //hook은 컴포넌트 안쪽에서 호출
-  useEffect(()=>{
-    console.log('community 컴포넌트 생성')
-    main.current.classList.add('on');
+  const [posts, setPosts] = useState([
+    {title: 'hello', content: 'Here comes description in detail.'},
+    {title: 'hello2', content: 'Here comes description in detail2.'},
+  ]);
 
+  const createPost = ()=>{
+    setPosts([ 
+      {
+        title : input.current.value,
+        content: textarea.current.value
+      },
+      ...posts
+    ])
+    console.log(posts);
+    input.current.value = ' ';
+    textarea.current.value = ' ';
+  }
+
+  //순번으로 받은 게시글만 삭제하는 함수
+  const deletePost = index=>{
+    setPosts(
+      //기본 배열을 받아서 조건식을 통해 특정 조건이 성립하는 데이터만 필터링해서 다시 새롭게 반환하는 함수
+      posts.filter((_, idx) => idx !== index)
+      
+    )
+  }
+  //인수로 수정모드 변경할 포스트의 순서값 받아서 해당 순번의 state값만 수정가능한 형태로 정보값 변경
+  const enableUpdate = index=>{
+    setPosts(
+      posts.map((post, idx)=>{
+        if(idx === index) post.enableUpdate=true;
+        return post;
+      })
+    )
+    console.log(posts);
+  }
+  
+  useEffect(()=>{
+    main.current.classList.add('on');
   },[]);
 
-  useEffect(()=>{
-    console.log('index값 변경됨');
-  }, [index])
-  
-  //jsx 반환 구문 return
   return (
     <main className="content community" ref={main}>
       <figure></figure>
+
       <div className="inner">
         <h1>Community</h1>
         <section>
-          <button onClick={()=> setIndex(--index)}>-</button>
-          <button onClick={()=> setIndex(++index)}>+</button>
-          <h2>{index}</h2>
+          <div class="inputBox">
+            <input 
+            type="text" 
+            placeholder = '제목을 입력하세요'
+            ref={input}
+            /><br />
+            <textarea 
+              cols="30" 
+              rows="10"
+              placeholder = '메세지를 입력하세요'
+              ref={textarea}
+            >
+            </textarea><br />
+            {/*버튼 눌렀을때 input요소가 참조가되어야함 */}
+            
+            <button onClick = {()=>{
+              input.current.value = ' ';
+              textarea.current.value=' ';
+            }}>cancel</button>
+            <button onClick = {createPost}>create</button>
+          </div>
+
+          <div className="showList" ref={showbox}>
+            {posts.map((post, idx)=>{
+              return (
+                <article key={idx}>
+                  {
+                    post.enableUpdate 
+                    ?
+                    //수정화면
+                    <>
+                      <div class="post">
+                        <input type="text" defaultValue={post.title} /><br />
+                        <textarea defaultValue={post.content}></textarea><br />
+                      </div>
+                      
+                      <div className="btns">
+                        <button onClick={()=>enableUpdate(idx)}>modify</button>
+                          <button onClick={()=>deletePost(idx)}>delete</button>
+                      </div>
+                    </>
+                    :
+                    //출력화면
+                    <>
+                      <div class="post">
+                        <h2>{post.title}</h2>
+                        <p>{post.content}</p>
+                      </div>
+                      
+                      <div className="btns">
+                        <button onClick={()=>enableUpdate(idx)}>modify</button>
+                          <button onClick={()=>deletePost(idx)}>delete</button>
+                      </div>
+                    </>
+                  }
+                </article>
+              )
+            })}
+          </div>
         </section>
       </div>
     </main>
