@@ -26,10 +26,10 @@ export default function News(){
   },[])
 
   return (
-    <section id="News">
+    <section id="news">
       <div className="inner">
         <h1>Recent Post</h1>
-
+        <ul>
         {posts.map((post, idx)=>{
           if(idx < 4) {
             return (
@@ -40,7 +40,7 @@ export default function News(){
             )
           }
         })}
-        
+        </ul>
       </div>
     </section>
   )
