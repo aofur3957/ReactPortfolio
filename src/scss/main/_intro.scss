@@ -15,12 +15,15 @@
         }
 
         article {
-            width: 500px;
+            width: 50vw;
             padding: 30px;
             border: 1px solid #ddd;
             margin: 0px auto;
 
             svg {
+                display: block;
+                width: 50%;
+                margin: 0 auto;
                 path {
                     fill: transparent;
                     stroke: #333;

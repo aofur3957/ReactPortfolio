@@ -19,6 +19,12 @@ table {
 label, input {
   vertical-align: middle;
 }
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .h {
   position: absolute;
   top: -9999px;

@@ -98,7 +98,23 @@ export default function Community(){
 
   return (
     <main className="content community" ref={main}>
-      <figure></figure>
+      <figure>
+      <div className="inner">
+            <h1>COMMUNITY</h1>
+            <strong>
+              ARTS<br /> 
+              CULTURE <br />
+              MAGAZINE
+            </strong>
+            <div class="txt">
+              <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda esse eos, ex debitis voluptatem, rem corrupti facilis aspernatur quas in, molestias enim" 
+              </p>
+              <p>
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad rerum nesciunt deserunt, temporibus cupiditate, aperiam nisi ab libero adipisci est. Accusamus at nisi dolor!"
+              </p>
+            </div>
+        </div>
+      </figure>
 
       <div className="inner">
         <h1>Community</h1>

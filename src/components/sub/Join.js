@@ -1,4 +1,7 @@
-import { faHollyBerry } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookReader } from '@fortawesome/free-solid-svg-icons';
+import { faPenSquare } from '@fortawesome/free-solid-svg-icons';
+import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import {useEffect, useRef, useState} from 'react';
 
 //가상돔 생성함수
@@ -122,17 +125,56 @@ export default function Join(){
 
   return (
     <main className="content join" ref={main}>
-      <figure></figure>
+        <figure>
+          <div className="inner">
+            <h1>JOIN</h1>
+            <strong>
+              ARTS<br /> 
+              CULTURE <br />
+              MAGAZINE
+            </strong>
+            <div class="txt">
+              <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda esse eos, ex debitis voluptatem, rem corrupti facilis aspernatur quas in, molestias enim" 
+              </p>
+              <p>
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad rerum nesciunt deserunt, temporibus cupiditate, aperiam nisi ab libero adipisci est. Accusamus at nisi dolor!"
+              </p>
+            </div>
+          </div>
+        </figure>
       <div className="inner">
-        <h1>Join</h1>
+        <h1>JOIN</h1>
         <section>
           {success ? <div class="success">회원가입을 축하합니다.</div> : null}
+          <h2>JOIN</h2>
+          <p>Welcome to visit our homepage</p>
+          <ul>
+            <li>
+              <span>
+                <FontAwesomeIcon icon={faBookReader} />
+              </span>
+              Verification Identify.
+            </li>
+            <li>
+              <span>
+                <FontAwesomeIcon icon={faPenSquare} />
+              </span>
+              Insert Info.
+            </li>
+            <li>
+              <span>
+                <FontAwesomeIcon icon={faUserCheck} />
+              </span>
+              Completion Join.
+            </li>
+          </ul>
+
           <form onSubmit={handleSubmit}>
             <fieldset>
               <legend class="h">회원가입 폼 양식</legend>
               
               <table>
-                <caption class="h">회원가입 입력</caption>
+                <caption>ESSENTIAL INFO.</caption>
                 <tbody>
                   <tr>
                     <th>
@@ -212,7 +254,7 @@ export default function Join(){
                       value={val.gender}
                       onChange= {handleRadio}
                       />
-                      <label htmlFor="female">Male</label>
+                      <label htmlFor="female">Female</label>
                       <input 
                       type="radio"
                       id="female"

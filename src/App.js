@@ -2,10 +2,6 @@ import Main from './components/main/Main';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 
-import Visual from './components/main/Visual';
-import Intro from './components/main/Intro';
-import News from './components/main/News';
-
 import Department from './components/sub/Department';
 import Community from './components/sub/Community';
 import Gallery from './components/sub/Gallery';

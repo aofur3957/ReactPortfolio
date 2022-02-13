@@ -11,21 +11,21 @@ export default function Community(){
   //마커 이미지 정보 및 위치정보 값
   var Info =[
     {
-        title:"본점", 
+        title:"INCHEON", 
         latlng : new kakao.maps.LatLng(35.1659875, 129.1355099),
         imgSrc : path+'/img/marker1.png', 
         imgSize : new kakao.maps.Size(232,99), 
         imgPos : {offset: new kakao.maps.Point(116, 99)},
     },
     {
-        title:"지점1", 
+        title:"SONGPA", 
         latlng : new kakao.maps.LatLng(33.450701, 126.570667),
         imgSrc :  path+'/img/marker2.png', 
         imgSize : new kakao.maps.Size(232,99), 
         imgPos : {offset: new kakao.maps.Point(116, 99)},
     },
     {
-        title:"지점2", 
+        title:"GANGNAM", 
         latlng : new kakao.maps.LatLng(37.557527,126.9222836),
         imgSrc :  path+'/img/marker3.png', 
         imgSize : new kakao.maps.Size(232,99), 
@@ -89,31 +89,104 @@ export default function Community(){
   
   return (
     <main className="content location" ref={main}>
-      <figure></figure>
-      <div className="inner">
-        <h1>Location</h1>
+      <figure>
+        <div className="inner">
+            <h1>LOCATION</h1>
+            <strong>
+              ARTS<br /> 
+              CULTURE <br />
+              MAGAZINE
+            </strong>
+            <div class="txt">
+              <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda esse eos, ex debitis voluptatem, rem corrupti facilis aspernatur quas in, molestias enim" 
+              </p>
+              <p>
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad rerum nesciunt deserunt, temporibus cupiditate, aperiam nisi ab libero adipisci est. Accusamus at nisi dolor!"
+              </p>
+            </div>
+        </div>
+      </figure>
         <section>
-          <div id="map" ref={container}>
-
+          <div className="contact">
+            <div className="inner">
+              <div className="info">
+                <h1>CONTACT US</h1>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor consequuntur sint ducimus aspernatur ipsam, odit eum earum in quae, esse nobis fugit blanditiis, iure cumque? Laudantium sit enim consectetur illum!
+                </p>
+                <article>
+                  <h3>ADDRESS</h3>
+                  <p>
+                    Ellabenesu St. lusanne
+                    VA 2255-1. CANADA
+                  </p>
+                </article>
+                <article>
+                  <h3>OPENING HOURS</h3>
+                  <dl>
+                    <div>
+                      <dt>Monday to Friday:</dt>
+                      <dd>10am to 7pm</dd>
+                    </div>
+                    <div>
+                      <dt>Satuday:</dt>
+                      <dd>10am to 4pm</dd>
+                    </div>
+                    <div>
+                      <dt>Sunday:</dt>
+                      <dd>10am to 4pm</dd>
+                    </div>
+                  </dl>
+                </article>
+                <article>
+                  <h3>EMAIL</h3>
+                  <p>ellesaluke@gmail.com</p>
+                </article>
+                <article>
+                  <h3>PHONE</h3>
+                  <p>600-3421-0988</p>
+                </article>
+              </div>
+              <form className="form">
+                <fieldset>
+                  <legend>Drop us a line</legend>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam, numquam.</p>
+                  <input type="text" id="name" name="name" placeholder="Your Name" />
+                  <input type="email" id="email" name="email" placeholder="Your Email" />
+                  <input type="text" id="message" name="message" placeholder="Message"/>
+                  <button>send</button>
+                </fieldset>
+              </form>
+            </div>
           </div>
-          
-          <nav className="traffic">
-            <button onClick={()=>{
-              map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
-            }}>교통정보 보기</button>
-            <button onClick={()=>{
-              map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC); 
-            }}>교통정보 끄기</button>
-          </nav>
-
-          <nav className="branch">
-            {mapInfo.map((data, idx)=>{
-              return <button key={idx} onClick={()=>setIndex(idx)}>{data.title}</button>
-            })}
-          </nav>
+          <div className="store">
+            <div class="inner">
+              <h2>LOCATION</h2>
+              <nav className="branch">
+              {mapInfo.map((data, idx)=>{
+                return <button key={idx} onClick={()=>setIndex(idx)}>{data.title}</button>
+              })}
+              </nav>
+            </div>
+            
+            <div id="map" ref={container}>
+            </div>
+            
+            <div className="inner">
+              <nav className="traffic">
+                <button onClick={()=>{
+                  map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
+                }}>TRAFFIC ON</button>
+                <button onClick={()=>{
+                  map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC); 
+                }}>TRAFFIC OFF</button>
+              </nav>
+            </div>
+            
+  
+          </div>
         
         </section>
-      </div>
     </main>
   )
 }
