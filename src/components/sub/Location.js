@@ -91,18 +91,23 @@ export default function Community(){
     <main className="content location" ref={main}>
       <figure>
         <div className="inner">
-            <h1>LOCATION</h1>
-            <strong>
-              ARTS<br /> 
-              CULTURE <br />
-              MAGAZINE
-            </strong>
+            <div className="wrap">
+              <h1>LOCATION</h1>
+              <strong>
+                ARTS<br /> 
+                CULTURE <br />
+                MAGAZINE
+              </strong>
+            </div>
             <div class="txt">
               <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda esse eos, ex debitis voluptatem, rem corrupti facilis aspernatur quas in, molestias enim" 
               </p>
               <p>
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad rerum nesciunt deserunt, temporibus cupiditate, aperiam nisi ab libero adipisci est. Accusamus at nisi dolor!"
               </p>
+            </div>
+            <div className="pic">
+              {/* <img src={`${path}/img/subImg5.jpg`} alt="" /> */}
             </div>
         </div>
       </figure>

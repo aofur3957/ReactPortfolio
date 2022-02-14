@@ -2,6 +2,7 @@
 
     >figure {
         width: 100%;
+        min-height: auto;
         background: #fbf8f3;
         border-bottom: 4px solid #333;
         transition: 1s;
@@ -47,6 +48,13 @@
                         font-weight: 500;
                     }
                 }
+            }
+
+            .pic {
+                margin-top: 40px;
+                height: 250px;
+                background: url(../../../public/img/subImg5.jpg) no-repeat 50% 20%/cover;
+                filter: grayscale(1);
             }
         }
     }

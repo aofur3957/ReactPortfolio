@@ -26,7 +26,7 @@ export default function News(){
   },[])
 
   return (
-    <section id="news">
+    <section id="news" className="myScroll">
       <div className="inner">
         <h1>Recent Post</h1>
         <ul>

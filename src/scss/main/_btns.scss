@@ -1,0 +1,13 @@
+#btns {
+    position: fixed; top: 50%; right: 100px; transform: translateY(-50%);
+
+    li {
+        width: 10px; height: 10px; margin-bottom: 20px; background: #fff; border: 1px solid #999; cursor: pointer;
+
+        &.on {
+            height: 100px;
+            background: #000;
+            border: 1px solid #fff;
+        }
+    }
+}
