@@ -4,6 +4,7 @@ import Intro from './Intro';
 import News from './News';
 import Info from './Info';
 import Btns from './Btns';
+import Pics from './Pics';
 import Anime from '../../class/anime.js';
 import { useEffect, useRef , useState} from 'react';
 
@@ -21,7 +22,6 @@ export default function Main() {
         let arr = [];
         for(let sec of secs) arr.push(sec.offsetTop);
         pos.current = arr;
-        console.log(pos.current);
     }
 
     const activation = ()=>{
@@ -63,6 +63,7 @@ export default function Main() {
             <Intro />
             <News />
             <Info />
+            <Pics />
             <Btns getIndex={getIndex} />
         </div>
     );

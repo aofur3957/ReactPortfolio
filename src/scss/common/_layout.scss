@@ -7,11 +7,14 @@
         border-bottom: 4px solid #333;
         transition: 1s;
 
-        .inner {
+        >.inner {
             width: 1180px;
             margin: 0 auto;
             position: relative;
             padding: 250px 0 50px;
+            // transform: translateY(100px);
+            // opacity: 0;
+            transition: 1s;
 
             &::after {
                 content: '';
@@ -65,7 +68,6 @@
         margin: 0 auto;
         transform: translateY(200px);
         opacity: 0;
-        transition: 1s;
 
         h1 {
             font: 40px/1 'arial';

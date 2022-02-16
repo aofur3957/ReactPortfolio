@@ -11,8 +11,8 @@ export default function Community(){
   
   const part = 'snippet';
   const key = 'AIzaSyB2c-vJPxv0T0B9qWab28kZJ3_xr_57jhs';
-  const num = 10;
-  const playlistId = 'PL5zLxdZ1y87VterXQCOaMjCwbf_KXj5Ve';
+  const num = 11;
+  const playlistId = 'PL5zLxdZ1y87U4QZhb6r3vp8raTgYl-pwA';
   const url =  `https://www.googleapis.com/youtube/v3/playlistItems?part=${part}&key=${key}&playlistId=${playlistId}&maxResults=${num}`
 
   
@@ -31,9 +31,30 @@ export default function Community(){
   return (
     <>
       <main className="content youtube" ref={main}>
-        <figure></figure>
+        <figure>
+          <div className="inner">
+              <div className="wrap">
+                <h1>YOUTUBE</h1>
+                <strong>
+                  ARTS<br /> 
+                  CULTURE <br />
+                  MAGAZINE
+                </strong>
+              </div>
+              <div class="txt">
+                <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda esse eos, ex debitis voluptatem, rem corrupti facilis aspernatur quas in, molestias enim" 
+                </p>
+                <p>
+                  "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad rerum nesciunt deserunt, temporibus cupiditate, aperiam nisi ab libero adipisci est. Accusamus at nisi dolor!"
+                </p>
+              </div>
+              <div className="pic">
+                {/* <img src={`${path}/img/subImg5.jpg`} alt="" /> */}
+              </div>
+          </div>
+        </figure>
         <div className="inner">
-          <h1>Youtube</h1>
+          <h1>YOUTUBE</h1>
           <section>
             {items.map((item, idx)=>{
               let tit = item.snippet.title;
@@ -41,19 +62,26 @@ export default function Community(){
       
               let desc = item.snippet.description;
               let desc_len = desc.length;
+
+              let imgSize = '';
+              if(item.snippet.thumbnails.maxres){
+                imgSize = item.snippet.thumbnails.maxres.url;
+              }else {
+                imgSize = item.snippet.thumbnails.high.url;
+              }
+
               return (
                 <article key={idx}>
                   <div className="inner">
-                      <div className="txt">
-                        <h2>{tit_len > 37 ? tit.substr(0, 40) + '...' : tit}</h2>
-                        <p>{desc_len > 150 ? desc.substr(0, 150)  + '...': desc}</p>
-                      </div>
+                      <h2>{tit_len > 12 ? tit.substr(0, 12) + '...' : tit}</h2>
+                      <span>24/7/18</span>
                       <div className="pic" onClick={()=>{
                         setIsPop(true);
                         setIndex(idx);
                       }}>
-                        <img src={item.snippet.thumbnails.standard.url} />
+                        <img src={imgSize} />
                       </div>
+                      <p>{desc_len > 150 ? desc.substr(0, 150)  + '...': desc}</p>
                   </div>
                 </article>
               )

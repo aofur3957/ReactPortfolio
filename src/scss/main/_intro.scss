@@ -14,6 +14,24 @@
             margin-bottom: 50px;
         }
 
+        ul {
+            width: 100%; display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 50px;
+
+            li {
+                width: 32%; height: 200px; padding: 30px;
+
+                .pic {
+                    width: 100%;
+                    height: 100px;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
         article {
             width: 50vw;
             padding: 30px;

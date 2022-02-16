@@ -1,5 +1,7 @@
 .youtube {
-    background: #efefef;
+    background: #fff;
+    border: 4px solid #333;
+    border-top: none;
     .inner {
         >section {
             padding-bottom: 100px;
@@ -12,47 +14,131 @@
 
             article {
                 width: 20%;
-                height: 500px;
                 float: left;
                 padding: 10px;
                 overflow: hidden;
+                border: 2px solid #888;
+                margin-top: -2px;
+
+                &:nth-of-type(1) {
+                    width: 60%;
+
+                    .pic {
+                        height: 1000px;
+                    }
+                }
+
+                &:nth-of-type(2) {
+                    float: right;
+                    width: 40%;
+                    margin-left: -2px;
+
+                    .pic {
+                        height: 600px;
+
+                        img {
+                            filter: grayscale(0);
+                        }
+                    }
+                }
+
+                &:nth-of-type(3) {
+                    float: right;
+                    width: 40%;
+
+                    .pic {
+                        height: 600px;
+                    }
+                }
+
+                &:nth-of-type(4) {
+                    width: 60%;
+
+                    .pic {
+                        height: 600px;
+                    }
+                }
+
+                &:nth-of-type(5),
+                &:nth-of-type(6) {
+                    float: right;
+                    width: 20%;
+                    height: 500px;
+
+                    h2 {
+                        display: none;
+                    }
+                    
+                    .pic {
+                        img {
+                            transform: scale(1.5);
+                        }
+                    }
+                }
+
+                &:nth-of-type(7),
+                &:nth-of-type(8) {
+                    width: 30%;
+                    height: 500px;
+
+                    .pic {
+                        height: 50%;
+                    }
+                }
+
+                &:nth-of-type(9) {
+                    float: right;
+                    height: 550px;
+                    width: 40%;
+
+                    .pic {
+                        height: 60%;
+                    }
+                }
+
+                &:nth-of-type(10) {
+                    float: left;
+                    height: 550px;
+                    width: 40%;
+
+                    .pic {
+                        height: 60%;
+                    }
+                }
 
                 .inner {
                     width: 100%;
                     height: 100%;
-                    background: #fff;
+                    padding: 15px;
                     box-shadow: 3px 3px 10px rgba(0,0,0, .1);
-                    padding: 10px;
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    align-items: center;
 
-                    .txt {
-                        h2 {
-                            font: bold 16px/1.2 'arial';
-                            color: #555;
-                            margin-bottom: 20px;
-                            word-break: breack-all;
-                        }
+                    h2 {
+                        float: left;
+                        padding-bottom: 20px;
+                        font: 25px/1 'Jost';
+                    }
 
-                        p {
-                            font: 12px/1.2 'arial';
-                            color: #888;
-                            word-break: breack-all;
-                        }
+                    span {
+                        float: right;
+                        padding-bottom: 20px;
+                        font: 18px/1 'Inria Sans'
+                    }
+
+                    p {
+                        font: 20px/1.2 'Jost';
                     }
 
                     .pic {
+                        margin-bottom: 25px;
                         width: 100%;
-                        height: 150px;
                         overflow: hidden;
                         cursor: pointer;
+
 
                         img {
                             width: 100%; height: 100%;
                             object-fit: cover;
-                            transform: scale(1.4);
+                            
                         }
                     }
                 }

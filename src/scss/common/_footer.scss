@@ -1,17 +1,78 @@
 footer {
     width: 100%;
-    border-top: 1px solid #ccc;
-    padding: 50px 0px;
+    border: 4px solid #333;
+    border-top: none;
 
     .inner {
         width: 1180px;
         margin: 0px auto;
+        position: relative;
+        padding: 100px 0;
 
-        p {
-            font: 12px/1 'arial';
-            color: #888;
-            text-align: center;
+        h1 {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font: 700 30px/1 'Inria Sans';
+            border: 2px solid #333;
+            padding: 10px;
         }
+
+        article {
+            float: left;
+            margin-right: 60px;
+
+            &:last-of-type {
+                float: right;
+                margin-right: 0;
+
+                p {
+                    font: 15px/1.8 'Inria Sans';
+                    text-align: left;
+                    text-transform: uppercase;
+                    color: #333;
+                    letter-spacing: 3px;
+                }
+            }
+
+            h2 {
+                margin-bottom: 90px;
+                font: 17px/1 'Inria Sans';
+                letter-spacing: 4px;
+                color: #333;
+            }
+
+            ul {
+                li {
+                    font: 15px/1.8 'Inria Sans';
+                    letter-spacing: 3px;
+                    color: #333;
+                }
+            }
+
+            dl {
+                dt, dd {
+                    display: inline-block;
+                    font: 15px/1.8 'Inria Sans';
+                    letter-spacing: 3px;
+                    color: #333;
+                }
+
+                dt {
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+
+    small {
+        display: block;
+        font: 17px/100px 'Inria Sans';
+        color: #888;
+        text-align: center;
+        border-top: 4px solid #333;
+        letter-spacing: 3px;
     }
 }
 
