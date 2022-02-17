@@ -5,32 +5,32 @@ const initMember = {
     members: [
         {
             "name": "Julia",
-            "position": "CEO",
+            "position": "fashion designer",
             "pic": "member1.jpg"
         },
         {
             "name": "Paul",
-            "position": "Vice President",
+            "position": "stage manager",
             "pic": "member2.jpg"
         },
         {
             "name": "Peter",
-            "position": "Engineer",
+            "position": "make up artist",
             "pic": "member3.jpg"
         },
         {
             "name": "Emily",
-            "position": "Designer",
+            "position": "fashion director",
             "pic": "member4.jpg"
         },
         {
             "name": "Michael",
-            "position": "Front-End Developer",
+            "position": "advertiser",
             "pic": "member5.jpg"
         },
         {
             "name": "Chang",
-            "position": "Back-End Developer",
+            "position": "fashion merchandiser",
             "pic": "member6.jpg"
         }
     ]

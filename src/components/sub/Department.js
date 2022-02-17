@@ -60,26 +60,87 @@ export default function Department(){
 
   return (
     <main className="content department" ref={main}>
-      <figure></figure>
-      
+      <figure>
       <div className="inner">
-        <h1>Department</h1>
-        <button onClick={()=>{
+            <div className="wrap">
+              <h1>
+                  DEPART<br />
+                  MENT
+              </h1>
+              <strong>
+                ARTS<br /> 
+                CULTURE <br />
+                MAGAZINE
+              </strong>
+            </div>
+            <div class="txt">
+              <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda esse eos, ex debitis voluptatem, rem corrupti facilis aspernatur quas in, molestias enim" 
+              </p>
+              <p>
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad rerum nesciunt deserunt, temporibus cupiditate, aperiam nisi ab libero adipisci est. Accusamus at nisi dolor!"
+              </p>
+            </div>
+            <div className="pic">
+              {/* <img src={`${path}/img/subImg5.jpg`} alt="" /> */}
+            </div>
+        </div>
+      </figure>
+      <section>
+          <div className="inner">
+        <h1>ABOUT US</h1>
+        <div className="mainpic">
+
+        </div>
+        {/* <button onClick={()=>{
           dispatch(setMembers(newMember))
           //action 발행
         }}>
           멤버변경
-        </button>
-        <section>
-          {members.map((member, idx)=>{
-            return (
-              <article key={idx}>
-              <img src={`${path}/img/${member.pic}`}  />
-              <h2>{member.name}</h2>
-              <p>{member.position}</p>
-            </article>
-            )
-          })}
+        </button> */}
+        
+          <div className="member">
+            <div className="left">
+              <h2>
+                INTERACTIVE 
+                <span>ARTIST!</span>
+              </h2>
+              {members.map((member, idx)=>{
+                console.log(member.position)
+                return (
+                  <div className={`content${idx+1}`}>
+                    <article>
+                      <img src={`${path}/img/${member.pic}`}  />
+                    </article>
+                    <p>
+                      <span>L</span>
+                      orem ipsum, dolor sit amet consectetur adipisicing elit. Similique dolor magni dolorem provident dicta ducimus et veritatis. Incidunt, recusandae eaque.
+                      adipisicing elit. Similique dolor magni dolorem provident dicta ducimus et veritatis. Incidunt, recusandae eaque.
+                    </p>
+                  </div>
+                )
+              })}
+            </div>
+            <div className="right">
+              <div className="tit">
+                {members.map((member, idx)=>{
+                  return (
+                      <h3>{member.position}</h3>
+                  )
+                })}
+              </div>
+              {members.map((member, idx)=>{
+                return (
+                    <article key={idx} className={`pic${idx
+                    +1}`}>
+                      <img src={`${path}/img/${member.pic}`}  />
+                    </article>
+                )
+                })}
+            </div>
+          </div>
+        
+          
+          
           {/* {members.map((data,idx)=>{
             return (
               <article key={idx}>
@@ -89,8 +150,8 @@ export default function Department(){
               </article>
             )
           })} */}
+          </div>
         </section>
-      </div>
     </main>
   )
 }
