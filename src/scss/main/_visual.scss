@@ -1,21 +1,71 @@
-figure {
-    width: 100%; 
-    height: auto;
-    background: #555;
-    position: relative;
-
+#visual {
+    width: 100%;
+    height: calc(100vh - 80px);
+    border: 4px solid #333;
+    border-top: none;
+ 
     .swiper {
+        width: 100%;
         height: 100%;
 
+        .swiper-button-prev,
+        .swiper-button-next {
+            position: absolute; 
+            top: 100%; 
+            transform: translateY(-120%);
+            color: #333;
+        }
+
+        .swiper-button-prev {
+            left: 20%;
+        }
+        .swiper-button-next {
+            left: 24%;
+        }
+
         .swiper-slide {
-            background: aqua;
             width: 100%;
+            padding: 0 20vw;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            .tit {
+                width: 50%;
+
+                h1 {
+                    margin: 170px 0 100px;
+                    font: 100px/1 'Jost';
+                }
+
+                p {
+                    margin-bottom: 70px;
+                    width: 70%;
+                    font: 30px/1.4 'Jost';
+                }
+
+                a {
+                    display: block;
+                    padding: 20px;
+                    width: 170px;
+                    text-align: center;
+                    border: 2px solid #333;
+                    background: #ffdf90;
+                    font: 700 16px/1 'Inria Sans';
+                }
+
+            }
+
+            .pic {
+                border: 1px solid #333;
+                width: 46%;
+                height: 80vh;
+                align-self: flex-end;
+            }
         }
     }
 }
+
 
 @media screen and (max-width: $tablet) {
     figure {

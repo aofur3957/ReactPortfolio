@@ -12,6 +12,7 @@ export default function Main() {
     const main = useRef(null);
     const pos = useRef([]);
     const [index, setIndex] = useState(0);
+    const [scrolled, setScrolled] = useState(0);
 
     const getIndex = index => {
         setIndex(index);
@@ -22,9 +23,11 @@ export default function Main() {
         let arr = [];
         for(let sec of secs) arr.push(sec.offsetTop);
         pos.current = arr;
+        console.log(pos);
     }
 
     const activation = ()=>{
+        setScrolled(window.scrollY);
         const base = -200;
         let scroll = window.scrollY;
         const btns = main.current.querySelectorAll('#btns li');
@@ -58,12 +61,12 @@ export default function Main() {
 
     return (
         <div id="mainWrap" ref={main}>
-            <Header type={'main'} />
+            <Header />
             <Visual />
-            <Intro />
+            <Intro scrolled={scrolled} />
+            <Pics />
             <News />
             <Info />
-            <Pics />
             <Btns getIndex={getIndex} />
         </div>
     );

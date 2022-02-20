@@ -9,7 +9,7 @@ export default function Header(props){
     setIsOn(!isOn);
   }
   return (
-    <header className={props.type}>
+    <header>
         <div className="inner">
           <h1><NavLink exact to='/'>LOGO</NavLink></h1>
           

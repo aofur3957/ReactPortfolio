@@ -1,9 +1,58 @@
 #pics {
-    background: pink;
-    .inner {
-        ul {
-            li {
-                width: 300px;
+    .title {
+        background: url(../../../public/img/mapPattern.png) repeat;
+
+        .inner {
+            padding: 9vw 20vw;
+
+            h2 {
+                font: 70px/1 'Jost';
+            }
+        }
+    }
+
+    .contents {
+        .inner {
+            padding: 0 20vw;
+            .swiper {
+                width: 100%;
+                border: 4px solid #333;
+                border-left: none;
+                .swiper-slide {
+                    position: relative;
+                    border-left: 4px solid #333;
+                    width: 100%;
+                    padding-top: 49%;
+
+                    &:first-of-type {
+                        margin-left: 0;
+                    }
+
+                    .pic {
+                        position: absolute;
+                        top: 0; left: 0;
+                        padding: 40px;
+                        width: 100%;
+                        height: 80%;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .des {
+                        position: absolute;
+                        bottom: 0; left: 0;
+                        width: 100%;
+                        padding: 20px;
+                        border-top: 2px solid #888;
+
+                        span {
+                            font: 15px/1 'jost';
+                        }
+                    }
+                }
             }
         }
     }

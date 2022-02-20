@@ -1,4 +1,6 @@
 .community {
+    border: 4px solid #333;
+    border-top: none;
     figure {
         .inner {
             h1 {
@@ -7,25 +9,137 @@
         }
     }  
     
-    .inner {
+    >.inner {
         >section {
+
             .inputBox {
                 width: 100%;
-                padding: 50px;
-                margin-bottom: 50px;
-                border: 1px solid #aaa;
+                padding-top: 50px;
+                padding-left: 50px;
+                margin-bottom: 120px;
+                border: 2px solid #888;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    clear: both;
+                }
+
+                .left {
+                    width: 50%;
+                    float: left;
+
+                    h2 {
+                        font: 50px/1 'Jost';
+        
+                        &::after {
+                            content: '';
+                            display: block;
+                            margin-top: 25px;
+                            width: 13%;
+                            height: 2px;
+                            background: #636a52;
+                        }
+                    }
+    
+                    label {
+                        margin-top: 30px;
+                        display: block;
+                        font: 18px/1 'Jost';
+                        color: #777;
+                    }
+    
+                    input[type="text"] {
+                        margin-top: 18px;
+                        border: none;
+                        border-bottom: 1px solid #333;
+                    }
+                }
+
+                .right {
+                    float: left;
+                    width: 50%;
+                    border-left: 2px solid #888;
+
+                    label {
+                        padding: 20px 25px;
+                        font: 18px/1 'Inria Sans';
+                    }
+
+                    textarea {
+                        border: none;
+                        width: 100%;
+                        height: 300px;
+                        padding: 20px 25px;
+                        resize: none;
+
+                        &::placeholder {
+                            font: 18px/1 'Inria Sans';
+                        }
+                    }
+
+                    button {
+                        width: 50%;
+                        text-align: center;
+                        font: 20px/3 'Inria Sans';
+                        border-top: 2px solid #888;
+                        background: #ffdf90;
+
+                        &:first-of-type {
+                            background: #333;
+                            color: #fff;
+                        }
+                        &:last-of-type {
+                            border-left: 2px solid #888;
+                        }
+                    }
+                }
+                
             }
 
             .showList {
                 width: 100%;
-                padding: 50px;
-                border: 1px solid #aaa;
 
                 article {
                     width: 100%;
-                    padding: 30px;
-                    border: 1px solid #bbb;
                     margin-bottom: 20px;
+                    padding: 20px;
+                    .post {
+                        display: flex;
+                        height: 250px;
+
+                        span {
+                            width: 5%;
+                            align-self: flex-end;
+                            margin-right: 2%;
+                            font: 40px/1 'Inria Sans';
+                        }
+
+                        .pic {
+                            width: 6%;
+                            height: 250px;
+                            margin-right: 4%;
+                        }
+
+                        .board {
+                            width: 83%;
+                            align-self: flex-end;
+                            h2 {
+                                margin-bottom: 20px;
+                                font: 700 45px/1 'Koh Santepheap';
+                            }
+
+                            p {
+                                margin-bottom: 30px;
+                                font: 20px/1 'Jost';
+                            }
+
+                            button {
+                                margin-right: 25px;
+                                font: 18px/1 'Inria Sans';
+                            }
+                        }
+                    }
                 }
             }
         }

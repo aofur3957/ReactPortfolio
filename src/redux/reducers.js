@@ -4,19 +4,22 @@ import { combineReducers } from 'redux';
 const initMember = {
     members: [
         {
-            "name": "Julia",
+            "name": "Julia Christina",
             "position": "fashion designer",
-            "pic": "member1.jpg"
+            "pic": "member1.jpg",
+            "comment": "Next year, the trend color is Rose Brown! you know it, right?"
         },
         {
-            "name": "Paul",
+            "name": "Paul Ambert",
             "position": "stage manager",
-            "pic": "member2.jpg"
+            "pic": "member2.jpg",
+            "comment": "Please look forward to us coming to you with the best tage"
         },
         {
-            "name": "Peter",
+            "name": "Peter Collin",
             "position": "make up artist",
-            "pic": "member3.jpg"
+            "pic": "member3.jpg",
+            "comment": "Make up artists help people look beautiful"
         },
         {
             "name": "Emily",

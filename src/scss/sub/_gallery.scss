@@ -16,12 +16,14 @@
             border-right: 2px solid #888;
 
             h1 {
+                padding-left: 20px;
                 padding-bottom: 15px;
                 font: 40px/1 'Jost';
                 border-bottom: 2px solid #333;
             }
 
             .searchBox {
+                padding-left: 20px;
                 margin: 15px 0 45px;
 
                 input[type="text"] {
@@ -106,10 +108,29 @@
                         padding: 10px;
 
                         .pic {
+                            position: relative;
                             width: 100%;
                             height: 400px;
                             margin-bottom: 20px;
                             cursor: pointer;
+
+                            &:hover {
+                                &::before {
+                                    border-width: 30px;
+                                    opacity: 1;
+                                }
+                            }
+
+                            &::before {
+                                content: '';
+                                border: 0 solid #636a52;
+                                position: absolute;
+                                top: 0; left: 0;
+                                right: 0; bottom: 0;
+                                z-index: 10;
+                                opacity: 0;
+                                transition: all 0.6s;
+                            }
                         }
 
                         .txt {

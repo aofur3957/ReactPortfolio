@@ -150,7 +150,6 @@ export default function Gallery(){
               </p>
             </div>
             <div className="pic">
-              {/* <img src={`${path}/img/subImg5.jpg`} alt="" /> */}
             </div>
         </div>
         </figure>
@@ -182,7 +181,7 @@ export default function Gallery(){
                             setIsPop(true);
                             setIndex(idx);
                           }}>
-                            <img src={`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_m.jpg`} />
+                            <img src={`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`} />
                           </div>
                           <div className="txt">
                             <h2>{item.title}</h2>

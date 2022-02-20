@@ -7,6 +7,7 @@ export default function Community(){
   const showBox = useRef(null);
   const updateInput = useRef(null);
   const updateTextarea = useRef(null);
+  const path = process.env.PUBLIC_URL;
   const getLocalItems = ()=>{
     let data =  localStorage.getItem('posts');
 
@@ -117,28 +118,35 @@ export default function Community(){
       </figure>
 
       <div className="inner">
-        <h1>Community</h1>
+        <h1>COMMUNITY</h1>
         <section>
-          <div class="inputBox">
-            <input 
-            type="text" 
-            placeholder = '제목을 입력하세요'
-            ref={input}
-            /><br />
-            <textarea 
-              cols="30" 
-              rows="10"
-              placeholder = '메세지를 입력하세요'
-              ref={textarea}
-            >
-            </textarea><br />
-            {/*버튼 눌렀을때 input요소가 참조가되어야함 */}
-            
-            <button onClick = {()=>{
-              input.current.value = ' ';
-              textarea.current.value=' ';
-            }}>cancel</button>
-            <button onClick = {createPost}>create</button>
+          <div className="inputBox">
+            <div className ="left">
+              <h2>Leave Commnet</h2>
+              <label htmlFor="name">Name</label>
+              <input 
+              type="text" 
+              placeholder = '제목을 입력하세요'
+              ref={input}
+              id="name"
+              /><br />
+            </div>
+            <div className="right">
+              <label htmlFor="comment">Message</label>
+              <textarea 
+                placeholder = 'Write text here...'
+                ref={textarea}
+                id="comment"
+              >
+              </textarea><br />
+              {/*버튼 눌렀을때 input요소가 참조가되어야함 */}
+              
+              <button onClick = {()=>{
+                input.current.value = ' ';
+                textarea.current.value=' ';
+              }}>cancel</button>
+              <button onClick = {createPost}>create</button>
+            </div>
           </div>
 
           <div className="showList" ref={showBox}>
@@ -163,14 +171,19 @@ export default function Community(){
                     :
                     //출력화면
                     <>
-                      <div class="post">
-                        <h2>{post.title}</h2>
-                        <p>{post.content}</p>
-                      </div>
-                      
-                      <div className="btns">
-                        <button onClick={()=>enableUpdate(idx)}>modify</button>
-                          <button onClick={()=>deletePost(idx)}>delete</button>
+                      <div className="post">
+                        <span>{idx < 10 ? `0${idx+1}` : idx+1}</span>
+                        <div className="pic">
+                          <img src={`${path}/img/joinBackground.jpg`} />
+                        </div>
+                        <div className="board">
+                          <h2>{post.title}</h2>
+                          <p>{post.content}</p>
+                          <div className="btns">
+                            <button onClick={()=>enableUpdate(idx)}>modify </button>
+                            <button onClick={()=>deletePost(idx)}>delete</button>
+                        </div>
+                        </div>
                       </div>
                     </>
                   }

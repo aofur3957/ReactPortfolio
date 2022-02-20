@@ -15,6 +15,7 @@ import axios from 'axios';
 
 export default function Department(){
   let main = useRef(null);
+  const [index, setIndex] = useState(0);
   //useSelector hook으로 store의 state값 참조
   const members = useSelector(state=>state.departmentReducer.members);
   //axios로 불러온 배열을 담을 빈배열을 state로 초기화
@@ -40,6 +41,11 @@ export default function Department(){
         "pic": "member6.jpg"
     }
   ];
+
+  const showTap = ()=>{
+    main.current.querySelectorAll('.pic')
+
+  }
   // //절대 경로에서부터의 json데이터 url값 구함
   // const url = `${path}/db/department.json`;
   
@@ -86,10 +92,13 @@ export default function Department(){
         </div>
       </figure>
       <section>
-          <div className="inner">
         <h1>ABOUT US</h1>
+        <div className="inner">
+        <p>
+          moss is a hidden retreat above the bustling salamanca place, tucked within the original warehouses, once home to traders, whalers, publicans, gentlemen and convicts.
+        </p>
         <div className="mainpic">
-
+          <img src={`${path}/img/departmentPic.jpg`}></img>
         </div>
         {/* <button onClick={()=>{
           dispatch(setMembers(newMember))
@@ -107,7 +116,7 @@ export default function Department(){
               {members.map((member, idx)=>{
                 console.log(member.position)
                 return (
-                  <div className={`content${idx+1}`}>
+                  <div className={idx === 0 ? 'on' : null}>
                     <article>
                       <img src={`${path}/img/${member.pic}`}  />
                     </article>
@@ -124,14 +133,15 @@ export default function Department(){
               <div className="tit">
                 {members.map((member, idx)=>{
                   return (
-                      <h3>{member.position}</h3>
+                      <h3 onClick={()=>{
+
+                      }}>{member.position}</h3>
                   )
                 })}
               </div>
               {members.map((member, idx)=>{
                 return (
-                    <article key={idx} className={`pic${idx
-                    +1}`}>
+                    <article key={idx} className= { idx===0 ? 'on' : null }>
                       <img src={`${path}/img/${member.pic}`}  />
                     </article>
                 )

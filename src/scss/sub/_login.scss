@@ -1,0 +1,112 @@
+.login {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background:  url(../../../public/img/joinBackground.jpg) no-repeat center 30%/cover;
+
+    &::before {
+        content: '';
+        position: absolute; 
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        border: 4px solid #333;
+        border-top: none;
+        box-sizing: border-box;
+    }
+
+    .inner {
+        width: 1180px;
+        height: 100%;
+        margin: 0 auto;
+        transform: translateY(0);
+        opacity: 1;
+
+        h1 {
+            margin-left: 177px;
+            font: 50px/1 'Jost';
+            color: #fff;
+        }
+
+        .loginBox {
+            display: flex;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 50%;
+            border: 4px solid #333;
+            background: #fff;
+
+            .pic {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(40deg, #A96F44, #F2ECB6);
+
+                p {
+                    font: 30px/1 'Jost';
+                    color: #fff;
+                }
+            }
+
+            form {
+                width: 60%;
+                padding: 70px;
+
+                legend {
+                    margin-bottom: 70px;
+                    font: 40px/1 'Jost';
+                }
+
+                input[type=text],
+                input[type=password] {
+                    width: 100%;
+                    padding: 15px;
+                    border: none;
+                    border-bottom: 1px solid #000;
+
+                    &::placeholder {
+                        font: 20px/1 'Inria Sans';
+                    }
+                }
+
+                input[type=text] { margin-bottom: 50px; }
+                input[type=password] { margin-bottom: 20px; }
+
+                input[type=checkbox] {
+                    margin-right: 15px;
+                    margin-bottom: 30px;
+                }
+
+                label {
+                    display: inline-block;
+                    position: relative;
+                    top: -1px;
+                    margin-bottom: 30px;
+                }
+
+                button {
+                    width: 100%;
+                    margin-bottom: 15px;
+                    padding: 15px 0;
+                    border: 1px solid #333;
+                    background: #ffdf90;
+                    font: 20px/1 'Inria Sans';
+                }
+
+                p {
+                    float: left;
+                    font: 15px/1 'Inria Sans';
+                }
+
+                a {
+                    float: right;
+                    font: 15px/1 'Inria Sans';
+                }
+            }
+        }
+    }
+}

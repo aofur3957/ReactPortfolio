@@ -26,19 +26,18 @@ export default function Info(){
   },[]);
 
   return (
-    <section></section>
-    // <section id="info" className="myScroll">
-    //   <div className="inner">
-    //     <h1>INFO</h1>
-    //     {vidData.map((vid,idx)=>{
-    //       return (
-    //         <article key={idx}>
-    //           <img src={vid.snippet.thumbnails.medium.url} />
-    //         </article>
-    //       )
-    //     })}
+    <section id="info" className="myScroll">
+      <div className="inner">
+        <h1>INFO</h1>
+        {vidData.map((vid,idx)=>{
+          return (
+            <article key={idx}>
+              <img src={vid.snippet.thumbnails.medium.url} />
+            </article>
+          )
+        })}
         
-    //   </div>
-    // </section>
+      </div>
+    </section>
   )
 }
