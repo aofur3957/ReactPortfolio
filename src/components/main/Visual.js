@@ -11,7 +11,7 @@ import Anime from '../../class/anime.js';
 export default function Visual(){
   const path = process.env.PUBLIC_URL;
   return (
-    <section id="visual" className="myscroll">
+    <section id="visual">
       <Swiper
         modules={[Navigation, Pagination, EffectFlip]}
         effect="flip"

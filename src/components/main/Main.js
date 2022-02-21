@@ -2,7 +2,7 @@ import Header from '../common/Header';
 import Visual from './Visual';
 import Intro from './Intro';
 import News from './News';
-import Info from './Info';
+import Media from './Media';
 import Btns from './Btns';
 import Pics from './Pics';
 import Anime from '../../class/anime.js';
@@ -65,8 +65,8 @@ export default function Main() {
             <Visual />
             <Intro scrolled={scrolled} />
             <Pics />
+            <Media />
             <News />
-            <Info />
             <Btns getIndex={getIndex} />
         </div>
     );

@@ -9,7 +9,7 @@ export default function Header(props){
     setIsOn(!isOn);
   }
   return (
-    <header>
+    <header className="myscroll">
         <div className="inner">
           <h1><NavLink exact to='/'>LOGO</NavLink></h1>
           

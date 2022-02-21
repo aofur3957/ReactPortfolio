@@ -4,6 +4,7 @@ import { faLine } from "@fortawesome/free-brands-svg-icons"
 
 export default function Intro(props){
   const members = useSelector(state=>state.departmentReducer.members);
+  console.log(members);
   const path = process.env.PUBLIC_URL;
   return (
     <section id="intro" className="myScroll">

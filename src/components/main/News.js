@@ -9,6 +9,9 @@ export default function News(){
     {title: 'Hello4', content: 'Here comes description in detail.'}
   ]
 
+  let time = new Date();
+  console.log(time);
+
   const getLocalItems = ()=>{
     let data = localStorage.getItem('posts');
 
@@ -28,19 +31,29 @@ export default function News(){
   return (
     <section id="news" className="myScroll">
       <div className="inner">
-        <h1>Recent Post</h1>
-        <ul>
-        {posts.map((post, idx)=>{
-          if(idx < 4) {
-            return (
-              <li key={idx}>
-                <h2>{post.title}</h2>
-                <p>{post.content}</p>
-              </li>
-            )
-          }
-        })}
-        </ul>
+        <div className="left">
+          <h1>Recent Post</h1>
+          <table>
+              <tr>
+                <th scope="column">name</th>
+                <th scope="column">title</th>
+                <th scope="column">e-mail</th>
+                <th scope="column">time</th>
+              </tr>
+          {posts.map((post, idx)=>{
+            if(idx < 4) {
+              return (
+                <tr key={idx}>
+                  <td>Mr. Chu</td>
+                  <td>{post.title}</td>
+                  <td>aofur206@naver.com</td>
+                  <td>{`${time.getHours()}시 ${time.getMinutes()}분 ${time.getSeconds()}초`}</td>
+                </tr>
+              )
+            }
+          })}
+          </table>
+        </div>
       </div>
     </section>
   )
