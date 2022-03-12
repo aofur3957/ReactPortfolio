@@ -4,6 +4,8 @@
 
         .inner {
             padding: 9vw 20vw;
+            border-bottom: 4px solid #333;
+            margin-bottom: -4px;
 
             h2 {
                 font: 70px/1 'Jost';
@@ -19,22 +21,24 @@
             .swiper {
                 width: 100%;
                 border: 4px solid #333;
-                border-left: none;
                 margin-bottom: -4px;
+                opacity: 0;
+                transition: opacity 1s;
+
                 .swiper-slide {
                     position: relative;
                     border-left: 4px solid #333;
-                    width: 100%;
-                    padding-top: 49%;
+                    padding-top: 50%;
+                    // transition: all 0.1s 2.8s;
 
-                    &:first-of-type {
-                        margin-left: 0;
+                    &.swiper-slide-active{
+                        border-left: 4px solid transparent;
                     }
 
                     .pic {
                         position: absolute;
                         top: 0; left: 0;
-                        padding: 40px;
+                        padding: 6%;
                         width: 100%;
                         height: 80%;
 
@@ -48,11 +52,81 @@
                         position: absolute;
                         bottom: 0; left: 0;
                         width: 100%;
-                        padding: 20px;
+                        height: 20%;
+                        padding: 5% 6%;
                         border-top: 2px solid #888;
 
                         span {
-                            font: 15px/1 'jost';
+                            margin-bottom: 2%;
+                            display: block;
+                            font: 0.8vw/1 'jost';
+                        }
+
+                        h3 {
+                            font: 1.3vw/1 'Jost';
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1179px){
+    #pics {
+        .title {
+            .inner {
+                padding: 110px 6%;
+            }
+        }
+    
+        .contents {
+            .inner {
+                padding: 0 6%;
+
+                .swiper {
+                    .swiper-slide {
+                        .des {
+                            span {
+                                margin-bottom: 2%;
+                                font: 1.3vw/1 'jost';
+                            }
+    
+                            h3 {
+                                font: 2vw/1 'Jost';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    #pics {
+        .title {
+            .inner {
+                h2 {
+                    font-size: 55px;
+                }
+            }
+        }
+        .contents {
+            .inner {
+                .swiper {
+                    .swiper-slide {
+                        padding-top: 100%;
+
+                        .des {
+                            span {
+                                margin-bottom: 2%;
+                                font: 2.6vw/1 'jost';
+                            }
+    
+                            h3 {
+                                font: 4vw/1 'Jost';
+                            }
                         }
                     }
                 }

@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 
 //가상돔 생성함수
-export default function Community(){
+export default function Youtube(){
   let main = useRef(null);
   const [items, setItems] = useState([]);
   const [isPop, setIsPop] = useState(false);
@@ -11,8 +11,8 @@ export default function Community(){
   
   const part = 'snippet';
   const key = 'AIzaSyB2c-vJPxv0T0B9qWab28kZJ3_xr_57jhs';
-  const num = 11;
-  const playlistId = 'PL5zLxdZ1y87U4QZhb6r3vp8raTgYl-pwA';
+  const num = 12;
+  const playlistId = 'PL5zLxdZ1y87VyB6sZ8Ou78aw2L-Uihusz';
   const url =  `https://www.googleapis.com/youtube/v3/playlistItems?part=${part}&key=${key}&playlistId=${playlistId}&maxResults=${num}`
 
   
@@ -49,7 +49,6 @@ export default function Community(){
                 </p>
               </div>
               <div className="pic">
-                {/* <img src={`${path}/img/subImg5.jpg`} alt="" /> */}
               </div>
           </div>
         </figure>

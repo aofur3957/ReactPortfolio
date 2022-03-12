@@ -5,12 +5,13 @@ import News from './News';
 import Media from './Media';
 import Btns from './Btns';
 import Pics from './Pics';
+import Contact from './Contact';
 import Anime from '../../class/anime.js';
 import { useEffect, useRef , useState} from 'react';
 
 export default function Main() {
-    const main = useRef(null);
-    const pos = useRef([]);
+    const main = useRef(null); // main element
+    const pos = useRef([]); // 각 sec의 offsetTop값의 배열
     const [index, setIndex] = useState(0);
     const [scrolled, setScrolled] = useState(0);
 
@@ -27,14 +28,14 @@ export default function Main() {
     }
 
     const activation = ()=>{
-        setScrolled(window.scrollY);
-        const base = -200;
+        setScrolled(window.scrollY); //브라우저의 스크롤 값
         let scroll = window.scrollY;
         const btns = main.current.querySelectorAll('#btns li');
 
         pos.current.map((pos, idx)=>{
-            if(scroll >= pos + base){
+            if(scroll >= pos){
                 for(const btn of btns) btn.classList.remove('on');
+
                 btns[idx].classList.add('on');
             }
         })
@@ -42,6 +43,7 @@ export default function Main() {
 
     useEffect(()=>{
         getPos();
+
         window.addEventListener('scroll', activation);
         window.addEventListener('resize', getPos);
 
@@ -64,9 +66,10 @@ export default function Main() {
             <Header />
             <Visual />
             <Intro scrolled={scrolled} />
-            <Pics />
-            <Media />
-            <News />
+            <Pics scrolled={scrolled} />
+            <Media scrolled={scrolled} />
+            <News scrolled={scrolled}/>
+            <Contact />
             <Btns getIndex={getIndex} />
         </div>
     );

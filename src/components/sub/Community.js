@@ -2,7 +2,8 @@ import {useEffect, useRef, useState} from 'react';
 
 export default function Community(){
   const main = useRef(null);
-  const input = useRef(null);
+  const inputName = useRef(null);
+  const inputTitle = useRef(null);
   const textarea = useRef(null);
   const showBox = useRef(null);
   const updateInput = useRef(null);
@@ -20,23 +21,42 @@ export default function Community(){
     }
   }
 
-  const [posts, setPosts] = useState(getLocalItems)
+  const [posts, setPosts] = useState(getLocalItems())
+
+  const getDate = ()=>{
+    const date = new Date();
+    const current = {
+      currentDate : `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`,
+
+      currentTime : `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+    }
+
+    return current;
+  }
 
   const createPost = ()=>{
-    const inputVal = input.current.value.trim();
+    const date = getDate();
+    console.log(date);
+
+    const inputNameVal = inputName.current.value.trim();
+    const inputTitleVal = inputTitle.current.value.trim();
     const textareaVal = textarea.current.value.trim();
-    if( !inputVal || !textareaVal || inputVal == ' ' || textareaVal == ' '){
+    if( !inputNameVal || !textareaVal || !inputTitleVal || inputNameVal == ' ' || textareaVal == ' ' || inputTitleVal == ' '){
       alert('제목과 본문을 입력하세요');
       return;
     }
     setPosts([ 
       {
-        title : input.current.value,
-        content: textarea.current.value
+        title : inputTitle.current.value,
+        name : inputName.current.value,
+        content: textarea.current.value,
+        date: date.currentDate,
+        time: date.currentTime
       },
       ...posts
     ])
-    input.current.value = ' ';
+    inputName.current.value = ' ';
+    inputTitle.current.value= ' ';
     textarea.current.value = ' ';
   }
 
@@ -53,16 +73,17 @@ export default function Community(){
     setPosts(
       posts.map((post, idx)=>{
         if(idx === index) post.enableUpdate=true;
+
         return post;
       })
     )
-    console.log(posts);
   }
 
   const disableUpdate = index=>{
     setPosts(
       posts.map((post, idx)=>{
         if(idx === index) post.enableUpdate=false;
+
         return post;
       })
     )
@@ -83,6 +104,7 @@ export default function Community(){
           post.content = updateTextarea.current.value;
           post.enableUpdate = false;
         }
+
         return post;
       })
     )
@@ -100,20 +122,23 @@ export default function Community(){
   return (
     <main className="content community" ref={main}>
       <figure>
-      <div className="inner">
-            <h1>COMMUNITY</h1>
-            <strong>
-              ARTS<br /> 
-              CULTURE <br />
-              MAGAZINE
-            </strong>
-            <div class="txt">
+        <div className="inner">
+            <div className="wrap">
+              <h1>COMMUNITY</h1>
+              <strong>
+                ARTS<br /> 
+                CULTURE <br />
+                MAGAZINE
+              </strong>
+            </div>
+            <div className="txt">
               <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda esse eos, ex debitis voluptatem, rem corrupti facilis aspernatur quas in, molestias enim" 
               </p>
               <p>
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad rerum nesciunt deserunt, temporibus cupiditate, aperiam nisi ab libero adipisci est. Accusamus at nisi dolor!"
               </p>
             </div>
+            <div className="pic"></div>
         </div>
       </figure>
 
@@ -126,10 +151,17 @@ export default function Community(){
               <label htmlFor="name">Name</label>
               <input 
               type="text" 
-              placeholder = '제목을 입력하세요'
-              ref={input}
+              placeholder = '이름을 입력하세요'
+              ref={inputName}
               id="name"
-              /><br />
+              />
+              <label htmlFor="title">Title</label>
+              <input 
+              type="text" 
+              placeholder = '제목을 입력하세요'
+              ref={inputTitle}
+              id="title"
+              />
             </div>
             <div className="right">
               <label htmlFor="comment">Message</label>
@@ -139,10 +171,9 @@ export default function Community(){
                 id="comment"
               >
               </textarea><br />
-              {/*버튼 눌렀을때 input요소가 참조가되어야함 */}
-              
               <button onClick = {()=>{
-                input.current.value = ' ';
+                inputName.current.value = ' ';
+                inputTitle.current.value = ' ';
                 textarea.current.value=' ';
               }}>cancel</button>
               <button onClick = {createPost}>create</button>
@@ -152,40 +183,40 @@ export default function Community(){
           <div className="showList" ref={showBox}>
             {posts.map((post, idx)=>{
               return (
-                <article key={idx}>
+                <article key={idx} className="post">
+                  <div className="date">
+                    <em>{post.date}</em>
+                    <span>{post.time}</span>
+                  </div>
+                  <div className="pic">
+                        <img src={`${path}/img/joinBackground.jpg`} />
+                  </div>
                   {
                     post.enableUpdate 
                     ?
                     //수정화면
                     <>
-                      <div class="post">
-                        <input type="text" defaultValue={post.title} ref={updateInput} /><br />
-                        <textarea defaultValue={post.content} ref={updateTextarea}></textarea><br />
-                      </div>
-                      
-                      <div className="btns">
-                        <button onClick={()=>updatePost(idx)}>update</button>
+                      <div className="modify">
+                        <input type="text" defaultValue={post.title} ref={updateInput} />
+                        <textarea defaultValue={post.content} ref={updateTextarea}></textarea>
+                        <div className="btns">
+                          <button onClick={()=>updatePost(idx)}>update</button>
                           <button onClick={()=>disableUpdate(idx)}>cancel</button>
                       </div>
+                      </div>
+                    
                     </>
                     :
                     //출력화면
-                    <>
-                      <div className="post">
-                        <span>{idx < 10 ? `0${idx+1}` : idx+1}</span>
-                        <div className="pic">
-                          <img src={`${path}/img/joinBackground.jpg`} />
-                        </div>
-                        <div className="board">
-                          <h2>{post.title}</h2>
-                          <p>{post.content}</p>
-                          <div className="btns">
-                            <button onClick={()=>enableUpdate(idx)}>modify </button>
-                            <button onClick={()=>deletePost(idx)}>delete</button>
-                        </div>
-                        </div>
+                    <div className="print">
+                        <span>{post.name}</span>
+                        <h2>{post.title}</h2>
+                        <p>{post.content}</p>
+                        <div className="btns">
+                          <button onClick={()=>enableUpdate(idx)}>modify </button>
+                          <button onClick={()=>deletePost(idx)}>delete</button>
                       </div>
-                    </>
+                    </div>
                   }
                 </article>
               )

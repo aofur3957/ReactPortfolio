@@ -1,9 +1,17 @@
 .join {
     border: 4px solid #333;
     border-top: none;
+
+    >figure {
+        >.inner {
+            .pic {
+                background: url(../../../public/img/subImg6.jpg) no-repeat 50% 40%/cover;
+            }
+        }
+    }
     
     >.inner {
-
+        padding-bottom: 150px;
         h1 {
             padding-bottom: 15px;
             margin-bottom: 50px;
@@ -79,7 +87,7 @@
                     font: 21px/1 'Jost';
                     margin-bottom: 10px;
                 }
-            
+
                 th, td {
                     text-align: left;
                     border-bottom: 1px solid #ddd;
@@ -87,6 +95,7 @@
             
                 th {
                     width: 20%;
+                    padding: 15px 30px 15px 0;
                     border-right: 1px solid #ddd;
                     font: bold 17px/1 'Inria Sans';
                     color: #555;
@@ -95,11 +104,12 @@
                         text-align: center;
             
                         input[type=reset], input[type=submit] {
-                            width: 150px;
-                            height: 30px;
+                            width: 200px;
+                            height: 50px;
                             border: 1px solid #555;
                             text-align: center;
                             margin: 10px;
+                            font: 19px/1 'Inria Sans';
                             cursor: pointer;
                             transition: 0.5s;
             
@@ -156,7 +166,137 @@
                         margin: 5px 0px;
                     }
                 }
+
             }
         } 
+    }
+}
+
+@media screen and (max-width: 1179px){
+    .join {
+        >.inner {
+            width: 100%;
+            padding: 150px 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 960px){
+    .join {
+        >.inner {
+            >section {
+                ul {
+                    li {
+                        span {
+                            width: 90px;
+                            height: 90px;
+                            line-height: 100px;
+                        }
+
+                        svg {
+                            font-size: 35px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .join {
+        >.inner {
+            >section {
+                ul {
+                    li {
+                        margin: 60px 3% 60px 0;
+                        width: 31.333%;
+
+                        &:last-of-type {
+                            margin-right: 0;
+                        }
+                    }
+                }
+
+                table {
+                    th {
+                        padding: 1% 2% 1%; 
+                        font-size: 14px;
+
+                        &.btnSet {
+                
+                            input[type=reset], input[type=submit] {
+                                width: 30%;
+                                height: auto;
+                                padding: 1% 0;
+                                font: 16px/1 'Inria Sans';
+                            }
+                        }
+                    }
+
+                    td {
+                        padding: 2% 2%;
+
+                        input[type=text],
+                        input[type=password],
+                        select{
+                            width: 50%;
+                            padding: 2% 2%;
+                            font-size: 12px;
+
+                            &::placeholder {
+                                font-size: 12px;
+                            }
+
+                            option {
+                                font-size: 12px;
+                            }
+                        }
+
+                        label {
+                            font-size: 13px;
+                        }
+
+                        textarea {
+                            width: 100%;
+                        }
+
+                        span {
+                            margin-bottom: 5px;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px){
+    .join {
+        >.inner {
+            >section {
+                ul {
+                    li {
+                        font-size: 16px;
+                    }
+                }
+
+                table {
+
+                    th {
+                        width: 30%;
+                    }
+
+                    td {
+                        input[type=text],
+                        input[type=password],
+                        select {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

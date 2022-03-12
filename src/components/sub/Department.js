@@ -42,10 +42,7 @@ export default function Department(){
     }
   ];
 
-  const showTap = ()=>{
-    main.current.querySelectorAll('.pic')
-
-  }
+  const [tabIndex, setTabIndex ] = useState(0);
   // //절대 경로에서부터의 json데이터 url값 구함
   // const url = `${path}/db/department.json`;
   
@@ -70,8 +67,7 @@ export default function Department(){
       <div className="inner">
             <div className="wrap">
               <h1>
-                  DEPART<br />
-                  MENT
+                  DEPARTMENT
               </h1>
               <strong>
                 ARTS<br /> 
@@ -87,7 +83,6 @@ export default function Department(){
               </p>
             </div>
             <div className="pic">
-              {/* <img src={`${path}/img/subImg5.jpg`} alt="" /> */}
             </div>
         </div>
       </figure>
@@ -113,35 +108,36 @@ export default function Department(){
                 INTERACTIVE 
                 <span>ARTIST!</span>
               </h2>
-              {members.map((member, idx)=>{
-                console.log(member.position)
-                return (
-                  <div className={idx === 0 ? 'on' : null}>
-                    <article>
-                      <img src={`${path}/img/${member.pic}`}  />
-                    </article>
-                    <p>
-                      <span>L</span>
-                      orem ipsum, dolor sit amet consectetur adipisicing elit. Similique dolor magni dolorem provident dicta ducimus et veritatis. Incidunt, recusandae eaque.
-                      adipisicing elit. Similique dolor magni dolorem provident dicta ducimus et veritatis. Incidunt, recusandae eaque.
-                    </p>
-                  </div>
-                )
-              })}
+                {members.map((member, idx)=>{
+                  return (
+                    <div key={idx} className={tabIndex === idx ? 'on' : null}>
+                      <article>
+                        <img src={`${path}/img/${member.pic}`}  />
+                      </article>
+                      <p>
+                        <span>L</span>
+                        orem ipsum, dolor sit amet consectetur adipisicing elit. Similique dolor magni dolorem provident dicta ducimus et veritatis. Incidunt, recusandae eaque.
+                        adipisicing elit. Similique dolor magni dolorem provident dicta ducimus et veritatis. Incidunt, recusandae eaque.
+                      </p>
+                    </div>
+                  )
+                })}
             </div>
             <div className="right">
               <div className="tit">
                 {members.map((member, idx)=>{
                   return (
-                      <h3 onClick={()=>{
-
+                      <h3 key={idx} onClick={()=>{
+                        setTabIndex(idx);
                       }}>{member.position}</h3>
                   )
                 })}
               </div>
               {members.map((member, idx)=>{
                 return (
-                    <article key={idx} className= { idx===0 ? 'on' : null }>
+                    <article key={idx} className={
+                      tabIndex === idx ? 'on' : null
+                    }>
                       <img src={`${path}/img/${member.pic}`}  />
                     </article>
                 )

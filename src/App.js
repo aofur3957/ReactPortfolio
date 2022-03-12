@@ -1,3 +1,4 @@
+
 import Main from './components/main/Main';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
@@ -12,9 +13,11 @@ import Login from './components/sub/Login'
 
 import './scss/style.scss';
 import {Route, Switch} from 'react-router-dom';
+import { useState } from 'react';
 
 
 function App() {
+
   return (
     <div className="App">
       <Switch>

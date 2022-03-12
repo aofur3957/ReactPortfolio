@@ -1,0 +1,66 @@
+#contact {
+    border: 4px solid #333;
+    border-top: none;
+
+    .inner {
+        padding: 9vw 20vw;
+        background: #fbf8f3 url(../../../public/img/mapPattern.png);
+
+        div {
+            h2 {
+                margin-bottom: 30px;
+                font: 100px/1 'Jost';
+            }
+    
+            p {
+                font: 22px/1 'Jost';
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1179px){
+    #contact {
+        .inner {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 110px 6%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    #contact {
+        .inner {
+            div {
+                h2 {
+                    font: 70px/1 "Jost";
+                }
+    
+                p {
+                    font: 18px/1 "Jost";
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px){
+    #contact {
+        .inner {
+            div {
+                width: 100%;
+                h2 {
+                    font: 45px/1 "Jost";
+                }
+    
+                p {
+                    font: 16px/1 "Jost";
+                }
+            }
+        }
+    }
+}

@@ -1,18 +1,53 @@
 #visual {
     width: 100%;
-    height: calc(100vh - 80px);
     border: 4px solid #333;
     border-top: none;
+    position: relative;
+
+    .toggle {
+        position: absolute;
+        top: 0;
+        right: 13vw;
+        cursor: pointer;
+        z-index: 1000;
+
+        >span {
+            vertical-align: middle;
+            font: 500 16px/1 'Jost';
+        }
+
+        .btn {
+            display: inline-block;
+            position: relative;
+            margin: 0 10px;
+            width: 80px;
+            height: 36px;
+            background: #ffdf90;
+            border-radius: 20px;
+            vertical-align: middle;
+
+            span {
+                position: absolute;
+                top: 50%;
+                left: 5%;
+                width: 30px;
+                height: 30px;
+                margin-top: -15px;
+                background: #fff;
+                border-radius: 50%;
+            }
+        }
+    }
  
     .swiper {
         width: 100%;
-        height: 100%;
 
         .swiper-button-prev,
         .swiper-button-next {
             position: absolute; 
-            top: 100%; 
-            transform: translateY(-120%);
+            top: 100%;
+            margin-top: 0; 
+            transform: translateY(-150%);
             color: #333;
         }
 
@@ -25,6 +60,7 @@
 
         .swiper-slide {
             width: 100%;
+            min-height: calc(100vh - 80px);
             padding: 0 20vw;
             display: flex;
             justify-content: space-between;
@@ -32,16 +68,17 @@
 
             .tit {
                 width: 50%;
-
+                padding-bottom: 130px;
+                
                 h1 {
-                    margin: 170px 0 100px;
-                    font: 100px/1 'Jost';
+                    margin: 2em 0 1em;
+                    font: 5vmax/1 'Jost';
                 }
 
                 p {
-                    margin-bottom: 70px;
+                    margin-bottom: 2em;
                     width: 70%;
-                    font: 30px/1.4 'Jost';
+                    font: 1.2vmax/1.4 'Jost';
                 }
 
                 a {
@@ -58,8 +95,12 @@
 
             .pic {
                 border: 1px solid #333;
-                width: 46%;
-                height: 80vh;
+                width: 50%;
+                height: 82vh;
+                min-height: 82vh;
+                margin-top: 10vw;
+                min-width: 470px;
+                height: 750px;
                 align-self: flex-end;
             }
         }
@@ -67,10 +108,110 @@
 }
 
 
-@media screen and (max-width: $tablet) {
-    figure {
-        .inner {
-            width: 100%; padding: 20px 6vw;
+@media screen and (max-width: 1400px) {
+    #visual {
+        .swiper {
+            .swiper-slide {
+                .tit {
+                    width: 40%;
+
+                    p {
+                        width: 75%;
+                        font: 1.5vmax/1.4 'Jost';
+                    }
+                }
+    
+                .pic {
+                    width: 60%;
+                    min-width: auto;
+                    height: 780px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1179px) {
+    #visual {
+        .swiper {
+            .swiper-button-prev {
+                left: 20px;
+            }
+
+            .swiper-button-next {
+                left: 80px;
+            }
+
+            .swiper-slide {
+                padding: 0 20px;
+
+                .tit {
+                    width: 45%;
+
+                    h1 {
+                        margin: 140px 0 55px;
+                    }
+                }
+    
+                .pic {
+                    width: 55%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #visual {
+        .swiper {
+            .swiper-slide {
+
+                .tit {
+                    align-self: center;
+                }
+    
+                .pic {
+                    margin-top: 0;
+                    height: 600px;
+                    align-self: center;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #visual {
+        .swiper {
+            .swiper-slide {
+                flex-direction: column-reverse;
+
+                .tit {
+                    width: 100%;
+
+                    h1 {
+                        text-align: center;
+                        margin: 45px 0 55px;
+                    }
+
+                    p {
+                        text-align: center;
+                        width: 80%;
+                        margin: 0 auto 50px;
+                    }
+
+                    a {
+                        width: 130px;
+                        padding: 15px;
+                        margin: 0 auto;
+                        font-size: 13px;;
+                    }
+                }
+    
+                .pic {
+                    width: 100%;
+                }
+            }
         }
     }
 }

@@ -9,14 +9,26 @@ import 'swiper/css/effect-flip';
 import Anime from '../../class/anime.js';
 
 export default function Visual(){
+
+  
   const path = process.env.PUBLIC_URL;
   return (
     <section id="visual">
+      <div className="toggle">
+      <span>W</span>
+        <div className="btn" onClick={()=>{
+          
+        }}>
+          <span></span>
+        </div>
+        <span>B</span>
+      </div>
       <Swiper
         modules={[Navigation, Pagination, EffectFlip]}
         effect="flip"
         spaceBetween={0}
         slidesPerView={'auto'}
+        autoplay={true}
         loop
         navigation
         pagination={{clickable: true}}
@@ -39,7 +51,7 @@ export default function Visual(){
         <SwiperSlide>
         <div className="tit">
             <h1>
-              Woman's <br />
+              Man's <br />
               Fashion
             </h1>
             <p>
@@ -54,7 +66,7 @@ export default function Visual(){
         <SwiperSlide>
         <div className="tit">
             <h1>
-              Woman's <br />
+              Young <br />
               Fashion
             </h1>
             <p>

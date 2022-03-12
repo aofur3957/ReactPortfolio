@@ -127,12 +127,14 @@ export default function Join(){
     <main className="content join" ref={main}>
         <figure>
           <div className="inner">
-            <h1>JOIN</h1>
-            <strong>
-              ARTS<br /> 
-              CULTURE <br />
-              MAGAZINE
-            </strong>
+            <div className="wrap">
+              <h1>JOIN</h1>
+              <strong>
+                ARTS<br /> 
+                CULTURE <br />
+                MAGAZINE
+              </strong>
+            </div>
             <div class="txt">
               <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda esse eos, ex debitis voluptatem, rem corrupti facilis aspernatur quas in, molestias enim" 
               </p>
@@ -140,6 +142,7 @@ export default function Join(){
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi ad rerum nesciunt deserunt, temporibus cupiditate, aperiam nisi ab libero adipisci est. Accusamus at nisi dolor!"
               </p>
             </div>
+            <div className="pic"></div>
           </div>
         </figure>
       <div className="inner">
@@ -246,22 +249,26 @@ export default function Join(){
                         GENDER
                     </th>
                     <td>
-                      <label htmlFor="male">Male</label>
-                      <input 
-                      type="radio"
-                      id="male"
-                      name="gender"
-                      value={val.gender}
-                      onChange= {handleRadio}
-                      />
-                      <label htmlFor="female">Female</label>
-                      <input 
-                      type="radio"
-                      id="female"
-                      name="gender"
-                      value={val.gender}
-                      onChange= {handleRadio}
-                      />
+                      <span>
+                        <label htmlFor="male">Male</label>
+                        <input 
+                        type="radio"
+                        id="male"
+                        name="gender"
+                        value={val.gender}
+                        onChange= {handleRadio}
+                        />
+                      </span>
+                      <span>
+                        <label htmlFor="female">Female</label>
+                        <input 
+                        type="radio"
+                        id="female"
+                        name="gender"
+                        value={val.gender}
+                        onChange= {handleRadio}
+                        />
+                      </span>
                       <span className="error">{err.gender}</span>
                     </td>
                   </tr>
@@ -270,27 +277,33 @@ export default function Join(){
                       INTERESTS
                     </th>
                     <td>
-                      <label htmlFor="sports">sports</label>
-                      <input 
-                      type="checkbox"
-                      id="sports"
-                      name="interests"
-                      onChange ={handleCheck}
-                      />
-                      <label htmlFor="music">music</label>
-                      <input 
-                      type="checkbox"
-                      id="music"
-                      name="interests"
-                      onChange ={handleCheck}
-                      />
-                      <label htmlFor="game">game</label>
-                      <input 
-                      type="checkbox"
-                      id="game"
-                      name="interests"
-                      onChange ={handleCheck}
-                      />
+                      <span>
+                        <label htmlFor="sports">sports</label>
+                        <input 
+                        type="checkbox"
+                        id="sports"
+                        name="interests"
+                        onChange ={handleCheck}
+                        />
+                      </span>
+                      <span>
+                        <label htmlFor="music">music</label>
+                        <input 
+                        type="checkbox"
+                        id="music"
+                        name="interests"
+                        onChange ={handleCheck}
+                        />
+                      </span>
+                      <span>
+                        <label htmlFor="game">game</label>
+                        <input 
+                        type="checkbox"
+                        id="game"
+                        name="interests"
+                        onChange ={handleCheck}
+                        />
+                      </span>
                       <span  className="error">{err.interests}</span>
                     </td>
                   </tr>

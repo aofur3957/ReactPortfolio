@@ -2,7 +2,6 @@
 
     >figure {
         width: 100%;
-        min-height: auto;
         background: #fbf8f3;
         border-bottom: 4px solid #333;
         transition: 1s;
@@ -24,19 +23,20 @@
 
             h1 {
                 float: left;
-                font: 700 160px/1 'Jost';
+                font: 700 120px/1 'Jost';
                 color: #333;
             }
             
             strong {
                 float: right;
-                font: 50px/1 'Jost';
+                font: 30px/1 'Jost';
                 text-align: right;
-                padding-top: 25px;
+                padding-top: 20px;
             }
 
             .txt {
                 display: flex;
+                flex-wrap: wrap;
                 position: absolute;
                 top: 0; left: 0;
                 padding-top: 50px;
@@ -56,7 +56,6 @@
             .pic {
                 margin-top: 40px;
                 height: 250px;
-                background: url(../../../public/img/subImg5.jpg) no-repeat 50% 20%/cover;
                 filter: grayscale(1);
             }
         }
@@ -89,16 +88,96 @@
     }
 }
 
-@media screen and (max-width: $tablet){
+@media screen and (max-width: 1179px){
     .content {
         >figure {
-            height: 200px;
-        }
+            >.inner {
+                width: 100%;
+                padding: 250px 15px 50px;
 
-        >.inner {
-            width: 100%; 
-            padding: 0px 3vw; 
-            padding-top: 80px ;
+                h1 {
+                    font-size: 110px;
+                }
+                
+                strong {
+                    font-size: 26px;
+                }
+            }
         }
     }
 }
+
+@media screen and (max-width: 960px){
+    .content {
+        >figure {
+            >.inner {
+                h1 {
+                   font-size: 80px
+                }
+                
+                strong {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .content {
+        >figure {
+            >.inner {
+                h1 {
+                    font-size: 60px;
+                }
+                
+                strong {
+                    padding-top: 10px;
+                    font-size: 16px;
+                }
+
+                .txt {
+                    padding-top: 30px;
+
+                    p {
+                        width: 35%;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px){
+    .content {
+        >figure {
+            >.inner {
+                padding-top: 280px;
+
+                h1 {
+                    width: 100%;
+                    text-align: center;
+                    font-size: 12vw;
+                }
+                
+                strong {
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .txt {
+                    flex-direction: column;
+                    align-items: center;
+
+                    p {
+                        width: 85%;
+                        margin-left: 0;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+

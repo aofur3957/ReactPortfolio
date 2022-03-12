@@ -29,7 +29,6 @@ footer {
 
                 p {
                     font: 15px/1.8 'Inria Sans';
-                    text-align: left;
                     text-transform: uppercase;
                     color: #333;
                     letter-spacing: 3px;
@@ -76,11 +75,95 @@ footer {
     }
 }
 
-@media screen and (max-width: $tablet){
+@media screen and (max-width: 1178px){
     footer {
         .inner {
             width: 100%;
-            padding: 0px 3vw;
+            padding: 150px 15px 100px;
+
+            article {
+                width: calc(25% - 60px);
+                margin-right: 60px;
+    
+                &:last-of-type {
+                    width: 40%;
+                }
+                
+                ul {
+                    li {
+                        white-space: nowrap;
+                    }
+                }
+
+                dl {
+                    dt, dd {
+                        display: block;
+                    }
+    
+                    dt {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 960px){
+    footer {
+        .inner {
+            article {
+                width: 33.333%;
+                margin-right: 0;
+    
+                &:last-of-type {
+                    width: 33.333%;
+                }
+                
+                ul {
+                    li {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    footer {
+        .inner {
+            padding-bottom: 50px;
+
+            article {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 50px;
+    
+                &:last-of-type {
+                    width: 100%;
+                }
+
+                h2 {
+                    margin-bottom: 40px;
+                }
+
+                dl {
+                    dt, dd {
+                        display: inline-block;
+                    }
+    
+                    dt {
+                        margin-right: 15px;
+                    }
+                }
+            }
+        }
+
+        small {
+            padding: 0 15px;
+            font-size: 15px;
+            letter-spacing: 1px;
         }
     }
 }

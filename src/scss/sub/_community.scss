@@ -1,13 +1,14 @@
 .community {
     border: 4px solid #333;
     border-top: none;
-    figure {
-        .inner {
-            h1 {
-                font-size: 140px;  
+
+    >figure {
+        >.inner {
+            .pic {
+                background: url(../../../public/img/subImg2.jpg) no-repeat center/cover;
             }
         }
-    }  
+    }
     
     >.inner {
         >section {
@@ -15,7 +16,6 @@
             .inputBox {
                 width: 100%;
                 padding-top: 50px;
-                padding-left: 50px;
                 margin-bottom: 120px;
                 border: 2px solid #888;
 
@@ -27,6 +27,7 @@
 
                 .left {
                     width: 50%;
+                    padding: 0 50px;
                     float: left;
 
                     h2 {
@@ -100,43 +101,231 @@
             .showList {
                 width: 100%;
 
-                article {
+                .post {
                     width: 100%;
-                    margin-bottom: 20px;
-                    padding: 20px;
-                    .post {
-                        display: flex;
-                        height: 250px;
+                    margin-bottom: 100px;
+                    height: 250px;
+                    display: flex;
+
+                    .date {
+                        align-self: flex-end;
+                        margin-right: 4%;
+
+                        em {
+                            display: block;
+                            margin-bottom: 5px;
+                            font: 400 normal 24px/1
+                             'Inria Sans';
+                        }
 
                         span {
-                            width: 5%;
-                            align-self: flex-end;
-                            margin-right: 2%;
-                            font: 40px/1 'Inria Sans';
+                            display: block;
+                            font: 18px/1 'Inria Sans';
+                            letter-spacing: 1px;
+                        }
+                    }
+
+                    .pic {
+                        width: 5%;
+                        margin-right: 4%;
+                    }
+
+                    .print {
+                        flex: 1;
+                        align-self: center;
+                        
+                        span {
+                            display: block;
+                            margin-bottom: 50px;
+                            font: 22px/1 'Jost';
+                        }
+
+                        h2 {
+                            margin-bottom: 20px;
+                            font: 700 45px/1 'Koh Santepheap';
+                        }
+
+                        p {
+                            margin-bottom: 30px;
+                            font: 20px/1 'Jost';
+                        }
+                    }
+
+                    .modify {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;;
+
+                        input[type=text] {
+                            width: 60%;
+                            height: 15%;
+                            padding: 10px 15px;
+                            margin-bottom: -4px;
+                            border: 2px solid #888;
+                        }
+
+                        textarea {
+                            width: 60%;
+                            padding: 15px;
+                            height: 70%;
+                            resize: none;
+                            border: 2px solid #888;
+                            background: #fbf8f3;
+                        }
+                    }
+
+                    .btns {
+                        height: 15%;
+
+                        button {
+                            height: 100%;
+                            margin-right: 25px;
+                            font: 18px/1 'Inria Sans';
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1179px){
+    .community {
+        >.inner {
+            width: 100%;
+            padding: 150px 15px 0px;
+
+            >section {
+                .showList {
+                    .post {
+                        .print {
+                            span {
+                                font: 2vw/1 'Jost';
+                            }
+    
+                            h2 {
+                                font: 700 5vw/1 'Koh Santepheap';
+                            }
+    
+                            p {
+                                margin-bottom: 30px;
+                                font: 2vw/1 'Jost';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .community {
+        >.inner {
+            >section {
+                .inputBox {
+                    .left {
+                        h2 {
+                            font-size: 35px;
+                        }
+                    }
+                }
+
+                .showList {
+                    width: 100%;
+    
+                    .post {
+                        .modify {
+                            input[type=text] {
+                                width: 100%;
+                            }
+    
+                            textarea {
+                                width: 100%;
+                            }
+                        }
+
+                        .print {
+                            span {
+                                font: 3vw/1 'Jost';
+                            }
+                            p {
+                                margin-bottom: 30px;
+                                font: 3vw/1 'Jost';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px){
+    .community {
+        >.inner {
+            >section {
+                .inputBox {
+                    .left {
+                        width: 100%;
+                        
+                        h2 {
+                            font-size: 35px;
+                        }
+
+                        &::after {
+                            content:'';
+                            display: block;
+                            margin-top: 50px;
+                            width: 100%;
+                            height: 2px;
+                            background: #888;
+                        }
+                    }
+
+                    .right {
+                        width: 100%;
+                        border-left: none;
+                        padding: 30px 50px 0;
+
+                        label, textarea {
+                            padding-left: 0;
+                        }
+
+                        button {
+                            border-left: 2px solid #888;
+
+                            &:last-of-type {
+                                border-right: 2px solid #888;
+                            }
+                        }
+                    }
+                }
+
+                .showList {
+                    width: 100%;
+    
+                    .post {
+                        height: 400px;
+                        flex-direction: column;
+
+                        .date {
+                            align-self: flex-start;
+                            margin-bottom: 30px;
                         }
 
                         .pic {
-                            width: 6%;
-                            height: 250px;
-                            margin-right: 4%;
+                            display: none;
                         }
-
-                        .board {
-                            width: 83%;
-                            align-self: flex-end;
-                            h2 {
-                                margin-bottom: 20px;
-                                font: 700 45px/1 'Koh Santepheap';
+    
+                        .modify {
+                            input[type=text] {
+                                width: 100%;
                             }
-
-                            p {
-                                margin-bottom: 30px;
-                                font: 20px/1 'Jost';
-                            }
-
-                            button {
-                                margin-right: 25px;
-                                font: 18px/1 'Inria Sans';
+    
+                            textarea {
+                                width: 100%;
                             }
                         }
                     }

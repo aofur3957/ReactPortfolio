@@ -6,10 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />       
     <title>React Template</title>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9c03dc4ca7f0907cbe4777780120f513"></script>
+    <style>
+      .default {
+        position: absolute; top: -59999px;
+      }
+      .mask {
+        width: 100%;
+        height: 100vh;
+        background: #333;
+        position: fixed; top: 0; left: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font: 20px/1 'arial';
+        color: #fff;
+        transition: opacity 2s;
+      }
+      .mask.off {
+        opacity: 0;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>   
+    <div id="root"></div>
+    
+    <!-- 캐싱처리 -->
+    <div class="default">
+      
+    </div>
+    <div class="mask">
+      LOADING...
+    </div>
+    <script>
+      //캐싱할 이미지 주소를 배열로 저장
+      const imgs = [
+        'http://localhost:3000/ReactPortfolio/img/member1.jpg',
+        'http://localhost:3000/ReactPortfolio/img/member2.jpg',
+        'http://localhost:3000/ReactPortfolio/img/member3.jpg',
+        'http://localhost:3000/ReactPortfolio/img/member4.jpg',
+        'http://localhost:3000/ReactPortfolio/img/member5.jpg',
+        'http://localhost:3000/ReactPortfolio/img/member6.jpg'
+      ];
+
+      //이미지주소 갯수, default, maskDOM 캐싱
+      const len = imgs.length;
+      const defaults = document.querySelector('.default');
+      const mask = document.querySelector('.mask');
+      let tags = '';
+
+      //배열을 반복돌면서 동적으로 imgDOM생성
+      imgs.forEach(src=>{
+        tags +=`<img src=${src} />`
+      })
+      //tags += '<video src={동영상소스주소}'
+      //tags += '검색엔진에 노출될 텍스트 정보'
+      defaults.innerHTML = tags;
+
+      let count = 0;
+
+      //imgDOM이 생성되자마자 DOM반복을 돌면서
+      //연결된 소스이미지가 로딩완료되면 카운트 증가
+      const imgDOM = defaults.querySelectorAll('img');
+      imgDOM.forEach(img=>{
+        img.onload = () =>{
+          count++;
+          console.log(count);
+
+          //모든 소스이미지로딩갯수와 전체 이미지배열 갯수가 같으면 (로딩완료되면)
+          if(count === len){
+            //default, maskDOM제거 (리액트에서 랜더링하는 요소가 화면에 출력)
+            defaults.remove();
+            mask.classList.add('off');
+
+            setTimeout(()=> mask.remove(), 2000);
+          }
+        }
+      })
+    </script>   
   </body>
 </html>
 

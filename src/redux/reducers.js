@@ -39,8 +39,23 @@ const initMember = {
     ]
 }
 
+const mode = {
+    color:  'white'
+}
+
 //initMember를 초기값으로 지정해서 객체정보값을 반환하는 reducer함수 정의
 //이때 두번째 인수인 action객체로부터 type(액션이름)과 payload(자식컴포넌트에서 전달받을 값)을 받음
+const modeReducer = (state=mode, action)=>{
+    switch (action.type) {
+        case 'SET_MODE' :
+            return {...state, color: action.payload}
+
+        default:
+            return state;
+    }
+
+}
+
 const departmentReducer = (state=initMember, action)=>{
     switch (action.type) {
         case 'SET_MEMBERS' :

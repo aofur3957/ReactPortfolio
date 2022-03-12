@@ -2,14 +2,14 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setFlickr } from '../../redux/actions';
-import { Virtual } from 'swiper';
+import { Virtual, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { NavLink } from 'react-router-dom';
 
 import 'swiper/css';
 import 'swiper/css/virtual';
 
-export default function Pics(){
+export default function Pics(props){
     const picData = useSelector(state=>state.flickrReducer.flickr);
     const dispatch = useDispatch();
 
@@ -42,7 +42,27 @@ export default function Pics(){
             </div>
             <div className="contents">
                 <div className="inner">
-                    <Swiper modules={[Virtual]} spaceBetween={0} slidesPerView={2} virtual>
+                    <Swiper 
+                    style={props.scrolled >= 2369 ? {opacity: 1} : {opacity: 0}}
+                    modules={[Virtual, Autoplay]} 
+                    spaceBetween={0} 
+                    slidesPerView={2} 
+                    speed={300}
+                    loop
+                    breakpoints={{
+                        350: {
+                            slidesPerView: 1,
+                            spaceBetween: 0
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 0
+                        }
+                    }}
+                    // autoplay={{
+                    //     delay: 2500
+                    // }}
+                    >
                         {picData.map((pic, index)=> (
                             <SwiperSlide key={index} virtualIndex={index}>
                                 <div className="pic">
@@ -51,7 +71,7 @@ export default function Pics(){
                                 <div className="des">
                                     <span>{pic.ownername}</span>
                                     <h3>{pic.title}</h3>
-                                </div>
+                                </div> 
                             </SwiperSlide>
                         ))}
                     </Swiper>

@@ -1,6 +1,15 @@
 .department {
     border: 4px solid #333;
     border-top: none;
+    
+    >figure {
+        >.inner {
+            .pic {
+                background: url(../../../public/img/subImg1.jpg) no-repeat center/cover;
+            }
+        }
+    }
+
     section {
         h1 {
             position: relative;
@@ -71,6 +80,7 @@
                     background: #333;
                 }
             }
+
             .member {
                 padding: 150px 0;
 
@@ -84,25 +94,24 @@
                     float: left;
                     width: 50%;
                     position: relative;
-                    min-height: 1200px;
                     padding: 0 30px;
                     border-right: 2px solid #888;
+                    min-height: 1000px;
                     
                     h2 {
-                        margin-bottom: 70px;
-                        font: 100px/1.2 'Jost';
+                        font: 90px/1.2 'Jost';
                         letter-spacing: -10px;
     
                         span {
                             display: block;
                             transform: scaleY(1.6);
                         }
-                    };
-                    
+                    }
+
                     div {
                         position: absolute;
                         top: 300px; left: 30px;
-                        width: 90%;
+                        width: calc(100% - 60px);
                         opacity: 0;
 
                         &.on {
@@ -110,9 +119,15 @@
                         }
 
                         article {
+                            position: relative;
                             margin-bottom: 40px;
-                            height: 550px;
+                            padding-top: 92%;
                             border: 2px solid #333;
+
+                            img {
+                                position: absolute;
+                                top: 0; left: 0;
+                            }
                         }
     
                         p {
@@ -131,34 +146,52 @@
                             }
                         }
                     }
+                    
     
                 }
     
                 .right {
                     float: left;
                     width: 50%;
-                    min-height: 1200px;
+                    height: 60vw;
                     position: relative;
+                    border-left: 2px solid #888;
+                    margin-left: -2px;
 
                     article {
                         position: absolute;
-                        top: 0; left: 25px;
+                        top: 0; left: 50%;
+                        transform: translateX(-50%);
                         width: 90%;
-                        height: 500px;
+                        padding-top: 78%;
+                        opacity: 0;
+
+                        img {
+                            position: absolute;
+                            top: 0; left: 0;
+                        }
+
+                        &.on {
+                            opacity: 1;
+                        }
                     }
 
                     .tit {
                         position: absolute;
+                        width: 90%;
                         bottom: 50px;
-                        left: 25px;
+                        left: 50%;
+                        transform: translateX(-50%);
                         
                         h3 {
-                            font: 70px/1.4 'Jost';
+                            font: 3vw/1.4 'Jost';
                             color: #333;
                             text-transform: uppercase;
-                            letter-spacing: -8px;
+                            letter-spacing: -4px;
+                            white-space: nowrap;
                             transform: scaleY(1.4);
                             cursor: pointer;
+
                         }
 
                     }
@@ -168,3 +201,142 @@
             }
     }
 }
+
+@media screen and (max-width: 1400px){
+    .department {
+        section {
+            .inner {
+                .member {
+                    .left {
+                        h2 {
+                            font: 75px/1.2 'Jost';
+                        }
+
+                        div {
+                            top: 250px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1179px){
+    .department {
+        section {
+            .inner {
+                padding: 150px 15px 0;
+                .member {
+                    .right {
+                        height: 70vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 960px){
+    .department {
+        section {
+            .inner {
+                .member {
+                    .left {
+                        h2 {
+                            font-size: 65px;
+                        }
+                    }
+                    .right {
+                        height: 80vw;
+                        .tit {
+                            h3 {
+                                font-size: 3.7vw;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .department {
+        section {
+            .inner {
+                >p {
+                    width: 90%;
+                }
+                .mainpic {
+                    padding-top: 90%;
+                    width: 90%;
+                }
+
+                .member {
+                    .left {
+                        h2 {
+                            font-size: 45px;
+                            letter-spacing: -5px;
+                        }
+
+                        div {
+                            top: 150px;
+                        }
+                    }
+                    .right {
+                        height: 85vw;
+                        .tit {
+                            h3 {
+                                font-size: 4vw;
+                                letter-spacing: -1px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px){
+    .department {
+        section {
+            .inner {
+                >p {
+                    font-size: 25px;
+                }
+                .member {
+                    display: flex;
+                    flex-direction: column-reverse;
+                    .left {
+                        padding: 0;
+                        width: 100%;
+                        border-right: none;
+                        min-height: 900px;
+                        h2 {
+                            font-size: 12vw;
+                        }
+
+                        div {
+                            left: 0;
+                            width: 100%;
+                            top: 200px;
+                        }
+                    }
+                    .right {
+                        width: 100%;
+                        border-left: none;
+                        height: 140vw;
+                        .tit {
+                            h3 {
+                                font-size: 5.5vw;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
