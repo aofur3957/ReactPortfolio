@@ -14,7 +14,7 @@ export default function Visual(){
   const path = process.env.PUBLIC_URL;
   return (
     <section id="visual">
-      <div className="toggle">
+      {/* <div className="toggle">
       <span>W</span>
         <div className="btn" onClick={()=>{
           
@@ -22,7 +22,7 @@ export default function Visual(){
           <span></span>
         </div>
         <span>B</span>
-      </div>
+      </div> */}
       <Swiper
         modules={[Navigation, Pagination, EffectFlip]}
         effect="flip"
