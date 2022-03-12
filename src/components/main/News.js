@@ -8,10 +8,10 @@ export default function News(props){
     return date;
   }
   const defaultData = [
-    {title: 'I want to invest in your future', name: 'Sam', content: `i'm interested in your business. we can be good partner. i'll leave my email here. please contact me`, date: getDate()},
-    {title: 'There is some question', name: 'Rose', content: 'I wanna build my house. the budget is about two billion won.', date: getDate()},
-    {title: 'Hello3', name: 'Halie', content: 'Here comes description in detail.', date: getDate()},
-    {title: 'Hello4', name: 'Railar', content: 'Here comes description in detail.', date: getDate()}
+    {title: 'I want to invest in your future', name: 'Sam', content: `i'm interested in your business. we can be good partner. i'll leave my email here. please contact me`, date: '1'},
+    {title: 'There is some question', name: 'Rose', content: 'I wanna build my house. the budget is about two billion won.', date: '1'},
+    {title: 'Hello3', name: 'Halie', content: 'Here comes description in detail.', date: '1'},
+    {title: 'Hello4', name: 'Railar', content: 'Here comes description in detail.', date: '1'}
   ]
   const news = useRef(null);
   const newsPos = useRef(null);
