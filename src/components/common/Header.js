@@ -53,12 +53,6 @@ function Gnb(){
 function Mgnb(props){
   const path = process.env.PUBLIC_URL;
 
-  const appearMgnb = ()=>{
-    if(isOn) {
-      new Anime()
-    }
-  }
-
   return (
     <div className="mGnbContainer" style={props.isOn ? {transform: 'scaleX(1)'} : {transform: 'scaleX(0'}}>
       <ul id="mGnb">
