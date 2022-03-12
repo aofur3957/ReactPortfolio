@@ -21,7 +21,7 @@ export default function Community(){
     }
   }
 
-  const [posts, setPosts] = useState(getLocalItems)
+  const [posts, setPosts] = useState(getLocalItems())
 
   const getDate = ()=>{
     const date = new Date();
@@ -30,13 +30,11 @@ export default function Community(){
 
       currentTime : `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
     }
-
     return current;
   }
 
   const createPost = ()=>{
     const date = getDate();
-    console.log(date);
 
     const inputNameVal = inputName.current.value.trim();
     const inputTitleVal = inputTitle.current.value.trim();
