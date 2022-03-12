@@ -21,7 +21,7 @@ export default function Community(){
     }
   }
 
-  const [posts, setPosts] = useState(getLocalItems())
+  const [posts, setPosts] = useState(getLocalItems)
 
   const getDate = ()=>{
     const date = new Date();

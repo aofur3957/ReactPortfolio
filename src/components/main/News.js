@@ -7,6 +7,7 @@ export default function News(props){
     date.setFullYear(2022, 1, 17);
     return date;
   }
+
   const defaultData = [
     {title: 'I want to invest in your future', name: 'Sam', content: `i'm interested in your business. we can be good partner. i'll leave my email here. please contact me`, date: getDate()},
     {title: 'There is some question', name: 'Rose', content: 'I wanna build my house. the budget is about two billion won.', date: getDate()},
@@ -29,7 +30,7 @@ export default function News(props){
     }
   }
 
-  const [posts] = useState(getLocalItems());
+  const [posts] = useState(getLocalItems);
   const [tabIndex, setTabIndex] = useState(0);
 
   const getConElement = ()=>{
@@ -45,6 +46,8 @@ export default function News(props){
   useEffect(()=>{
     newsPos.current = news.current.offsetTop;
     getConElement();
+
+    localStorage.setItem('posts', JSON.stringify(posts));
   },[])
 
   useEffect(()=>{
