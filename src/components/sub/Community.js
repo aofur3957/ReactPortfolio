@@ -26,7 +26,7 @@ export default function Community(){
   const getDate = ()=>{
     const date = new Date();
     const current = {
-      currentDate : `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`,
+      currentDate : `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`,
 
       currentTime : `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
     }

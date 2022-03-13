@@ -45,7 +45,7 @@ export default function Visual(){
             <NavLink to='#'>SEE PROJECT</NavLink>
           </div>
           <div className="pic">
-            <img src={`${path}/img/subImg5.jpg`} />
+            <img src={`${path}/img/mainVisual1.jpg`} />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -60,7 +60,7 @@ export default function Visual(){
             <NavLink to='#'>SEE PROJECT</NavLink>
           </div>
           <div className="pic">
-            <img src={`${path}/img/subImg5.jpg`} />
+            <img src={`${path}/img/mainVisual2.jpg`} />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -75,7 +75,7 @@ export default function Visual(){
             <NavLink to='#'>SEE PROJECT</NavLink>
           </div>
           <div className="pic">
-            <img src={`${path}/img/subImg5.jpg`} />
+            <img src={`${path}/img/mainVisual3.jpg`} />
           </div>
         </SwiperSlide>
       </Swiper>
