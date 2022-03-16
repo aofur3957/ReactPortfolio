@@ -4,23 +4,21 @@ import { NavLink } from 'react-router-dom';
 import { faLine } from "@fortawesome/free-brands-svg-icons"
 import Anime from '../../class/anime.js';
 
-export default function Intro(props){
+export default function Intro({scrolled, pos}){
   const members = useSelector(state=>state.departmentReducer.members);
   const path = process.env.PUBLIC_URL;
 
-  const member = useRef(null);
+  const introCardsWrap = useRef(null);
   const introCards = useRef([]);
 
   const getItems = ()=>{
-    const cards = member.current.querySelectorAll('.introCard');
+    const cards = introCardsWrap.current.querySelectorAll('.introCard');
     let arr = [];
 
     for(let card of cards){
       arr.push(card);
-      introCards.current = arr;
     }
-
-    console.log(introCards);
+    introCards.current = arr;
   }
 
   useEffect(()=>{
@@ -32,11 +30,23 @@ export default function Intro(props){
       <div className="inner">
         <div className="about">
           <div className="left">
-            <h2>
+            <h2 style={
+              scrolled >= pos - 300 
+              ?
+              {opacity: '1'}
+              :
+              {opacity: '0'}
+            }>
               YEARS 
               <span> OF EXPERIENCE</span>
             </h2>
-            <strong>24</strong>
+            <strong style={
+               scrolled >= pos - 300 
+               ?
+               {opacity: '1'}
+               :
+               {opacity: '0'}
+            }>24</strong>
           </div>
           <div className="right">
             <p>
@@ -48,8 +58,8 @@ export default function Intro(props){
             <NavLink to='/Department'>MORE ABOUT US</NavLink>
           </div>
         </div>
-        <div className="member" ref={member}>
-          <h2 style={{transform: `translateX=(${props.scrolled}px)`}}>Our Member</h2>
+        <div className="member" ref={introCardsWrap}>
+          <h2 style={{transform: `translateX=(${scrolled}px)`}}>Our Member</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam voluptatem, perspiciatis reprehenderit!
           </p>
@@ -57,7 +67,7 @@ export default function Intro(props){
             {members.map((member, idx)=>{
               if(idx < 3) {
                 return (
-                  <li key={idx} className="introCard" style={props.scrolled >= 1100 ? {animationPlayState: 'running'} : {animationPlayState: 'paused'}}>
+                  <li key={idx} className="introCard" style={scrolled >= 1100 ? {animationPlayState: 'running'} : {animationPlayState: 'paused'}}>
                     <article>
                       <div className="pic">
                         <img src={`${path}/img/${member.pic}`}  />

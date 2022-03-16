@@ -10,7 +10,7 @@ import Anime from '../../class/anime.js';
 
 export default function Visual(){
 
-  
+  const scrollVal = window.scrollY;
   const path = process.env.PUBLIC_URL;
   return (
     <section id="visual">
@@ -23,6 +23,9 @@ export default function Visual(){
         </div>
         <span>B</span>
       </div> */}
+      <div className="scroll">
+        scroll : <span>{scrollVal}</span>
+      </div>
       <Swiper
         modules={[Navigation, Pagination, EffectFlip]}
         effect="flip"

@@ -65,7 +65,7 @@ export default function Main() {
         <div id="mainWrap" ref={main}>
             <Header />
             <Visual />
-            <Intro scrolled={scrolled} />
+            <Intro scrolled={scrolled} pos={pos.current[1]} />
             <Pics scrolled={scrolled} />
             <Media scrolled={scrolled} />
             <News scrolled={scrolled}/>

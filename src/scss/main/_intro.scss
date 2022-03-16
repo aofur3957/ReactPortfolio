@@ -25,6 +25,7 @@
                 h2 {
                     font: bold 27px/1 'Inria Sans';
                     color: #333;
+                    transition: all 1s;
 
                     &::before {
                         content: '';
@@ -41,6 +42,7 @@
 
                 strong {
                     font: 150px/1 'Jost';
+                    transition: all 1s;
                 }
             }
 
