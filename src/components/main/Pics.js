@@ -9,9 +9,11 @@ import { NavLink } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/virtual';
 
-export default function Pics(props){
+export default function Pics({scrolled, pos}){
     const picData = useSelector(state=>state.flickrReducer.flickr);
     const dispatch = useDispatch();
+    const base = pos - 600;
+    const posStart = scrolled - base; 
 
     const getFlickr = async ()=>{
         const api_key = '6695bb82cf9a3db1962df3f386dd83e8';
@@ -23,7 +25,6 @@ export default function Pics(props){
         await axios.get(url)
         .then(json=>{
             dispatch(setFlickr(json.data.photos.photo));
-            console.log(json);
         })
 
     }
@@ -37,13 +38,29 @@ export default function Pics(props){
         <section id="pics" className="myScroll">
             <div className="title">
                 <div className="inner">
-                    <h2>Our Projects</h2>
+                    <h2 style={
+                        scrolled >= pos - 600 && (posStart * 1.3) <= 650
+                        ?
+                        {transform: `translateX(${posStart * 1.3}px)`}
+                        : ( scrolled >= pos - 600 && (posStart * 1.3) >= 650
+                        ? 
+                        {transform: `translateX(650px)`}
+                        :
+                        null
+                        )
+                    }>Our Projects</h2>
                 </div>
             </div>
             <div className="contents">
                 <div className="inner">
                     <Swiper 
-                    style={props.scrolled >= 2369 ? {opacity: 1} : {opacity: 0}}
+                    style={
+                        scrolled >= pos - 300 
+                        ? 
+                        {transform: `scale(1)`, opacity: '1'} 
+                        : 
+                        {transform: `scale(0)`, opacity: '0'}
+                    }
                     modules={[Virtual, Autoplay]} 
                     spaceBetween={0} 
                     slidesPerView={2} 

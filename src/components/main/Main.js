@@ -66,8 +66,8 @@ export default function Main() {
             <Header />
             <Visual />
             <Intro scrolled={scrolled} pos={pos.current[1]} />
-            <Pics scrolled={scrolled} />
-            <Media scrolled={scrolled} />
+            <Pics scrolled={scrolled} pos={pos.current[2]} />
+            <Media scrolled={scrolled} pos={pos.current[3]} />
             <News scrolled={scrolled}/>
             <Contact />
             <Btns getIndex={getIndex} />

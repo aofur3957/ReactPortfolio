@@ -28,7 +28,6 @@ export default function News(props){
 
   const [posts] = useState(getLocalItems);
   const [tabIndex, setTabIndex] = useState(0);
-  console.log(posts);
 
   const getConElement = ()=>{
     const cons = news.current.querySelectorAll('.con');

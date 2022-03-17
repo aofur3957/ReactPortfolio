@@ -12,12 +12,14 @@
             font: 40px/1 'Jost';
             color: #333;
             margin-bottom: 30px;
+            transition: all 1s;
         }
 
         >p {
             margin-bottom: 80px;
             color: #777;
             font: 18px/1 'Jost';
+            transition: all 1s;
         }
 
         .media {
@@ -34,7 +36,17 @@
                 overflow: hidden;
                 padding-top: 40%;
                 border: 2px solid #888;
-                top: 500px;
+                transition: all 1s;
+
+                &:nth-of-type(1){
+                    transition-delay: 0s;
+                }
+                &:nth-of-type(2){
+                    transition-delay: 0.3s;
+                }
+                &:nth-of-type(3){
+                    transition-delay: 0.6s;
+                }
                
                 .pic {
                     width: 100%;

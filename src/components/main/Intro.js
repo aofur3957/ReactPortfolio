@@ -33,9 +33,9 @@ export default function Intro({scrolled, pos}){
             <h2 style={
               scrolled >= pos - 300 
               ?
-              {opacity: '1'}
+              {opacity: '1', transform: `translateY(0px)`}
               :
-              {opacity: '0'}
+              {opacity: '0', transform: `translateY(50px)`}
             }>
               YEARS 
               <span> OF EXPERIENCE</span>
@@ -43,9 +43,9 @@ export default function Intro({scrolled, pos}){
             <strong style={
                scrolled >= pos - 300 
                ?
-               {opacity: '1'}
+               {opacity: '1', transform: `translateY(0px)`}
                :
-               {opacity: '0'}
+               {opacity: '0', transform: `translateY(50px)`}
             }>24</strong>
           </div>
           <div className="right">
@@ -59,15 +59,33 @@ export default function Intro({scrolled, pos}){
           </div>
         </div>
         <div className="member" ref={introCardsWrap}>
-          <h2 style={{transform: `translateX=(${scrolled}px)`}}>Our Member</h2>
-          <p>
+          <h2 style={
+            scrolled >= pos + 300
+            ?
+            {opacity: '1', transform: `translateY(0px)`}
+            :
+            {opacity: '0', transform: `translateY(50px)`}
+          }>Our Member</h2>
+          <p style= {
+             scrolled >= pos + 300
+             ?
+             {opacity: '1', transform: `translateY(0px)`}
+             :
+             {opacity: '0', transform: `translateY(50px)`}
+          }>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam voluptatem, perspiciatis reprehenderit!
           </p>
           <ul>
             {members.map((member, idx)=>{
               if(idx < 3) {
                 return (
-                  <li key={idx} className="introCard" style={scrolled >= 1100 ? {animationPlayState: 'running'} : {animationPlayState: 'paused'}}>
+                  <li key={idx} className="introCard" style={
+                    scrolled >= pos + 500
+                    ? 
+                    {transform: `rotateY(0deg)`, opacity: '1'} 
+                    : 
+                    {transform: `rotateY(-180deg)`, opacity: '0'}
+                    }>
                     <article>
                       <div className="pic">
                         <img src={`${path}/img/${member.pic}`}  />
@@ -82,7 +100,13 @@ export default function Intro({scrolled, pos}){
                 return null
               }
             })}
-            <li>
+            <li className="introCard" style={
+               scrolled >= pos + 500 
+               ? 
+               {transform: `rotateY(0deg)`, opacity: '1'} 
+               : 
+               {transform: `rotateY(-180deg)`, opacity: '0'}
+            }>
               <article>
                 "Our advantage can help you with picking out the best solutions for your projets"
               </article>
