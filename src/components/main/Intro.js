@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { faLine } from "@fortawesome/free-brands-svg-icons"
@@ -8,6 +8,11 @@ export default function Intro({scrolled, pos}){
   const members = useSelector(state=>state.departmentReducer.members);
   const path = process.env.PUBLIC_URL;
 
+  const [scrollEnable, setScrollEnable] = useState(true);
+  const paragraph = useRef(null);
+  const txtLetter = useRef(null);
+  const [isOn, setIsOn] = useState(false);
+  const [txtIdx, setTxtIdx] = useState(0);
   const introCardsWrap = useRef(null);
   const introCards = useRef([]);
 
@@ -21,9 +26,53 @@ export default function Intro({scrolled, pos}){
     introCards.current = arr;
   }
 
+  const typingInit = ()=>{
+    let letter = paragraph.current.innerText;
+    txtLetter.current = letter;
+
+    if(txtIdx === 0){
+      paragraph.current.innerHTML = '';
+    }
+    console.log(txtLetter.current.length)
+  }
+
+  const typing = ()=>{
+    if(txtIdx == txtLetter.current.length){
+      return;
+    }
+    setTimeout(()=>{
+      paragraph.current.innerHTML += `<span>${txtLetter.current[txtIdx]}</span>`
+      paragraph.current.querySelectorAll('span')[txtIdx].style.animation = 'typing 0.1s infinite both';
+      setTimeout(()=>{
+        if(txtIdx + 1 < txtLetter.current.length){
+          paragraph.current.querySelectorAll('span')[txtIdx].style.animation = '';
+        }
+      },100)
+      setTxtIdx(txtIdx + 1);
+    }, 100)
+  }
+
   useEffect(()=>{
     getItems();
+    typingInit();
   },[])
+
+  useEffect(()=>{
+    if(scrolled >= pos - 300){
+      setIsOn(true);
+      if(scrollEnable){
+        setScrollEnable(false);
+        typing();
+      }
+
+    } 
+  },[scrolled])
+
+  useEffect(()=>{
+    if(isOn){
+      typing();
+    }
+  },[txtIdx])
 
   return (
     <section id="intro" className="myScroll">
@@ -49,10 +98,10 @@ export default function Intro({scrolled, pos}){
             }>24</strong>
           </div>
           <div className="right">
-            <p>
+            <p ref={paragraph}>
               We are a team of fashion director &amp; designers
               that believe in the value of well-considered design
-              and how it can positively impact lives, communities
+              and how it can positively impact lives communities
               and the broader environment!
             </p>
             <NavLink to='/Department'>MORE ABOUT US</NavLink>

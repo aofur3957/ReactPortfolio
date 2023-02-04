@@ -15,6 +15,7 @@ export default function Media({scrolled, pos}){
     { id: 1, val: 0},
     { id: 2, val: 0},
   ]);
+  const [enableCounting, setEnableCounting] = useState(true);
 
   const part = 'snippet';
   const key = 'AIzaSyB2c-vJPxv0T0B9qWab28kZJ3_xr_57jhs';
@@ -42,46 +43,59 @@ export default function Media({scrolled, pos}){
   }
 
   const countingNum = id=>{
-    const goal = numElems.current[id].getAttribute('data-num');
-    const time = 1000 / goal;
-    console.log(time);
+    let goal = numElems.current[id].getAttribute('data-num');
+    let time = 7000 / goal;
+    time = parseInt(time);
 
     const start = setInterval(()=>{
-      if(counting[id].val == goal){
+      if(counting[id].val >= goal){
         clearInterval(start);
       }
       setCounting(
         counting.map(el=>
-          el.id === id ? {...el, val: el.val++} : el
+          el.id == id ? {...el, val: el.val++} : el
         )  
       )      
-    }, time)
+    },time)
 
   }
 
   useEffect(()=>{
     fetchYoutube();
     getNumElem();
-    countingNum(0);
-    countingNum(1);
-    countingNum(2);
   },[]);
 
   useEffect(()=>{
+    if(scrolled >= pos[3] - 300 && scrolled <= pos[4]){
+      if(enableCounting){
+        setEnableCounting(false);
+
+        countingNum(0);
+        countingNum(1);
+        countingNum(2);
+      }
+    }else {
+      setEnableCounting(true);
+      setCounting([
+        { id: 0, val: 0},
+        { id: 1, val: 0},
+        { id: 2, val: 0},
+      ])
+    }
   },[scrolled])
 
   return (
     <section id="media" className="myScroll" ref={media}>
       <div className="inner">
         <h2 style={
-          scrolled >= pos - 300
+          scrolled >= pos[3] - 300
           ?
           {opacity: 1, transform: `translateY(0px)`}
           :
           {opacity: 0, transform: `translateY(300px)`}
         }>Our Media</h2>
         <p style={
-           scrolled >= pos - 300
+           scrolled >= pos[3] - 300
            ?
            {opacity: 1, transform: `translateY(0px)`}
            :
@@ -92,7 +106,7 @@ export default function Media({scrolled, pos}){
             if( idx < 3){
               return (
                 <article key={idx} className="article" style={
-                  scrolled >= pos - 300
+                  scrolled >= pos[3] - 300
                   ?
                   {opacity: 1, transform: `translateY(0px)`}
                   :
@@ -117,15 +131,15 @@ export default function Media({scrolled, pos}){
         <div className="count">
           <article>
             <h3>satisfaction <span>clients</span></h3>
-            <strong data-num="820">{counting[0].val}</strong>
+            <strong data-num="945">{counting[0].val}</strong>
           </article>
           <article>
             <h3>employees on <span>worldwide</span></h3>
-            <strong data-num="650">{counting[1].val}</strong>
+            <strong data-num="850">{counting[1].val}</strong>
           </article>
           <article>
             <h3>projects completed <span>on 60 countries</span></h3>
-            <strong data-num="1875">{counting[2].val}</strong>
+            <strong data-num="1250">{counting[2].val}</strong>
           </article>
         </div>
         

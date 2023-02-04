@@ -229,6 +229,10 @@
         }
     }
 }
+@keyframes typing {
+    0% { border-right: 1px solid #333; }
+    100% {border-right: 1px solid transparent; }
+}
 
 @keyframes memberRotation {
     0% { 

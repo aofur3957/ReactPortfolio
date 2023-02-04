@@ -5,7 +5,6 @@ import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { useState } from 'react';
-import Anime from '../../class/anime.js';
 // 객체 import active prop 지원
 export default function Header(props){
   const [isOn, setIsOn] = useState(false);

@@ -1,7 +1,7 @@
-export const setMembers = member=>{
+export const setMembers = members=>{
     return {
         type: 'SET_MEMBERS',
-        payload: member
+        members: members
     }
 }
 

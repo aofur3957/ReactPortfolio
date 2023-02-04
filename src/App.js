@@ -1,4 +1,3 @@
-
 import Main from './components/main/Main';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
@@ -13,7 +12,6 @@ import Login from './components/sub/Login'
 
 import './scss/style.scss';
 import {Route, Switch} from 'react-router-dom';
-import { useState } from 'react';
 
 
 function App() {
@@ -22,20 +20,15 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path='/' component = {Main}></Route>
-        
-        <Route path='/'>
-          <Header />
-        </Route>
+        <Header />
       </Switch>
-
-        <Route path='/department' component = {Department}></Route>
-        <Route path='/community' component = {Community}></Route>
-        <Route path='/gallery' component = {Gallery}></Route>
-        <Route path='/youtube' component = {Youtube}></Route>
-        <Route path='/location' component = {Location}></Route>
-        <Route path='/join' component = {Join}></Route>
-        <Route path='/login' component = {Login}></Route>
-      
+      <Route path='/department' component = {Department}></Route>
+      <Route path='/community' component = {Community}></Route>
+      <Route path='/gallery' component = {Gallery}></Route>
+      <Route path='/youtube' component = {Youtube}></Route>
+      <Route path='/location' component = {Location}></Route>
+      <Route path='/join' component = {Join}></Route>
+      <Route path='/login' component = {Login}></Route>
       <Footer />
     </div>
   );

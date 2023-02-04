@@ -1,38 +1,27 @@
-import { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, EffectFlip } from 'swiper';
+import { Navigation, Pagination, EffectFlip, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-flip';
-import Anime from '../../class/anime.js';
 
 export default function Visual(){
-
   const scrollVal = window.scrollY;
   const path = process.env.PUBLIC_URL;
+
   return (
     <section id="visual">
-      {/* <div className="toggle">
-      <span>W</span>
-        <div className="btn" onClick={()=>{
-          
-        }}>
-          <span></span>
-        </div>
-        <span>B</span>
-      </div> */}
       <div className="scroll">
         scroll : <span>{scrollVal}</span>
       </div>
       <Swiper
-        modules={[Navigation, Pagination, EffectFlip]}
+        modules={[Navigation, Pagination, EffectFlip, Autoplay]}
         effect="flip"
         spaceBetween={0}
         slidesPerView={'auto'}
         autoplay={true}
-        loop
+        loop={true}
         navigation
         pagination={{clickable: true}}
       >
