@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-flip';
+import 'swiper/css/autoplay';
 
 export default function Visual(){
   const scrollVal = window.scrollY;
@@ -12,9 +13,6 @@ export default function Visual(){
 
   return (
     <section id="visual">
-      <div className="scroll">
-        scroll : <span>{scrollVal}</span>
-      </div>
       <Swiper
         modules={[Navigation, Pagination, EffectFlip, Autoplay]}
         effect="flip"

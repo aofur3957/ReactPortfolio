@@ -1,14 +1,19 @@
 #pics {
     .title {
         background: url(../../../public/img/mapPattern.png) repeat;
-
-        .inner {
-            padding: 9vw 20vw;
-            border-bottom: 4px solid #333;
-            margin-bottom: -4px;
-
-            h2 {
-                font: 70px/1 'Jost';
+        padding: 9vw 0;
+        border-bottom: 4px solid #333;
+        margin-bottom: -4px;
+        overflow: hidden;
+        h2 {
+            width: 210vw;
+            font: 5vw/1 'Jost';
+        }
+        div {
+            width: 210vw;
+            transform: translateX(-50%);
+            p {
+                font: 5vw/1 'Jost';
             }
         }
     }
@@ -28,7 +33,6 @@
                     position: relative;
                     border-left: 4px solid #333;
                     padding-top: 50%;
-                    // transition: all 0.1s 2.8s;
 
                     &.swiper-slide-active{
                         border-left: 4px solid transparent;

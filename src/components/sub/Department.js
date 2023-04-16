@@ -14,7 +14,7 @@ export default function Department(){
     section.current.classList.add('on');
 
     axios
-      .get(`${path}/db/department.json`)//비동기적으로 데이터 호출
+      .get(`${path}/db/department.json`) 
       .then(json=>{
         dispatch(setMembers(json.data.data));
       })

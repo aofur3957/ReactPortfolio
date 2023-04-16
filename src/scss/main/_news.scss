@@ -9,27 +9,32 @@
 
         .left {
             width: 60%;
-            padding: 10%;
+            min-height: 550px;
+            height: 550px;
             border-left: 4px solid #333;
             border-right: 4px solid #333;
-            overflow-x: auto;
+            position: relative;
+            overflow: hidden;
 
             h1 {
+                position: absolute;
+                top: 10% ; left: -100%;
+                padding: 0 10%;
                 font: 40px/1 'Jost';
                 color: #333;
-                margin-bottom: 50px;
-                transform: translateX(-600px);
-                animation: appearNews 1s 1 both;
-                animation-play-state: paused;
+                opacity: 1;
+                transition: all 0.8s
             }
             
             table {
+                display: block;
+                position: absolute;
+                top: 20%; left: -100%;
+                padding: 0 10%;
                 width: 100%;
                 min-width: 426px;
-                transform: translateX(-600px);
-                animation: appearNews 1s 1 both;
-                animation-play-state: paused;
-
+                transition: all 0.8s;
+                transform: translateX(-50%);
                 tr {
                     cursor: pointer;
                     &:nth-of-type(1) {
@@ -40,8 +45,9 @@
                         text-align: left;
                         border-bottom: 2px solid #aaa;
                         text-transform: uppercase;
-                        font: 600 15px/1 'Inria Sans';                    color: #bbb;
-
+                        font: 600 15px/1 'Inria Sans';                    
+                        color: #bbb;
+                        width: 15%;
                         &:nth-of-type(2){
                             width: 70%;
                         }
@@ -52,9 +58,16 @@
                         border-bottom: 1px solid #aaa;
                         text-transform: uppercase;
                         font: 18px/1 'Jost';
-
                         span {
                             display: block;
+                        }
+                        em {
+                            display: -webkit-box;
+                            overflow: hidden;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                            width: 100%;
+                            font-style: normal;
                         }
                     }
                 }
@@ -65,38 +78,33 @@
             width: 40%;
             overflow: hidden;
             position: relative;
+            overflow: hidden;
             border-right: 4px solid #333;
-            padding: 20px;
-
-            .con {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            >div {
                 position: absolute;
-                padding: 20px;
-                top: 20px;
-                left: 20px;
+                top: 0; right: -100%;
+                margin: 20px;
                 width: calc(100% - 40px);
                 height: calc(100% - 40px);
-                background: #636a52;
-                transform: translateX(600px);
-                animation: appearNews 1s 1 both;
-                animation-play-state: paused;
-
-                div {
-                    width: 80%;
-                    font: 26px/1.3 'Jost';
-                    color: #fff;
+                .con {
+                    display: flex;
+                    width: 100%;
+                    height: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    top: 0; left: 0;
+                    background: #636a52;
+                    em {
+                        display: block;
+                        width: 75%;
+                        font: italic 17px/1.3 'Koh Santepheap';
+                        color: #fff;
+                    }
                 }
             }
         }
        
-    }
-}
-
-@keyframes appearNews {
-    100% {
-        transform: translateX(0);
     }
 }
 

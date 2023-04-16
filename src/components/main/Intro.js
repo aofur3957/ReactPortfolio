@@ -1,29 +1,23 @@
 import { useRef, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { faLine } from "@fortawesome/free-brands-svg-icons"
-import Anime from '../../class/anime.js';
+import { setMembers } from '../../redux/actions'
+import axios from 'axios';
 
 export default function Intro({scrolled, pos}){
   const members = useSelector(state=>state.departmentReducer.members);
   const path = process.env.PUBLIC_URL;
-
   const [scrollEnable, setScrollEnable] = useState(true);
   const paragraph = useRef(null);
   const txtLetter = useRef(null);
-  const [isOn, setIsOn] = useState(false);
   const [txtIdx, setTxtIdx] = useState(0);
-  const introCardsWrap = useRef(null);
-  const introCards = useRef([]);
+  const dispatch = useDispatch();
 
-  const getItems = ()=>{
-    const cards = introCardsWrap.current.querySelectorAll('.introCard');
-    let arr = [];
-
-    for(let card of cards){
-      arr.push(card);
-    }
-    introCards.current = arr;
+  const getData = ()=>{
+    axios.get(`${path}/db/department.json`)
+    .then(json=>{
+      dispatch(setMembers(json.data.data));
+    })
   }
 
   const typingInit = ()=>{
@@ -33,11 +27,10 @@ export default function Intro({scrolled, pos}){
     if(txtIdx === 0){
       paragraph.current.innerHTML = '';
     }
-    console.log(txtLetter.current.length)
   }
 
   const typing = ()=>{
-    if(txtIdx == txtLetter.current.length){
+    if(txtIdx === txtLetter.current.length){
       return;
     }
     setTimeout(()=>{
@@ -53,25 +46,21 @@ export default function Intro({scrolled, pos}){
   }
 
   useEffect(()=>{
-    getItems();
+    getData();
     typingInit();
   },[])
 
   useEffect(()=>{
     if(scrolled >= pos - 300){
-      setIsOn(true);
-      if(scrollEnable){
+      if(scrollEnable){ // scrolled가 pos-300 값이 되는 순간 typing 함수가 한 번만 실행되도록 함
         setScrollEnable(false);
-        typing();
+        typing(); 
       }
-
-    } 
+    }
   },[scrolled])
 
   useEffect(()=>{
-    if(isOn){
-      typing();
-    }
+    if(txtIdx >= 1) typing();
   },[txtIdx])
 
   return (
@@ -85,7 +74,8 @@ export default function Intro({scrolled, pos}){
               {opacity: '1', transform: `translateY(0px)`}
               :
               {opacity: '0', transform: `translateY(50px)`}
-            }>
+            }
+            >
               YEARS 
               <span> OF EXPERIENCE</span>
             </h2>
@@ -95,7 +85,8 @@ export default function Intro({scrolled, pos}){
                {opacity: '1', transform: `translateY(0px)`}
                :
                {opacity: '0', transform: `translateY(50px)`}
-            }>24</strong>
+            }
+            >24</strong>
           </div>
           <div className="right">
             <p ref={paragraph}>
@@ -107,21 +98,23 @@ export default function Intro({scrolled, pos}){
             <NavLink to='/Department'>MORE ABOUT US</NavLink>
           </div>
         </div>
-        <div className="member" ref={introCardsWrap}>
+        <div className="member">
           <h2 style={
             scrolled >= pos + 300
             ?
             {opacity: '1', transform: `translateY(0px)`}
             :
             {opacity: '0', transform: `translateY(50px)`}
-          }>Our Member</h2>
-          <p style= {
-             scrolled >= pos + 300
+          }
+          >Our Member</h2>
+          <p style={
+              scrolled >= pos + 300
              ?
              {opacity: '1', transform: `translateY(0px)`}
              :
              {opacity: '0', transform: `translateY(50px)`}
-          }>
+          }
+          >
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam voluptatem, perspiciatis reprehenderit!
           </p>
           <ul>
@@ -130,11 +123,12 @@ export default function Intro({scrolled, pos}){
                 return (
                   <li key={idx} className="introCard" style={
                     scrolled >= pos + 500
-                    ? 
-                    {transform: `rotateY(0deg)`, opacity: '1'} 
-                    : 
-                    {transform: `rotateY(-180deg)`, opacity: '0'}
-                    }>
+                    ?
+                    {transform: `rotateY(0deg)`, opacity: `1`}
+                    :
+                    {transform: `rotateY(-180deg)`, opacity: `1`}
+                  }
+                  >
                     <article>
                       <div className="pic">
                         <img src={`${path}/img/${member.pic}`}  />
@@ -152,9 +146,9 @@ export default function Intro({scrolled, pos}){
             <li className="introCard" style={
                scrolled >= pos + 500 
                ? 
-               {transform: `rotateY(0deg)`, opacity: '1'} 
+               {transform: `rotateY(0deg)`, opacity: `1`} 
                : 
-               {transform: `rotateY(-180deg)`, opacity: '0'}
+               {transform: `rotateY(-180deg)`, opacity: `0`}
             }>
               <article>
                 "Our advantage can help you with picking out the best solutions for your projets"

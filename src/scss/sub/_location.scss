@@ -9,247 +9,64 @@
             }
         }
     }
-   
-    >section {
-        .contact {
-            .inner {
-                width: 1180px;
-                margin: 0 auto;
-                position: relative;
-                display: flex;
 
-                .info {
-                    width: 50%;
-                    padding: 100px 80px 50px;
-                    border-left: 2px solid #888;
-                    border-right: 2px solid #888;
-                    
-                    h1 {
-                        font: 500 40px/1 'Jost';
-                        margin-bottom: 20px;
-                    }
+    .container {
+        >section {
+            .contact {
+                .inner {
+                    width: 1180px;
+                    margin: 0 auto;
+                    position: relative;
+                    display: flex;
     
-                    >p {
-                        margin-bottom: 50px;
-                        font: 20px/1.3 'Jost';
-                    }
-    
-                    article {
-                        float: left;
-                        width: 49%;
-                        margin-right: 2%;
-                        margin-bottom: 40px;
-    
-                        &:nth-of-type(even) {
-                            margin-right: 0;
-                        }
+                    .info {
+                        width: 50%;
+                        padding: 100px 80px 50px;
+                        border-left: 2px solid #888;
+                        border-right: 2px solid #888;
                         
-                        h3 {
-                            margin-bottom: 10px;
-                            font: 20px/1 'Jost';
+                        h1 {
+                            font: 500 40px/1 'Jost';
+                            margin-bottom: 20px;
                         }
-    
-                        dt, dd {
-                            display: block;
-                        }
-    
-                        dd {
-                            padding-left: 10px;
-                        }
-    
-                        p {
-                            font: 16px/1.2 'Jost';
-                        }
-                    }
-                }
-    
-                .form {
-                    width: 50%;
-                    padding: 100px 100px 50px;
-                    border-right: 1px solid #333;
-                    text-align: right;
-    
-                    legend {
-                        text-align: center;
-                        font: 500 40px/1 'Jost';
-                        margin-bottom: 20px;
-                        color: #636a52;
-                    }
-    
-                    p {
-                        margin-bottom: 50px;
-                        font: 20px/1.3 'Jost';
-                        text-align: center;
-                    }
-    
-                    input[type="text"],
-                    input[type="email"] {
-                        display: block;
-                        width: 100%;
-                        padding: 15px 0;
-                        margin-bottom: 30px;
-                        border: none;
-                        border-bottom: 1px solid #ccc;
-    
-                        &::placeholder {
-                            font: 18px/1 'Inria Sans';
-                        }
-                    }
-    
-                    button {
-                        position: relative;
-                        display: inline-block;
-                        width: 75px;
-                        height: 75px;
-                        background: #636a52;
-                        font: 18px/1 'Inria Sans';
-                        color: #fff;
-                        border: 1px solid #333;
-    
-                        &::before {
-                            content: '';
-                            position: absolute;
-                            top: -7px;
-                            left: -7px;
-                            width: 75px;
-                            height: 75px;
-                            background: #828b6b;
-                            z-index: -1;
-                            border: 1px solid #333;
-                        }
-                        
-                    }
-                }
-            } 
-            
-            
-        }
-
-        .store {
-            padding: 50px 0;
-            border-top: 4px solid #333;
-            .inner {
-                width: 1180px;
-                margin: 0 auto;
-                position: relative;
-
-                &::after {
-                    content: '';
-                    display: block;
-                    clear: both;
-                }
-
-                h2 {
-                    float: left;
-                    margin: 10px;
-                    font: 500 40px/1 'Jost';
-                }
-
-                .branch {
-                    float: right;
-
-                    button {
-                        padding: 10px;
-                        margin: 5px 0 0 30px;
-                        border: 1px solid #333;
-                        font: 20px/1 'Inria Sans';
-                    }
-                }
-
-                .traffic {
-                    padding-top: 20px;
-                    float: right;
-
-                    button {
-                        padding: 10px;
-                        margin: 5px 0 0 30px;
-                        border: 1px solid #333;
-                        font: 20px/1 'Inria Sans';
-                    }
-                }
-            }
-            
-            
-
-            #map {
-                width: 100%;
-                height: 500px;
-                background: #000;
-                filter: grayscale(1);
-            }
-        }
         
-    }
-}
-
-@media screen and (max-width: 1179px){
-    .location {
-       
-        >section {
-            .contact {
-                .inner {
-                    width: 100%;
-                    .info {
-                        border-left: none;
-
+                        >p {
+                            margin-bottom: 50px;
+                            font: 20px/1.3 'Jost';
+                        }
+        
                         article {
+                            float: left;
+                            width: 49%;
+                            margin-right: 2%;
+                            margin-bottom: 40px;
+        
+                            &:nth-of-type(even) {
+                                margin-right: 0;
+                            }
                             
-                            &:first-of-type {
-                                h3 {
-                                    margin-bottom: 32px;
-                                }
+                            h3 {
+                                margin-bottom: 10px;
+                                font: 20px/1 'Jost';
+                            }
+        
+                            dt, dd {
+                                display: block;
+                            }
+        
+                            dd {
+                                padding-left: 10px;
+                            }
+        
+                            p {
+                                font: 16px/1.2 'Jost';
                             }
                         }
                     }
-                } 
-            }
-    
-            .store {
-                .inner {
-                    width: 100%;
-                    padding: 0 15px;
-                }
-            }
-            
-        }
-    }
-}
-
-@media screen and (max-width: 960px){
-    .location {
-       
-        >section {
-            .contact {
-                .inner {
-                    width: 100%;
-
-                    .info {
-                        padding: 80px 30px;
-
-                        h1, p {
-                            text-align: center;
-                        }
-
-
-                        article {
-                            h3, p {
-                                text-align: center;
-                            }
-
-                            dl {
-                                dt, dd {
-                                    text-align: center;
-                                }
-
-                                dd {
-                                    padding-left: 0;
-                                }
-                            }
-                        }
-                    }
-
+        
                     .form {
-                        padding: 80px 30px;
+                        width: 50%;
+                        padding: 100px 100px 50px;
                         border-right: 1px solid #333;
                         text-align: right;
         
@@ -305,88 +122,205 @@
                         }
                     }
                 } 
+                
+                
             }
     
             .store {
+                padding: 50px 0;
+                border-top: 4px solid #333;
                 .inner {
+                    width: 1180px;
+                    margin: 0 auto;
+                    position: relative;
+                    &::after {
+                        content: '';
+                        display: block;
+                        clear: both;
+                    }
+                    h2 {
+                        float: left;
+                        margin: 10px;
+                        font: 500 40px/1 'Jost';
+                    }
+                    .branch {
+                        float: right;
+                        display: flex;
+                        margin-bottom: 20px;
+                        li {
+                            border: 1px solid #333;
+                            margin: 5px 0 0 30px;
+                        }
+                        button {
+                            padding: 15px;
+                            font: 20px/1 'Inria Sans';
+                        }
+                    }
+                    .traffic {
+                        margin-top: 20px;
+                        float: right;
+                        display: flex;
+                        li {
+                            border: 1px solid #333;
+                            margin: 10px 0 0 30px;
+                        }
+                        button {
+                            padding: 15px;
+                            font: 20px/1 'Inria Sans';
+                        }
+                    }
+                }
+                
+                
+    
+                #map {
                     width: 100%;
-                    padding: 0 15px;
+                    height: 500px;
+                    background: #000;
+                    filter: grayscale(1);
                 }
             }
             
+        }
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .location {
+        .container {
+            >section {
+                .contact {
+                    .inner {
+                        width: 100%;
+                        display: flex;
+        
+                        .info {
+                            width: 50%;
+                            padding: 7% 5% 4%;
+
+                            h1 {
+                                font-size: calc(20px + 1.5vw);
+                            }
+            
+                            >p {
+                                font-size: calc(10px + 1vw);
+                            }
+            
+                            article {
+                                h3 {
+                                    font-size: calc(10px + 1vw);
+                                }
+            
+                                p, dt, dd {
+                                    font-size: calc(7px + 1vw);
+                                }
+                            }
+                        }
+            
+                        .form {
+                            width: 50%;
+                            padding: 7% 5% 4%;
+            
+                            legend {
+                                font-size: calc(20px + 1.5vw);
+                            }
+            
+                            p {
+                                font-size: calc(10px + 1vw);
+                            }
+            
+                            input[type="text"],
+                            input[type="email"] {
+            
+                                &::placeholder {
+                                    font-size: calc(8px + 1vw);
+                                }
+                            }
+            
+                            button {
+                                font-size: calc(8px + 1vw);
+                            }
+                        }
+                    } 
+                }
+        
+                .store {
+                    .inner {
+                        padding: 0 10px;
+                        width: 100%;
+                        h2 {
+                            font-size: calc(20px + 1.5vw);
+                        }
+                        .branch {
+                            li {
+                                margin: 5px 0 0 10px;
+                            }
+                            button {
+                                font-size: calc(8px + 1vw);
+                            }
+                        }
+                        .traffic {
+                            margin-top: 10px;
+                            li {
+                                margin: 5px 0 0 10px;
+                            }
+                            button {
+                                font-size: calc(8px + 1vw);
+                            }
+                        }
+                    }
+                    
+                    
+        
+                    #map {
+                        width: 100%;
+                        height: 500px;
+                        background: #000;
+                        filter: grayscale(1);
+                    }
+                }
+            }
         }
     }
 }
 
 @media screen and (max-width: 768px){
     .location {
-        >section {
-            .contact {
-                .inner {
-                    flex-direction: column;
-                    .info {
-                        width: 100%;
-                        border-bottom: 4px solid #333;
-
-                        article {
-                            
+        .container {
+            >section {
+                .contact {
+                    .inner {
+                        flex-direction: column;
+                        .info {
+                            width: 100%;
+                            border-bottom: 4px solid #333;
+                            border-left: none;
                         }
-                    }
-
-                    .form {
-                        width: 100%;
-                        border-right: none;
-                    }
-                } 
-            }
     
-            .store {
-                .inner {
-                    h2 {
-                        width: 100%;
-                        margin: 0;
-                        margin-bottom: 25px;
-                        text-align: center;
-                    }
-
-                    .branch {
-                        margin-bottom: 20px;
-                    }
+                        .form {
+                            width: 100%;
+                            border-right: none;
+                        }
+                    } 
                 }
             }
-            
         }
     }
 }
 
 @media screen and (max-width: 576px){
     .location {
-        >section {
-            .store {
-                .inner {
-                    .branch {
-                        width: 100%;
-                        button {
-                            margin-left: 5%; 
-                            width: 30%;
-                            font-size: 16px;
-                            padding: 10px 5px;
-
-                            &:first-of-type {
-                                margin-left: 0;
-                            }
-                        }
-                    }
-
-                    .traffic {
-                        button {
-                            font-size: 16px;
-                            padding: 10px 5px;
+        .container {
+            >section {
+                .store {
+                    .inner {
+                        h2 {
+                            float: none;
+                            margin-bottom: 20px;
                         }
                     }
                 }
             }
-            
         }
     }
 }

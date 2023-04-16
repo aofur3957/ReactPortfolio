@@ -1,71 +1,61 @@
 import {useEffect, useRef, useState} from 'react';
 
 //가상돔 생성함수
-export default function Community(){
-  let main = useRef(null);
+export default function Location(){
   const {kakao} = window;
+  const main = useRef(null);
   const container = useRef(null);
   const [map, setMap] = useState(null);
   const [index, setIndex] = useState(0);
+  const [isOnTraffic, setIsOnTraffic] = useState(false);
   const path = process.env.PUBLIC_URL;
   //마커 이미지 정보 및 위치정보 값
-  var Info =[
+  const Info =[
     {
         title:"INCHEON", 
         latlng : new kakao.maps.LatLng(35.1659875, 129.1355099),
         imgSrc : path+'/img/marker1.png', 
         imgSize : new kakao.maps.Size(232,99), 
-        imgPos : {offset: new kakao.maps.Point(116, 99)},
     },
     {
         title:"SONGPA", 
         latlng : new kakao.maps.LatLng(33.450701, 126.570667),
         imgSrc :  path+'/img/marker2.png', 
         imgSize : new kakao.maps.Size(232,99), 
-        imgPos : {offset: new kakao.maps.Point(116, 99)},
     },
     {
         title:"GANGNAM", 
         latlng : new kakao.maps.LatLng(37.557527,126.9222836),
         imgSrc :  path+'/img/marker3.png', 
         imgSize : new kakao.maps.Size(232,99), 
-        imgPos : {offset: new kakao.maps.Point(116, 99)}, 
     }
   ];
   
   const [mapInfo] = useState(Info);
 
-  
-  
   //hook은 컴포넌트 안쪽에서 호출
-
-  //처음 로딩시 한번만 실행
   useEffect(()=>{
     main.current.classList.add('on');
   },[])
 
   //index state값이 변경될때마다 해당 useEffect를 재실행
   useEffect(()=>{
-
     container.current.innerHTML = '';
 
     const options = {
       center: mapInfo[0].latlng,
       level: 3
     }
-
     //카카오 api를 통해 리턴한 인스턴스를 state map에 옮겨담음
     const map = new kakao.maps.Map(container.current, options);
     setMap(map);
-
     //마커출력 인스턴스 생성
     new kakao.maps.Marker({
       map: map,
       position: mapInfo[index].latlng,
       title: mapInfo[index].title,
-      image: new kakao.maps.MarkerImage(mapInfo[index].imgSrc, mapInfo[index].imgSize, mapInfo[index].imgPos)
+      image: new kakao.maps.MarkerImage(mapInfo[index].imgSrc, mapInfo[index].imgSize)
     })
-    
     //순서 state값이 변경될때마다 맵의 중앙 위치를 다시 렌더링
     map.setCenter(mapInfo[index].latlng); 
     const mapSet = ()=> map.setCenter(mapInfo[index].latlng);
@@ -111,6 +101,7 @@ export default function Community(){
             </div>
         </div>
       </figure>
+      <div className="container">
         <section>
           <div className="contact">
             <div className="inner">
@@ -167,31 +158,43 @@ export default function Community(){
           <div className="store">
             <div class="inner">
               <h2>LOCATION</h2>
-              <nav className="branch">
-              {mapInfo.map((data, idx)=>{
-                return <button key={idx} onClick={()=>setIndex(idx)}>{data.title}</button>
-              })}
-              </nav>
+              <ul className="branch">
+                {mapInfo.map((data, idx)=>{
+                  return <li><button key={idx} onClick={()=>setIndex(idx)} style={index === idx ?{backgroundColor: '#ffdf90'}: null}>{data.title}</button></li>
+                })}
+              </ul>
             </div>
             
             <div id="map" ref={container}>
             </div>
             
             <div className="inner">
-              <nav className="traffic">
-                <button onClick={()=>{
-                  map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
-                }}>TRAFFIC ON</button>
-                <button onClick={()=>{
-                  map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC); 
-                }}>TRAFFIC OFF</button>
-              </nav>
+              <ul className="traffic">
+                <li>
+                  <button 
+                    onClick={()=>{
+                    map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
+                    setIsOnTraffic(true);
+                    }}
+                    style={isOnTraffic === true ? {backgroundColor: '#555', color: '#fff'} : {backgroundColor: '#fff', color: '#555'}}
+                  >TRAFFIC ON</button>
+                </li>
+                <li>
+                  <button onClick={()=>{
+                    map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+                    setIsOnTraffic(false); 
+                    }}
+                    style={isOnTraffic === false ? {backgroundColor: '#555', color: '#fff'} : {backgroundColor: '#fff', color: '#555'}}
+                  >TRAFFIC OFF</button>
+                </li>
+              </ul>
             </div>
             
   
           </div>
         
         </section>
+      </div>
     </main>
   )
 }

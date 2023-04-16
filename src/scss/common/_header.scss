@@ -11,7 +11,7 @@ header {
             position: absolute;
             left: 30px;
             top: 0;
-            padding-right: 100px;
+            padding-right: 30px;
             height: 100%;
             border-right: 2px solid #888;
 
@@ -22,14 +22,13 @@ header {
         }
 
         #gnb {
-            position: absolute; top: 0px; left: 280px;
-            height: 100%;
-
+            position: absolute;
+            left: 32%;
+            transform: translateX(-32%);
             li {
                 float: left; height: 100%;
 
                 a {
-                    display: inline-block;
                     position: relative;
                     padding: 0 30px; 
                     font: 18px/80px 'Inria Sans';
@@ -66,56 +65,116 @@ header {
             position: fixed;
             width: 100%;
             height: 100vh;
-            top: 0; left: 0;
+            top: 0; left: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             background: #636a52;
             z-index: 1000;
-            transform-origin: right center;
+            transform-origin: top right;
             transition: all 0.5s;
+            cursor: none;
 
-            #mGnb {
-                margin-right: 13%;
+            .overlay {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url(../../../public/img/overlay.gif);
+                opacity: 0.1;
+            }
 
-                li {
-                    margin-bottom: 20px;
-                    text-align: center;
+            .cursor {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba(255, 255, 255, 0.3);
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                text-align: center;
+                font:300 16px/120px 'InriaSans'
+            }
 
-                    a {
-                        text-transform: uppercase;
-                        font: 60px/1 'Jost';
-                        color: #faecc7;
+            nav {
+                width: 100%;
+                #mGnb {
+                    li {
+                        width: 100%;
+                        overflow: hidden;
+                        text-align: left;
+                        border-bottom: 2px solid #faecc7;
+                        transition: 1s;
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                        div {
+                            display: none;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 350px;
+                            height: 250px;
+                            z-index: 10;
+                            img {
+                                filter: grayscale(0);
+                            }
+                        }
+                        a {
+                            display: block;
+                            width: 100%;
+                            padding: 20px 0 20px 10px;
+                            text-transform: uppercase;
+                            font:300 90px/1 'Jost';
+                            color: #faecc7;
+                            cursor: none;
+                            transition: 1s;
+                        }
                     }
+                }   
+            }
+
+            button {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 30px;
+                height: 30px;
+                background: #333;
+                &::before, &::after {
+                    content:'';
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                    margin-top: -1px;
+                    background: #fff;
+                }
+                &::before {
+                    transform: rotate(45deg);
+                }
+                &::after {
+                    transform: rotate(-45deg);
                 }
             }
 
             .pic {
                 margin-right: 30px;
-                width: 380px;
-                height: 500px;
+                width: 450px;
             }
 
-            .sns {
-                li {
-                    margin-bottom: 25px;
-                    a {
-                        font-size: 20px;
-                        color: #fff;
-                    }
-                }
-            }
         }
 
-        >div {
+        .member {
             position: absolute;
             top: 0;
             right: 0;
-            width: 330px;
+            width: 200px;
             height: 100%;
             border-left: 2px solid #888;
             
-            .member {
+            >div {
                 height: 100%;
                 padding-left: 30px;
                 span {
@@ -128,50 +187,33 @@ header {
             }
 
             .fa-bars {
-                font-size: 20px; 
-                color: #333; 
-                position: absolute; 
-                top: 30px; right: 5vw;
-                cursor: pointer; 
-                z-index: 1002;
+                display: none;
+                position: absolute;
+                top: 50%; right: 12%;
+                transform: translateY(-50%);
+                font-size: 26px;
+                cursor: pointer;
             }
 
         }
     }
-
 }
 
-@media screen and (max-width: 1400px){
+@media screen and (max-width: 1200px){
     header {
         .inner {
-            h1 {
-                left: 2vw;
-                padding-right: 2vw;
-            }
-    
             #gnb {
-                left: 15vw;
-    
+                left: 39%;
+                transform: translateX(-39%);
                 li {
-    
                     a {
-                        padding: 0 1.5vw; 
+                        padding: 0 1.9vw;
+                        font-size: 16px
                     }
                 }
             }
-        }
-    }
-}
-
-@media screen and (max-width: 1178px){
-    header {
-        .inner {
-            #gnb {
-                left: 12vw;
-            }
-
             >div {
-                width: 240px;
+                width: 200px;
             }
         }
     }
@@ -184,8 +226,11 @@ header {
                 display: none;
             }
 
-            >div {
+            .member {
                 border-left: none;
+                .fa-bars {
+                    display: block;
+                }
             }
         }
     }
@@ -194,14 +239,39 @@ header {
 @media screen and (max-width: 576px){
     header {
         .inner {
-            #gnb {
-                display: none;
+            .mGnbContainer {
+                .cursor {
+                    width: 20vw;
+                    height: 20vw;
+                    line-height: 20vw;
+                    font-size: 3vw;
+                }
+                nav {
+                    #mGnb {
+                        li {
+                            div {
+                                position: absolute;
+                                width: 60.7%;
+                                height: 0;
+                                padding-top: 43.4%;
+                                img {
+                                    position: absolute;
+                                    top: 0; left: 0;
+                                }
+                            }
+                            a {
+                                font-size: 16vw;
+                            }
+                        }
+                    }   
+                }
             }
 
-            >div {
-                width: 170px;
+            .member {
+                padding-left: 60px;
 
-                .member {
+                >div {
+                    padding-left: 0;
                     span {
                         padding: 0 5px;
                     }

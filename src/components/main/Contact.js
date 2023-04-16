@@ -1,6 +1,6 @@
 export default function Contact(){
     return(
-        <section id="contact" className="myScroll">
+        <section id="contact">
             <div className="inner">
                 <div>
                     <h2>Inria@liarch.co</h2>

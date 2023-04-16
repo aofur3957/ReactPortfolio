@@ -7,7 +7,7 @@ import Btns from './Btns';
 import Pics from './Pics';
 import Contact from './Contact';
 import Anime from '../../class/anime.js';
-import { useEffect, useRef , useState} from 'react';
+import { useEffect, useRef , useState } from 'react';
 
 export default function Main() {
     const main = useRef(null); // main element
@@ -15,38 +15,37 @@ export default function Main() {
     const [index, setIndex] = useState(0);
     const [scrolled, setScrolled] = useState(0);
 
-    const getIndex = index => {
+    const settingIndex = index => {
         setIndex(index);
     }
 
     const getPos = ()=>{
         const secs = main.current.querySelectorAll('.myScroll');
-        let arr = [];
+        const arr = [];
         for(let sec of secs) arr.push(sec.offsetTop);
         pos.current = arr;
-        console.log(pos);
+        console.log(pos.current);
     }
 
     const activation = ()=>{
-        setScrolled(window.scrollY); //브라우저의 스크롤 값
-        let scroll = window.scrollY;
+        setScrolled(window.scrollY); 
+        const scroll = window.scrollY;
         const btns = main.current.querySelectorAll('#btns li');
-
         pos.current.map((pos, idx)=>{
             if(scroll >= pos){
-                for(const btn of btns) btn.classList.remove('on');
-
+                for(let btn of btns) btn.classList.remove('on');
                 btns[idx].classList.add('on');
             }
         })
     }
 
     useEffect(()=>{
-        getPos();
-
+        setTimeout(()=>{
+            getPos()
+        }, 500);
         window.addEventListener('scroll', activation);
         window.addEventListener('resize', getPos);
-
+        
         return ()=> {
             window.removeEventListener('resize', getPos);
             window.removeEventListener('scroll', activation);
@@ -67,10 +66,10 @@ export default function Main() {
             <Visual />
             <Intro scrolled={scrolled} pos={pos.current[1]} />
             <Pics scrolled={scrolled} pos={pos.current[2]} />
-            <Media scrolled={scrolled} pos={pos.current} />
-            <News scrolled={scrolled}/>
+            <Media scrolled={scrolled} pos={pos.current[3]} />
+            <News scrolled={scrolled} pos={pos.current[4]} />
             <Contact />
-            <Btns getIndex={getIndex} />
+            <Btns settingIndex={settingIndex} />
         </div>
     );
 } 

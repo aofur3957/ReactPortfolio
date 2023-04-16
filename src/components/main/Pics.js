@@ -1,19 +1,22 @@
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { setFlickr } from '../../redux/actions';
 import { Virtual, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { NavLink } from 'react-router-dom';
 
 import 'swiper/css';
 import 'swiper/css/virtual';
+import 'swiper/css/autoplay';
 
 export default function Pics({scrolled, pos}){
-    const picData = useSelector(state=>state.flickrReducer.flickr);
+    const picData = useSelector(state=>state.flickrReducer.photos);
     const dispatch = useDispatch();
-    const base = pos - 600;
-    const posStart = scrolled - base; 
+    const titElem = useRef(null);
+    const pElem = useRef(null);
+    const count = useRef(0);
+    const base = pos - 300;
+    const posStart = scrolled - base;
 
     const getFlickr = async ()=>{
         const api_key = '6695bb82cf9a3db1962df3f386dd83e8';
@@ -22,39 +25,53 @@ export default function Pics({scrolled, pos}){
         const url = `https://www.flickr.com/services/rest/?method=${method1}&per_page=${num}&api_key=${api_key}&
         extras=owner_name&format=json&nojsoncallback=1`;
 
-        await axios.get(url)
-        .then(json=>{
-            dispatch(setFlickr(json.data.photos.photo));
-        })
+        const res = await axios.get(url)
+        const photos = res.data.photos.photo;
+        dispatch(setFlickr(photos));
+    }
 
+    const addText = ()=>{
+        let text = 'OUR PROJECTS OUR PROJECTS OUR PROJECTS';   
+        const textArr = text.split(' ');
+        textArr.push(...textArr);
+        text = textArr.join(' ');
+        return text;
+    }
+
+    const animate = (elem, direction)=>{
+        if(count.current >= elem.offsetWidth / 2) count.current = 0;
+        count.current += 2;
+        elem.style.transform = `translate(${direction * count.current}px)`; 
+        requestAnimationFrame(()=>{
+            animate(elem, direction);
+        });
     }
 
     useEffect(()=>{
-        getFlickr();
-    },[])
+        if(picData.length === 0) getFlickr();
+        requestAnimationFrame(()=>{
+            animate(titElem.current, -1);
+        });
+        requestAnimationFrame(()=>{
+            animate(pElem.current, 1);
+        });
+    },[]);
 
-    
+    useEffect(()=>{
+        count.current += 20;
+    },[scrolled])
+
     return (
         <section id="pics" className="myScroll">
             <div className="title">
-                <div className="inner">
-                    <h2 style={
-                        scrolled >= pos - 600 && (posStart * 1.3) <= 650
-                        ?
-                        {transform: `translateX(${posStart * 1.3}px)`}
-                        : ( scrolled >= pos - 600 && (posStart * 1.3) >= 650
-                        ? 
-                        {transform: `translateX(650px)`}
-                        :
-                        null
-                        )
-                    }>Our Projects</h2>
+                <h2 ref={titElem}>{addText()}</h2>
+                <div>
+                    <p ref={pElem}>{addText()}</p>
                 </div>
             </div>
             <div className="contents">
                 <div className="inner">
-                    <Swiper 
-                    style={
+                    <Swiper style={
                         scrolled >= pos - 300 
                         ? 
                         {transform: `scale(1)`, opacity: '1'} 
@@ -63,22 +80,26 @@ export default function Pics({scrolled, pos}){
                     }
                     modules={[Virtual, Autoplay]} 
                     spaceBetween={0} 
-                    slidesPerView={2} 
                     speed={300}
-                    loop
+                    loop={true}
                     breakpoints={{
-                        350: {
+                        370: {
                             slidesPerView: 1,
                             spaceBetween: 0
                         },
                         768: {
                             slidesPerView: 2,
                             spaceBetween: 0
+                        },
+                        1180: {
+                            slidesPerView: 3,
+                            spaceBetween: 0
                         }
                     }}
-                    // autoplay={{
-                    //     delay: 2500
-                    // }}
+                    autoplay={{
+                        delay: 2500
+                    }}
+                    virtual={true}
                     >
                         {picData.map((pic, index)=> (
                             <SwiperSlide key={index} virtualIndex={index}>

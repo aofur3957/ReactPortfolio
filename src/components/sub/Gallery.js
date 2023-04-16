@@ -1,79 +1,51 @@
-//현재 store있는 데이터를 갤러리 컴포넌트에서 초기 렌더링될때에만 쓰이고 있고
-// 그 이후부터는 state값에 담아서 gallery 컴포넌트
-
+/* eslint-disable no-loop-func */
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Masonry from 'react-masonry-component';
+import { useSelector } from "react-redux";
 
 
 export default function Gallery(){
   const main = useRef(null);
   const frame = useRef(null);
   const input = useRef(null);
-  const picData = useSelector(state=>state.flickrReducer.flickr);
+  const picData = useSelector(state=>state.flickrReducer.photos);
   const [items, setItems] = useState(picData);
   const [isPop, setIsPop] = useState(false);
   const [index, setIndex] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [enableClick, setEnableClick] = useState(true);
-  const [isInterest, setIsInterest] = useState(true);
-
   const path = process.env.PUBLIC_URL;
-  console.log(items);
-  
- 
-  
-  const masonryOptions = {
-    fitWidth: false,
-    gutter: 0,
-    itemSelector: '.item',
-    transitionDuration: '0.5s'
-  }
   
   const getFlickr = async opt=>{
-    
     const api_key = '6695bb82cf9a3db1962df3f386dd83e8';
-    const method1 = 'flickr.interestingness.getList';
-    const method2 = 'flickr.photos.search';
-    const num = 25;
+    const method1 = 'flickr.photos.search';
     let url = ' ';
 
-    if(opt.type === 'interest'){
-      url = `https://www.flickr.com/services/rest/?method=${method1}&per_page=${num}&api_key=${api_key}&format=json&nojsoncallback=1`;
-    }
     if(opt.type === 'search'){
-      url = `https://www.flickr.com/services/rest/?method=${method2}&per_page=${num}&api_key=${api_key}&format=json&nojsoncallback=1&tags=${opt.tag}`
+      url = `https://www.flickr.com/services/rest/?method=${method1}&per_page=${opt.count}&api_key=${api_key}&format=json&nojsoncallback=1&tags=${opt.tag}`
     }
     
-    await axios.get(url)
-    .then(json=>{
-      if(json.data.photos.photo.length === 0){
-        alert('해당 검색어의 이미지가 없습니다.');
-        return;
+    const res = await axios.get(url);
+    const photos = res.data.photos.photo;
+    if(photos.length === 0){
+      alert('해당 검색어의 이미지가 없습니다.');
+      return;
+    }
+    setItems(photos);
+
+    let count = 0;
+    const pics = frame.current.querySelectorAll('img');
+    for(const pic of pics){
+      pic.onload = ()=>{
+        count = count + 1;
+        if(count === pics.length){
+          frame.current.classList.add('on');
+          setIsLoading(false);
+          setTimeout(()=>{
+            setEnableClick(true);
+          }, 1000)
+        }
       }
-      setItems(json.data.photos.photo);
-    })
-
-    setTimeout(()=>{
-      frame.current.classList.add('on');
-      setLoading(false);
-      setTimeout(()=>{
-        setEnableClick(true);
-      }, 1000) //frame에 on이 붙어서 올라오는 모션동안 방지
-    }, 1000) //masonry ui 모션이 적용되는 시간동안 정지
-  }
-
-  const showInterest = ()=>{
-    if(enableClick && !isInterest){
-      setIsInterest(true);
-      setEnableClick(false);
-      setLoading(true);
-      frame.current.classList.remove('on');
-      getFlickr({
-        type: 'interest',
-        count: 500
-      });
     }
   }
 
@@ -81,7 +53,7 @@ export default function Gallery(){
     if(e.key !== 'Enter') return;
     let result = input.current.value;
     result = result.trim();
-    input.current.value=' ';
+    input.current.value='';
 
     if(result === ''){
       alert('검색어를 입력하세요.');
@@ -89,9 +61,8 @@ export default function Gallery(){
     }
 
     if(enableClick){
-      setIsInterest(false);
       setEnableClick(false);
-      setLoading(true);
+      setIsLoading(true);
       frame.current.classList.remove('on');
       getFlickr({
         type: 'search',
@@ -108,13 +79,13 @@ export default function Gallery(){
 
     if(result === ''){
       alert('검색어를 입력하세요.');
+      input.current.focus();
       return;
     }
 
     if(enableClick){
-      setIsInterest(false);
       setEnableClick(false);
-      setLoading(true);
+      setIsLoading(true);
       frame.current.classList.remove('on');
       getFlickr({
         type: 'search',
@@ -125,8 +96,10 @@ export default function Gallery(){
   }
 
   useEffect(()=>{
-    main.current.classList.add('on');
-
+    setTimeout(()=>{
+      main.current.classList.add('on');
+      setIsLoading(false);
+    },1000)
   },[]);
 
   return (
@@ -154,67 +127,70 @@ export default function Gallery(){
         </div>
         </figure>
 
-        <div className="innerWrap">
+        <section className="container">
           <div className="inner">
-          <h1 onClick={showInterest}>GALLERY</h1>
-            
+            <h1>GALLERY</h1>
+              
             <div className="searchBox">
               <input type="text" placeholder="KEYWORD" ref={input} onKeyUp={showSearchEnter} />
               <button onClick={showSearch}>SEARCH</button>
             </div>
-            
-          
-            {loading ? <img className='loading' src={path+'/img/loading.gif'} /> : null }
 
-            <section ref={frame}>
-              {/* <Masonry
-              elementType={'div'}
-              options={masonryOptions}
-              > */}
-                {items.map((item, idx)=>{
-                  console.log(item);
-                    return (
-                      <article key={idx} className='item'>
-                        <div className="inner">
+            <section className="on" ref={frame}>
+              {items.map((item, idx)=>{
+                  return (
+                    <article key={idx} className='item'>
+                      <div className="inner">
                         <span className="num">{idx < 10 ? `0${idx+1}` : idx+1 }</span>
-                          <div className="pic" onClick={()=>{
-                            setIsPop(true);
-                            setIndex(idx);
-                          }}>
-                            <img src={`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`} />
-                          </div>
-                          <div className="txt">
-                            <h2>{item.title}</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, numquam!</p>
-                          </div>
+                        <div className="pic" onClick={()=>{
+                          setIsPop(true);
+                          setIndex(idx);
+                        }}>
+                          <img src={`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`} />
                         </div>
-                    </article>
-                    )
-                })}
-              {/* </Masonry> */}
+                        <div className="txt">
+                          <h2>{item.title}</h2>
+                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, numquam!</p>
+                        </div>
+                      </div>
+                  </article>
+                  )
+              })}
             </section>
           </div>
-        </div>
+        </section>
+        { isPop ? <Popup /> : null}
       </main>
-     
-      { isPop ? <Popup /> : null}
+      { isLoading ? <Loading /> : null}
    </>
   )
+
+  function Loading(){
+    useEffect(()=>{
+      document.body.style.overflow = 'hidden';
+      return ()=>document.body.style.overflow= 'auto';
+    },[])
+    return(
+      <div className="loading">
+        <img alt='' src={`${path}/img/loading.gif`} />
+      </div>
+    )
+  }
 
   function Popup(){
     useEffect(()=>{
       document.body.style.overflow = 'hidden';
-
       return ()=> document.body.style.overflow = 'auto';
-      
     },[])
     return (
       <aside className="pop">
-        <h1>{items[index].title}</h1>
         <img src={`https://live.staticflickr.com/${items[index].server}/${items[index].id}_${items[index].secret}_b.jpg`} alt="" />
-        <span onClick={()=>{
+        <button onClick={()=>{
           setIsPop(false);
-        }}>close</span>
+          console.log(isPop);
+        }}>
+          <span className="h">close</span>
+        </button>
       </aside>
     )
   }

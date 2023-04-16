@@ -3,7 +3,7 @@ export default class Anime {
         this.selector = selector;
         this.option = option;
         this.startTime = performance.now();  
-        (option.duration==undefined) ? this.speed = 500 : this.speed = option.duration;    
+        (option.duration===undefined) ? this.speed = 500 : this.speed = option.duration;    
         this.currentValue = null;
         this.timer = null;
       
@@ -11,7 +11,7 @@ export default class Anime {
             this.currentValue = parseInt(window.scrollY || window.pageYOffset);
         }else if(this.selector.style[this.option.prop]){           
             if(this.option.prop === "opacity"){
-                this.currentValue = parseFloat(this.selector.style[this.option.prop]);  
+                this.currentValue = parseFloat(this.selector.style[this.option.prop]);
             } else {
                 this.currentValue = parseInt(this.selector.style[this.option.prop]);  
             } 
@@ -24,7 +24,7 @@ export default class Anime {
         }
         
         this.isString = typeof this.option.value;
-        if(this.isString == "string") this.option.value = parseFloat(this.option.value);
+        if(this.isString === "string") this.option.value = parseFloat(this.option.value);
         if(this.option.value !== this.currentValue) requestAnimationFrame(time =>{this.run(time)});    
     }
 
@@ -48,7 +48,7 @@ export default class Anime {
             this.selector.style[this.option.prop] = result; 
         } else if(this.option.prop === "scroll"){
             window.scroll(0, result);
-        } else if(this.isString == "string"){
+        } else if(this.isString === "string"){
             this.selector.style[this.option.prop] = result+"%"; 
         }else{
             this.selector.style[this.option.prop] = result+"px"; 

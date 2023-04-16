@@ -61,7 +61,6 @@ export default function Join(){
       if(el.checked) isChecked=true;
     })
     setVal({...val, [name]: isChecked});
-
   }
 
   const handleSelect = e=>{
@@ -109,23 +108,20 @@ export default function Join(){
   //hook은 컴포넌트 안쪽에서 호출
   useEffect(()=>{
     main.current.classList.add('on');
-
   },[]);
 
   useEffect(()=>{
-    console.log(err);
-    //err 객체의 key값의 갯수를 반환
     const len = Object.keys(err).length;
     if(len === 0 && isSubmit){
       setSuccess(true);
     }else {
       setSuccess(false);
     }
-  },[err]);
+  },[err, isSubmit]);
 
   return (
     <main className="content join" ref={main}>
-        <figure>
+      <figure>
           <div className="inner">
             <div className="wrap">
               <h1>JOIN</h1>
@@ -144,12 +140,11 @@ export default function Join(){
             </div>
             <div className="pic"></div>
           </div>
-        </figure>
+      </figure>
       <div className="inner">
-        <h1>JOIN</h1>
         <section>
           {success ? <div class="success">회원가입을 축하합니다.</div> : null}
-          <h2>JOIN</h2>
+          <h1>JOIN</h1>
           <p>Welcome to visit our homepage</p>
           <ul>
             <li>
@@ -180,7 +175,7 @@ export default function Join(){
                 <caption>ESSENTIAL INFO.</caption>
                 <tbody>
                   <tr>
-                    <th>
+                    <th scope="row">
                       <label htmlFor="userid">USER ID</label>
                     </th>
                     <td>
@@ -196,7 +191,7 @@ export default function Join(){
                     </td>
                   </tr>
                   <tr>
-                    <th>
+                    <th scope="row">
                       <label htmlFor="email">E-MAIL</label>
                     </th>
                     <td>
@@ -213,35 +208,35 @@ export default function Join(){
   
                   </tr>
                   <tr>
-                    <th>
+                    <th scope="row">
                       <label htmlFor="pwd1">PASSWORD</label>
                     </th>
                     <td>
                       <input
-                       type="password"
-                       id="pwd1"
-                       placeholder="비밀번호를 입력하세요"
-                       name="pwd1"
-                       value={val.pwd1}
-                       onChange={handleChange}
-                       />
-                       <span className="error">{err.pwd1}</span>
+                      type="password"
+                      id="pwd1"
+                      placeholder="비밀번호를 입력하세요"
+                      name="pwd1"
+                      value={val.pwd1}
+                      onChange={handleChange}
+                      />
+                      <span className="error">{err.pwd1}</span>
                     </td>
                   </tr>
                   <tr>
-                    <th>
+                    <th scope="row">
                       <label htmlFor="pwd2">RE PASSWORD</label>
                     </th>
                     <td>
                       <input
-                       type="password"
-                       id="pwd2"
-                       placeholder="비밀번호를 재입력하세요"
-                       name="pwd2"
-                       value={val.pwd2}
-                       onChange={handleChange}
-                       />
-                       <span className="error">{err.pwd2}</span>
+                      type="password"
+                      id="pwd2"
+                      placeholder="비밀번호를 재입력하세요"
+                      name="pwd2"
+                      value={val.pwd2}
+                      onChange={handleChange}
+                      />
+                      <span className="error">{err.pwd2}</span>
                     </td>
                   </tr>
                   <tr>
@@ -255,7 +250,7 @@ export default function Join(){
                         type="radio"
                         id="male"
                         name="gender"
-                        value={val.gender}
+                        value="male"
                         onChange= {handleRadio}
                         />
                       </span>
@@ -265,7 +260,7 @@ export default function Join(){
                         type="radio"
                         id="female"
                         name="gender"
-                        value={val.gender}
+                        value="female"
                         onChange= {handleRadio}
                         />
                       </span>
@@ -283,6 +278,7 @@ export default function Join(){
                         type="checkbox"
                         id="sports"
                         name="interests"
+                        value="sports"
                         onChange ={handleCheck}
                         />
                       </span>
@@ -292,6 +288,7 @@ export default function Join(){
                         type="checkbox"
                         id="music"
                         name="interests"
+                        value="music"
                         onChange ={handleCheck}
                         />
                       </span>
@@ -301,6 +298,7 @@ export default function Join(){
                         type="checkbox"
                         id="game"
                         name="interests"
+                        value="game"
                         onChange ={handleCheck}
                         />
                       </span>
@@ -313,17 +311,17 @@ export default function Join(){
                     </th>
                     <td>
                       <select name="edu" id="edu" onChange={handleSelect}>
-                      <option value="">학력을 선택하세요</option>
-                      <option value="elementary-school">초등학교 졸업</option>
-                      <option value="middle-school">중학교 졸업</option>
-                      <option value="high-school">고등학교 졸업</option>
-                      <option value="college">대학교 졸업</option>
+                        <option value="">학력을 선택하세요</option>
+                        <option value="elementary-school">초등학교 졸업</option>
+                        <option value="middle-school">중학교 졸업</option>
+                        <option value="high-school">고등학교 졸업</option>
+                        <option value="college">대학교 졸업</option>
                       </select>
                       <span  className="error">{err.edu}</span>
                     </td>
                   </tr>
                   <tr>
-                    <th>
+                    <th scope="row">
                       <label htmlFor="comments">LEAVE COMMENTS</label>
                     </th>
                     <td>

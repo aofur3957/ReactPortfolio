@@ -13,10 +13,6 @@ export default function Login(){
                             <span></span>
                         </div>
                         <div className="insert">
-                            <div className="pic">
-                                <img src={`${path}/img/joinBackground.jpg`}  />
-                                <p>Have an account?</p>
-                            </div>
                             <form action="#" method="post">
                                 <fieldset>
                                     <legend>LOG IN</legend>

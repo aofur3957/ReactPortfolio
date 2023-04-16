@@ -1,12 +1,11 @@
-export default function Btns(props){
+export default function Btns({ settingIndex }){
   return (
     <ul id="btns">
-      <li className="on" onClick={()=>props.getIndex(0)}></li>
-      <li onClick={()=>props.getIndex(1)}></li>
-      <li onClick={()=>props.getIndex(2)}></li>
-      <li onClick={()=>props.getIndex(3)}></li>
-      <li onClick={()=>props.getIndex(4)}></li>
-      <li onClick={()=>props.getIndex(5)}></li>
+      <li className="on" onClick={()=>settingIndex(0)}></li>
+      <li onClick={()=>settingIndex(1)}></li>
+      <li onClick={()=>settingIndex(2)}></li>
+      <li onClick={()=>settingIndex(3)}></li>
+      <li onClick={()=>settingIndex(4)}></li>
     </ul>
   )
 }

@@ -2,8 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&family=Jost:wght@100;200;300;400;500;600;700&family=Koh+Santepheap:wght@100;300;400;700&family=Nanum+Gothic:wght@400;700&display=swap');
 
-$tablet: 1179px;
-$mobile: 768px;
+$desktop: 1179px;
+$tablet: 768px;
+$mobile: 576px;
 
 //common
 @import 'common/reset';

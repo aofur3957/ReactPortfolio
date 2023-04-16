@@ -9,16 +9,9 @@
             }
         }
     }
-    
-    >.inner {
-        padding-bottom: 150px;
-        h1 {
-            padding-bottom: 15px;
-            margin-bottom: 50px;
-            border-bottom: 2px solid #333;
-            font: 40px/1 'Jost';
-        }
 
+    >.inner {
+        padding: 150px;
         >section {
             text-align: center;
 
@@ -31,10 +24,10 @@
                 margin-bottom: 50px;
             }
 
-            h2 {
+            h1 {
                 margin-bottom: 20px;
                 text-align: center;
-                font: 60px/1 'Jost';
+                font: 80px/1 'Jost';
             }
 
             p {
@@ -170,9 +163,10 @@
             }
         } 
     }
+    
 }
 
-@media screen and (max-width: 1179px){
+@media screen and (max-width: 1200px){
     .join {
         >.inner {
             width: 100%;
@@ -207,6 +201,9 @@
     .join {
         >.inner {
             >section {
+                h1 {
+                    font-size: 65px;
+                }
                 ul {
                     li {
                         margin: 60px 3% 60px 0;
@@ -220,11 +217,10 @@
 
                 table {
                     th {
-                        padding: 1% 2% 1%; 
+                        padding: 1% 2%; 
                         font-size: 14px;
 
                         &.btnSet {
-                
                             input[type=reset], input[type=submit] {
                                 width: 30%;
                                 height: auto;
@@ -235,13 +231,13 @@
                     }
 
                     td {
-                        padding: 2% 2%;
+                        padding: 2%;
 
                         input[type=text],
                         input[type=password],
                         select{
                             width: 50%;
-                            padding: 2% 2%;
+                            padding: 2%;
                             font-size: 12px;
 
                             &::placeholder {
@@ -275,10 +271,25 @@
 @media screen and (max-width: 576px){
     .join {
         >.inner {
+            padding: 100px 15px;            
             >section {
+                h1 {
+                    font-size: 50px;
+                }
+                p {
+                    font-size: 20px;
+                }
                 ul {
                     li {
                         font-size: 16px;
+                        span {
+                            width: 60px;
+                            height: 60px;
+                            line-height: 60px;
+                            svg {
+                                font-size: 25px;
+                            }
+                        }
                     }
                 }
 
@@ -293,6 +304,9 @@
                         input[type=password],
                         select {
                             width: 100%;
+                        }
+                        .error {
+                            line-height: 1.3;
                         }
                     }
                 }

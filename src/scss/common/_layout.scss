@@ -1,5 +1,4 @@
 .content {
-
     >figure {
         width: 100%;
         background: #fbf8f3;
@@ -60,35 +59,35 @@
             }
         }
     }
-
-    >.inner {
-        width: 1180px;
-        padding-top: 150px;
-        margin: 0 auto;
+    
+    .container {
         transform: translateY(200px);
         opacity: 0;
-
-        h1 {
-            font: 40px/1 'arial';
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        >section {
-            min-height: 500px;
-            padding-bottom: 100px;
+        transition: all 1s;
+        >.inner {
+            width: 1180px;
+            padding-top: 150px;
+            margin: 0 auto;
+            h1 {
+                font: 40px/1 'arial';
+                color: #333;
+                margin-bottom: 20px;
+            }
+            >section {
+                min-height: 500px;
+                padding-bottom: 100px;
+            }
         }
     }
-    
     &.on {
-        >.inner{
-            transform: translateY(0px);
+        .container {
+            transform: translateY(0);
             opacity: 1;
         }
     }
 }
 
-@media screen and (max-width: 1179px){
+@media screen and (max-width: 1200px){
     .content {
         >figure {
             >.inner {

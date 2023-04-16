@@ -12,9 +12,10 @@ export const setYoutube = data=>{
     }
 }
 
-export const setFlickr = data=>{
+export const setFlickr = photos=>{
     return {
         type: 'SET_FLICKR',
-        payload: data
+        payload: photos
     }
 }
+

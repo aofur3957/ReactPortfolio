@@ -1,30 +1,24 @@
 import {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 
-//가상돔 생성함수
 export default function Youtube(){
   let main = useRef(null);
   const [items, setItems] = useState([]);
   const [isPop, setIsPop] = useState(false);
   const [index, setIndex] = useState(0);
 
-  
   const part = 'snippet';
   const key = 'AIzaSyB2c-vJPxv0T0B9qWab28kZJ3_xr_57jhs';
   const num = 12;
   const playlistId = 'PL5zLxdZ1y87VyB6sZ8Ou78aw2L-Uihusz';
   const url =  `https://www.googleapis.com/youtube/v3/playlistItems?part=${part}&key=${key}&playlistId=${playlistId}&maxResults=${num}`
-
   
-  
-  //hook은 컴포넌트 안쪽에서 호출
   useEffect(()=>{
     axios.get(url)
     .then(json=>{
-      console.log(json.data.items);
+      console.log(json);
       setItems(json.data.items);
-    })    
-    
+    })
     main.current.classList.add('on');
   },[]);
   
@@ -52,44 +46,44 @@ export default function Youtube(){
               </div>
           </div>
         </figure>
-        <div className="inner">
-          <h1>YOUTUBE</h1>
-          <section>
-            {items.map((item, idx)=>{
-              let tit = item.snippet.title;
-              let tit_len = tit.length;
-      
-              let desc = item.snippet.description;
-              let desc_len = desc.length;
+        <div className="container">
+          <div className="inner">
+            <h1>YOUTUBE</h1>
+            <section>
+              {items.map((item, idx)=>{
+                const tit = item.snippet.title;
+                const tit_len = tit.length;
+                const desc = item.snippet.description;
+                const desc_len = desc.length;
+                const uploader = item.snippet.videoOwnerChannelTitle;
+                let imgSize = '';
+                if(item.snippet.thumbnails.maxres){
+                  imgSize = item.snippet.thumbnails.maxres.url;
+                }else {
+                  imgSize = item.snippet.thumbnails.high.url;
+                }
 
-              let imgSize = '';
-              if(item.snippet.thumbnails.maxres){
-                imgSize = item.snippet.thumbnails.maxres.url;
-              }else {
-                imgSize = item.snippet.thumbnails.high.url;
-              }
-
-              return (
-                <article key={idx}>
-                  <div className="inner">
-                      <h2>{tit_len > 12 ? tit.substr(0, 12) + '...' : tit}</h2>
-                      <span>24/7/18</span>
-                      <div className="pic" onClick={()=>{
-                        setIsPop(true);
-                        setIndex(idx);
-                      }}>
-                        <img src={imgSize} />
-                      </div>
-                      <p>{desc_len > 150 ? desc.substr(0, 150)  + '...': desc}</p>
-                  </div>
-                </article>
-              )
-            })}
-          </section>
+                return (
+                  <article key={idx}>
+                    <div className="inner">
+                        <h2>{tit_len > 12 ? tit.substr(0, 13) + '...' : tit}</h2>
+                        <span>{uploader}</span>
+                        <div className="pic" onClick={()=>{
+                          setIsPop(true);
+                          setIndex(idx);
+                        }}>
+                          <img src={imgSize} />
+                        </div>
+                        <p>{desc_len > 150 ? desc.substr(0, 151)  + '...': desc}</p>
+                    </div>
+                  </article>
+                )
+              })}
+            </section>
+          </div>
         </div>
+        {isPop ? <Popup /> : null}
       </main>
-      
-      {isPop ? <Popup /> : null}
     </>
   )
 
@@ -104,8 +98,12 @@ export default function Youtube(){
 
     return(
       <aside className="pop">
-        <iframe src={"https://www.youtube.com/embed/" +items[index].snippet.resourceId.videoId} width='100%' height= '100%' allowFullScreen></iframe>
-        <span onClick={() => setIsPop(false)}>close</span>
+        <div class="video">
+          <iframe src={"https://www.youtube.com/embed/" +items[index].snippet.resourceId.videoId} width="100%" height="100%" allowFullScreen></iframe>
+          <button onClick={() => setIsPop(false)}>
+            <span className="h">close</span>
+          </button>
+        </div>
       </aside>
     )
   }

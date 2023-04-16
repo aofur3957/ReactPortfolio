@@ -3,17 +3,20 @@
         {
             "name": "Julia Christina",
             "position": "fashion designer",
-            "pic": "member1.jpg"
+            "pic": "member1.jpg",
+            "comment": "This year, One of the most exciting trends is the triumphant return of high-rise jeans and pants.."
         },
         {
             "name": "Paul Ambert",
             "position": "stage manager",
-            "pic": "member2.jpg"
+            "pic": "member2.jpg",
+            "comment": "I assist you in planning something theatrical and memorable"
         },
         {
             "name": "Peter Collin",
             "position": "make up artist",
-            "pic": "member3.jpg"
+            "pic": "member3.jpg",
+            "comment": "The important thing is to Put some moisturizer on as a base before applying your make-up"
         },
         {
             "name": "Emily",

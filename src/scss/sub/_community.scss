@@ -9,179 +9,180 @@
             }
         }
     }
-    
-    >.inner {
-        >section {
 
-            .inputBox {
-                width: 100%;
-                padding-top: 50px;
-                margin-bottom: 120px;
-                border: 2px solid #888;
-
-                &::after {
-                    content: '';
-                    display: block;
-                    clear: both;
-                }
-
-                .left {
-                    width: 50%;
-                    padding: 0 50px;
-                    float: left;
-
-                    h2 {
-                        font: 50px/1 'Jost';
-        
-                        &::after {
-                            content: '';
-                            display: block;
-                            margin-top: 25px;
-                            width: 13%;
-                            height: 2px;
-                            background: #636a52;
-                        }
-                    }
-    
-                    label {
-                        margin-top: 30px;
-                        display: block;
-                        font: 18px/1 'Jost';
-                        color: #777;
-                    }
-    
-                    input[type="text"] {
-                        margin-top: 18px;
-                        border: none;
-                        border-bottom: 1px solid #333;
-                    }
-                }
-
-                .right {
-                    float: left;
-                    width: 50%;
-                    border-left: 2px solid #888;
-
-                    label {
-                        padding: 20px 25px;
-                        font: 18px/1 'Inria Sans';
-                    }
-
-                    textarea {
-                        border: none;
-                        width: 100%;
-                        height: 300px;
-                        padding: 20px 25px;
-                        resize: none;
-
-                        &::placeholder {
-                            font: 18px/1 'Inria Sans';
-                        }
-                    }
-
-                    button {
-                        width: 50%;
-                        text-align: center;
-                        font: 20px/3 'Inria Sans';
-                        border-top: 2px solid #888;
-                        background: #ffdf90;
-
-                        &:first-of-type {
-                            background: #333;
-                            color: #fff;
-                        }
-                        &:last-of-type {
-                            border-left: 2px solid #888;
-                        }
-                    }
-                }
-                
-            }
-
-            .showList {
-                width: 100%;
-
-                .post {
+    .container {
+        >.inner {
+            >section {
+                .inputBox {
                     width: 100%;
-                    margin-bottom: 100px;
-                    height: 250px;
-                    display: flex;
-
-                    .date {
-                        align-self: flex-end;
-                        margin-right: 4%;
-
-                        em {
-                            display: block;
-                            margin-bottom: 5px;
-                            font: 400 normal 24px/1
-                             'Inria Sans';
-                        }
-
-                        span {
-                            display: block;
-                            font: 18px/1 'Inria Sans';
-                            letter-spacing: 1px;
-                        }
+                    padding-top: 50px;
+                    margin-bottom: 120px;
+                    border: 2px solid #888;
+    
+                    &::after {
+                        content: '';
+                        display: block;
+                        clear: both;
                     }
-
-                    .pic {
-                        width: 5%;
-                        margin-right: 4%;
-                    }
-
-                    .print {
-                        flex: 1;
-                        align-self: center;
-                        
-                        span {
-                            display: block;
-                            margin-bottom: 50px;
-                            font: 22px/1 'Jost';
-                        }
-
+    
+                    .left {
+                        width: 50%;
+                        padding: 0 50px;
+                        float: left;
+    
                         h2 {
-                            margin-bottom: 20px;
-                            font: 700 45px/1 'Koh Santepheap';
+                            font: 50px/1 'Jost';
+            
+                            &::after {
+                                content: '';
+                                display: block;
+                                margin-top: 25px;
+                                width: 13%;
+                                height: 2px;
+                                background: #636a52;
+                            }
                         }
-
-                        p {
-                            margin-bottom: 30px;
-                            font: 20px/1 'Jost';
+        
+                        label {
+                            margin-top: 30px;
+                            display: block;
+                            font: 18px/1 'Jost';
+                            color: #777;
                         }
-                    }
-
-                    .modify {
-                        flex: 1;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;;
-
-                        input[type=text] {
-                            width: 60%;
-                            height: 15%;
-                            padding: 10px 15px;
-                            margin-bottom: -4px;
-                            border: 2px solid #888;
-                        }
-
-                        textarea {
-                            width: 60%;
-                            padding: 15px;
-                            height: 70%;
-                            resize: none;
-                            border: 2px solid #888;
-                            background: #fbf8f3;
+        
+                        input[type="text"] {
+                            margin-top: 18px;
+                            border: none;
+                            border-bottom: 1px solid #333;
                         }
                     }
-
-                    .btns {
-                        height: 15%;
-
-                        button {
-                            height: 100%;
-                            margin-right: 25px;
+    
+                    .right {
+                        float: left;
+                        width: 50%;
+                        border-left: 2px solid #888;
+    
+                        label {
+                            padding: 20px 25px;
                             font: 18px/1 'Inria Sans';
+                        }
+    
+                        textarea {
+                            border: none;
+                            width: 100%;
+                            height: 300px;
+                            padding: 20px 25px;
+                            resize: none;
+    
+                            &::placeholder {
+                                font: 18px/1 'Inria Sans';
+                            }
+                        }
+    
+                        button {
+                            width: 50%;
+                            text-align: center;
+                            font: 20px/3 'Inria Sans';
+                            border-top: 2px solid #888;
+                            background: #ffdf90;
+    
+                            &:first-of-type {
+                                background: #333;
+                                color: #fff;
+                            }
+                            &:last-of-type {
+                                border-left: 2px solid #888;
+                            }
+                        }
+                    }
+                    
+                }
+    
+                .showList {
+                    width: 100%;
+    
+                    .post {
+                        width: 100%;
+                        margin-bottom: 100px;
+                        height: 250px;
+                        display: flex;
+    
+                        .date {
+                            align-self: flex-end;
+                            margin-right: 4%;
+    
+                            em {
+                                display: block;
+                                margin-bottom: 5px;
+                                font: 400 normal 24px/1
+                                 'Inria Sans';
+                            }
+    
+                            span {
+                                display: block;
+                                font: 18px/1 'Inria Sans';
+                                letter-spacing: 1px;
+                            }
+                        }
+    
+                        .pic {
+                            width: 5%;
+                            margin-right: 4%;
+                        }
+    
+                        .print {
+                            flex: 1;
+                            align-self: center;
+                            
+                            span {
+                                display: block;
+                                margin-bottom: 50px;
+                                font: 22px/1 'Jost';
+                            }
+    
+                            h2 {
+                                margin-bottom: 20px;
+                                font: 700 45px/1 'Koh Santepheap';
+                            }
+    
+                            p {
+                                margin-bottom: 30px;
+                                font: 20px/1 'Jost';
+                            }
+                        }
+    
+                        .modify {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;;
+    
+                            input[type=text] {
+                                width: 60%;
+                                height: 15%;
+                                padding: 10px 15px;
+                                margin-bottom: -4px;
+                                border: 2px solid #888;
+                            }
+    
+                            textarea {
+                                width: 60%;
+                                padding: 15px;
+                                height: 70%;
+                                resize: none;
+                                border: 2px solid #888;
+                                background: #fbf8f3;
+                            }
+                        }
+    
+                        .btns {
+                            height: 15%;
+    
+                            button {
+                                height: 100%;
+                                margin-right: 25px;
+                                font: 18px/1 'Inria Sans';
+                            }
                         }
                     }
                 }
@@ -190,27 +191,29 @@
     }
 }
 
-@media screen and (max-width: 1179px){
+@media screen and (max-width: 1200px){
     .community {
-        >.inner {
-            width: 100%;
-            padding: 150px 15px 0px;
-
-            >section {
-                .showList {
-                    .post {
-                        .print {
-                            span {
-                                font: 2vw/1 'Jost';
-                            }
+        .container {
+            >.inner {
+                width: 100%;
+                padding: 150px 15px 0px;
     
-                            h2 {
-                                font: 700 5vw/1 'Koh Santepheap';
-                            }
-    
-                            p {
-                                margin-bottom: 30px;
-                                font: 2vw/1 'Jost';
+                >section {
+                    .showList {
+                        .post {
+                            .print {
+                                span {
+                                    font: 2vw/1 'Jost';
+                                }
+        
+                                h2 {
+                                    font: 700 5vw/1 'Koh Santepheap';
+                                }
+        
+                                p {
+                                    margin-bottom: 30px;
+                                    font: 2vw/1 'Jost';
+                                }
                             }
                         }
                     }
@@ -222,37 +225,39 @@
 
 @media screen and (max-width: 768px){
     .community {
-        >.inner {
-            >section {
-                .inputBox {
-                    .left {
-                        h2 {
-                            font-size: 35px;
+        .container {
+            >.inner {
+                >section {
+                    .inputBox {
+                        .left {
+                            h2 {
+                                font-size: 35px;
+                            }
                         }
                     }
-                }
-
-                .showList {
-                    width: 100%;
     
-                    .post {
-                        .modify {
-                            input[type=text] {
-                                width: 100%;
+                    .showList {
+                        width: 100%;
+        
+                        .post {
+                            .modify {
+                                input[type=text] {
+                                    width: 100%;
+                                }
+        
+                                textarea {
+                                    width: 100%;
+                                }
                             }
     
-                            textarea {
-                                width: 100%;
-                            }
-                        }
-
-                        .print {
-                            span {
-                                font: 3vw/1 'Jost';
-                            }
-                            p {
-                                margin-bottom: 30px;
-                                font: 3vw/1 'Jost';
+                            .print {
+                                span {
+                                    font: 3vw/1 'Jost';
+                                }
+                                p {
+                                    margin-bottom: 30px;
+                                    font: 3vw/1 'Jost';
+                                }
                             }
                         }
                     }
@@ -264,68 +269,70 @@
 
 @media screen and (max-width: 576px){
     .community {
-        >.inner {
-            >section {
-                .inputBox {
-                    .left {
-                        width: 100%;
-                        
-                        h2 {
-                            font-size: 35px;
-                        }
-
-                        &::after {
-                            content:'';
-                            display: block;
-                            margin-top: 50px;
+        .container {
+            >.inner {
+                >section {
+                    .inputBox {
+                        .left {
                             width: 100%;
-                            height: 2px;
-                            background: #888;
+                            
+                            h2 {
+                                font-size: 35px;
+                            }
+    
+                            &::after {
+                                content:'';
+                                display: block;
+                                margin-top: 50px;
+                                width: 100%;
+                                height: 2px;
+                                background: #888;
+                            }
+                        }
+    
+                        .right {
+                            width: 100%;
+                            border-left: none;
+                            padding: 30px 50px 0;
+    
+                            label, textarea {
+                                padding-left: 0;
+                            }
+    
+                            button {
+                                border-left: 2px solid #888;
+    
+                                &:last-of-type {
+                                    border-right: 2px solid #888;
+                                }
+                            }
                         }
                     }
-
-                    .right {
+    
+                    .showList {
                         width: 100%;
-                        border-left: none;
-                        padding: 30px 50px 0;
-
-                        label, textarea {
-                            padding-left: 0;
-                        }
-
-                        button {
-                            border-left: 2px solid #888;
-
-                            &:last-of-type {
-                                border-right: 2px solid #888;
-                            }
-                        }
-                    }
-                }
-
-                .showList {
-                    width: 100%;
+        
+                        .post {
+                            height: 400px;
+                            flex-direction: column;
     
-                    .post {
-                        height: 400px;
-                        flex-direction: column;
-
-                        .date {
-                            align-self: flex-start;
-                            margin-bottom: 30px;
-                        }
-
-                        .pic {
-                            display: none;
-                        }
-    
-                        .modify {
-                            input[type=text] {
-                                width: 100%;
+                            .date {
+                                align-self: flex-start;
+                                margin-bottom: 30px;
                             }
     
-                            textarea {
-                                width: 100%;
+                            .pic {
+                                display: none;
+                            }
+        
+                            .modify {
+                                input[type=text] {
+                                    width: 100%;
+                                }
+        
+                                textarea {
+                                    width: 100%;
+                                }
                             }
                         }
                     }

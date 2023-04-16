@@ -1,7 +1,7 @@
 .login {
     position: relative;
     width: 100%;
-    background:  url(../../../public/img/check2.jpg) repeat;
+    background:  url(../../../public/img/check.jpg) repeat center/cover ;
     border: 4px solid #333;
     border-top: none;
 
@@ -28,7 +28,7 @@
                 left: -35px;
                 width: 100%;
                 height: 600px;
-                background: pink;
+                background: #fbf8f3;
                 z-index: -1;
                 border: 4px solid #333;
             }
@@ -112,29 +112,8 @@
                 }
 
                 .insert {
-                    display: flex;
-                    height: 94%;
-
-                    .pic {
-                        position: relative;
-                        width: 40%;
-                        height: 100%;
-        
-                        p {
-                            position: absolute;
-                            top: 50%;
-                            left: 0;
-                            transform: translateY(-50%);
-                            width: 100%;
-                            text-align: center;
-                            font: 30px/1 'Jost';
-                            color: #fff;
-                        }
-                    }
-        
                     form {
-                        width: 60%;
-                        padding: 70px;
+                        padding: 60px 150px;
         
                         legend {
                             margin-bottom: 70px;
@@ -201,7 +180,7 @@
     }
 }
 
-@media screen and (max-width: 1179px){
+@media screen and (max-width: 1200px){
     .login {
         .inner {
             width: 100%;
@@ -223,16 +202,10 @@
     .login {
         .inner {
             >div {
-                width: 90%;
                 .loginModal {
                     .insert {
-                        .pic {
-                            display: none;
-                        }
-
                         form {
-                            width: 100%;
-                            padding: 70px 10%;
+                            padding: 60px 10%;
 
                             p {
                                 font-size: 13px;
