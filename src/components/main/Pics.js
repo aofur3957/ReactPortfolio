@@ -101,7 +101,7 @@ export default function Pics({scrolled, pos}){
                     }}
                     virtual={true}
                     >
-                        {picData.map((pic, index)=> (
+                        {picData && picData.map((pic, index)=> (
                             <SwiperSlide key={index} virtualIndex={index}>
                                 <div className="pic">
                                     <img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`} />
