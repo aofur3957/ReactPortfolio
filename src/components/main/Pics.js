@@ -47,7 +47,8 @@ export default function Pics({scrolled, pos}){
     }
 
     useEffect(()=>{
-        if(picData.length === 0) getFlickr();
+        console.log(picData);
+        if(picData && picData.length === 0) getFlickr();
         requestAnimationFrame(()=>{
             animate(titElem.current, -1);
         });
