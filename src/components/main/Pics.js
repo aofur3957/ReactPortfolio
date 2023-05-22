@@ -10,13 +10,12 @@ import 'swiper/css/virtual';
 import 'swiper/css/autoplay';
 
 export default function Pics({scrolled, pos}){
-    const picData = useSelector(state=>state.flickrReducer.photos);
-    const dispatch = useDispatch();
+    const picData = useSelector(state=>state.flickrReducer.photos); // useSelector hook을 사용해 중앙 상태값 가져오기
+    const dispatch = useDispatch(); // useDispatch hook을 사용해 store의 내장함수인 dispatch 가져오기
     const titElem = useRef(null);
     const pElem = useRef(null);
     const count = useRef(0);
     const base = pos - 300;
-    const posStart = scrolled - base;
 
     const getFlickr = async ()=>{
         const api_key = '6695bb82cf9a3db1962df3f386dd83e8';
@@ -48,7 +47,7 @@ export default function Pics({scrolled, pos}){
     }
 
     useEffect(()=>{
-        if(picData && picData.length === 0) getFlickr();
+        if(picData.length === 0) getFlickr();
         requestAnimationFrame(()=>{
             animate(titElem.current, -1);
         });
@@ -57,9 +56,10 @@ export default function Pics({scrolled, pos}){
         });
     },[]);
 
-    useEffect(()=>{
-        count.current += 20;
-    },[scrolled])
+    // useEffect(()=>{
+    //     count.current += 20;
+    //     console.log(count.current);
+    // },[scrolled])
 
     return (
         <section id="pics" className="myScroll">

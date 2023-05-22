@@ -12,7 +12,7 @@ export const departmentReducer = (state={members: []}, action)=>{
 export const youtubeReducer = (state={youtube: []}, action)=> {
     switch (action.type) {
         case 'SET_YOUTUBE' :
-            return {...state, youtube: action.payload}
+            return {...state, youtube: action.youtubes}
         default :
             return state;
     }
@@ -21,7 +21,7 @@ export const youtubeReducer = (state={youtube: []}, action)=> {
 export const flickrReducer = (state={photos: []}, action)=> {
     switch (action.type) {
         case 'SET_FLICKR' :
-            return {...state, photos: action.payload}
+            return {...state, photos: action.photos}
         default :
             return state;
     }

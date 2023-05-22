@@ -18,13 +18,11 @@ export default function Media({scrolled, pos}){
   const count2 = useCounting(1148, 5000, scrolled, pos)
   const count3 = useCounting(672, 5000, scrolled, pos)
 
-  let imgCount = 0;
-
   const getData = async ()=>{
       await axios.get(url)
       .then(json=>{
+      console.log(json);
       dispatch(setYoutube(json.data.items));
-      console.log('media 호출!');
     });
   }
 

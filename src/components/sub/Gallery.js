@@ -115,7 +115,7 @@ export default function Gallery(){
                 MAGAZINE
               </strong>
             </div>
-            <div class="txt">
+            <div className="txt">
               <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda esse eos, ex debitis voluptatem, rem corrupti facilis aspernatur quas in, molestias enim" 
               </p>
               <p>

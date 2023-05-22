@@ -1,21 +1,21 @@
-export const setMembers = members=>{
+export const setMembers = members => {
     return {
         type: 'SET_MEMBERS',
-        members: members
+        members
     }
 }
 
-export const setYoutube = data=>{
+export const setYoutube = youtubes => {
     return {
         type: 'SET_YOUTUBE',
-        payload: data
+        youtubes
     }
 }
 
-export const setFlickr = photos=>{
+export const setFlickr = photos => {
     return {
         type: 'SET_FLICKR',
-        payload: photos
+        photos
     }
 }
 

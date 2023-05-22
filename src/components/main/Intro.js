@@ -16,6 +16,7 @@ export default function Intro({scrolled, pos}){
   const getData = ()=>{
     axios.get(`${path}/db/department.json`)
     .then(json=>{
+      console.log(json);
       dispatch(setMembers(json.data.data));
     })
   }
