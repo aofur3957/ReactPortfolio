@@ -8,7 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const persistConfig = {
     key: 'main-root',
     storage,
-    blacklist: ['departmentReducer', 'youtubeReducer'] // departmentReducer 제외
+    blacklist: ['departmentReducer'] // departmentReducer 제외
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers);

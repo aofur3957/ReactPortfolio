@@ -137,7 +137,7 @@ export default function Gallery(){
             </div>
 
             <section className="on" ref={frame}>
-              {items && items.map((item, idx)=>{
+              {items.map((item, idx)=>{
                   return (
                     <article key={idx} className='item'>
                       <div className="inner">

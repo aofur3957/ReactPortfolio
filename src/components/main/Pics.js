@@ -48,7 +48,7 @@ export default function Pics({scrolled, pos}){
 
     useEffect(()=>{
         console.log(picData);
-        if(picData && picData.length === 0) getFlickr();
+        if(picData.length === 0) getFlickr();
         requestAnimationFrame(()=>{
             animate(titElem.current, -1);
         });
@@ -102,7 +102,7 @@ export default function Pics({scrolled, pos}){
                     }}
                     virtual={true}
                     >
-                        {picData && picData.map((pic, index)=> (
+                        {picData.map((pic, index)=> (
                             <SwiperSlide key={index} virtualIndex={index}>
                                 <div className="pic">
                                     <img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`} />
