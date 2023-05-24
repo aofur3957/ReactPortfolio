@@ -10,12 +10,13 @@ export default function News({scrolled, pos}){
     {title: `Help!`, name: `Railar`, content: `The color rain in the wash. how can i get the stain out?`, date: `2023/1/1`, time: `17:51:53`}
   ];
   const getLocalItems = ()=>{
-    let data = localStorage.getItem('posts');
-    if(data){
-      return JSON.parse(data);
-    }else{
-      return defaultData;
-    }
+    // let data = localStorage.getItem('posts');
+    // if(data){
+    //   return JSON.parse(data);
+    // }else{
+    //   return defaultData;
+    // }
+    return defaultData;
   }
   const [posts] = useState(getLocalItems());
   const [tabIndex, setTabIndex] = useState(0);
@@ -26,7 +27,7 @@ export default function News({scrolled, pos}){
 
   useEffect(()=>{
     localStorage.setItem('posts', JSON.stringify(posts));
-  },[])
+  },[posts]);
 
   useEffect(()=>{
     if(scrolled >= pos){

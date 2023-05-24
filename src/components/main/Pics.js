@@ -57,11 +57,6 @@ export default function Pics({scrolled, pos}){
         });
     },[]);
 
-    // useEffect(()=>{
-    //     count.current += 20;
-    //     console.log(count.current);
-    // },[scrolled])
-
     return (
         <section id="pics" className="myScroll">
             <div className="title">

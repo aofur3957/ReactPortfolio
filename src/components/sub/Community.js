@@ -84,7 +84,6 @@ export default function Community(){
         return post;
       })
     )
-    console.log(posts);
   }
 
   const updatePost = index=>{
