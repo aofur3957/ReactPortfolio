@@ -72,8 +72,6 @@
       imgDOM.forEach(img=>{
         img.onload = () =>{
           count++;
-          console.log(count);
-
           //모든 소스이미지로딩갯수와 전체 이미지배열 갯수가 같으면 (로딩완료되면)
           if(count === len){
             //default, maskDOM제거 (리액트에서 랜더링하는 요소가 화면에 출력)

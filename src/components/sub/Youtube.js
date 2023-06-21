@@ -16,7 +16,6 @@ export default function Youtube(){
   useEffect(()=>{
     axios.get(url)
     .then(json=>{
-      console.log(json);
       setItems(json.data.items);
     })
     main.current.classList.add('on');

@@ -21,7 +21,6 @@ export default function Media({scrolled, pos}){
   const getData = async ()=>{
       await axios.get(url)
       .then(json=>{
-      console.log(json);
       dispatch(setYoutube(json.data.items));
     });
   }

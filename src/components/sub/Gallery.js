@@ -187,7 +187,6 @@ export default function Gallery(){
         <img src={`https://live.staticflickr.com/${items[index].server}/${items[index].id}_${items[index].secret}_b.jpg`} alt="" />
         <button onClick={()=>{
           setIsPop(false);
-          console.log(isPop);
         }}>
           <span className="h">close</span>
         </button>

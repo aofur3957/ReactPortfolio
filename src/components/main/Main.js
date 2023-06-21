@@ -24,7 +24,6 @@ export default function Main() {
         const arr = [];
         for(let sec of secs) arr.push(sec.offsetTop);
         pos.current = arr;
-        console.log(pos.current);
     }
 
     const activation = ()=>{
